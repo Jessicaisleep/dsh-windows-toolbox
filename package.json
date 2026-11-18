@@ -1,11 +1,20 @@
 {
   "name": "dsh-windows-toolbox",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "type": "module",
   "description": "One Windows toolbox with two halves. The registration-point half indexes eleven places Windows lets software hook itself in — services, scheduled tasks, autostart (six sources), shell extensions, installed programs, AppX/MSIX, drivers, firewall rules, IFEO, file associations, credential providers — and can enable, disable or roll back five of them, with a plain-language explanation for every row. The maintenance half is 25 read-mostly capabilities: cleanup across nine groups, large and duplicate files, network diagnosis and repair, DNS switching, security and privacy posture, speed test, tweaks, shredder, driver and software catalogs. Everything runs locally; every write is a dry run first. · WINDOWS工具箱：一半是 Windows 插件化管理（十一类注册点索引 + 八项系统修复），一半是系统维护（25 项能力：清理、体检、修复、软件与驱动）。全部本地执行，写操作先预演。",
   "main": "./index.js",
   "icon": "./icon.svg",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jessicaisleep/dsh-windows-toolbox.git"
+  },
+  "homepage": "https://github.com/Jessicaisleep/dsh-windows-toolbox#readme",
+  "bugs": {
+    "url": "https://github.com/Jessicaisleep/dsh-windows-toolbox/issues"
+  },
+  "author": "Jessicaisleep",
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
