@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "captured": "2026-11-17",
+  "policy": "official-only",
+  "policyNote": "只收录厂商自己的官方域名；不收录任何下载站、驱动聚合站、驱动精灵类第三方。",
+  "note": "不可能为每个具体驱动版本维护直链（厂商不公开稳定 URL，版本号天天变）。这张表做的是另一件事：从设备实例 ID 里的 PCI VEN_ / USB VID_ 四位厂商代码识别出厂商，给出该厂商的官方驱动下载页，用户自己选型号下载。每条 URL 都在 2026-11-17 用 tools/verify-drivers.mjs 的同一套逻辑（HEAD 优先、GET 回落）实测过，实测状态写在 verified 字段里。",
+  "vendors": {
+    "10DE": {
+      "name": "NVIDIA",
+      "nameEn": "NVIDIA",
+      "kind": "gpu",
+      "driverPage": "https://www.nvidia.cn/drivers/",
+      "deviceSearch": "https://www.nvidia.cn/geforce/drivers/",
+      "note": "显卡驱动。可按型号或产品系列筛选，也可用页面上的自动检测。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1002": {
+      "name": "AMD",
+      "nameEn": "AMD",
+      "kind": "gpu",
+      "driverPage": "https://www.amd.com/zh-cn/support/download/drivers.html",
+      "note": "显卡（Radeon）与芯片组驱动都在这个下载入口，先选产品类型再选型号。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "8086": {
+      "name": "Intel",
+      "nameEn": "Intel",
+      "kind": "gpu",
+      "driverPage": "https://www.intel.cn/content/www/cn/zh/download-center/home.html",
+      "deviceSearch": "https://www.intel.cn/content/www/cn/zh/support/detect.html",
+      "note": "显卡、芯片组、有线网卡、无线网卡、蓝牙都在 Intel 下载中心；不清楚型号时用「自动检测您的产品」。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1022": {
+      "name": "AMD",
+      "nameEn": "AMD",
+      "kind": "chipset",
+      "driverPage": "https://www.amd.com/zh-cn/support/download/drivers.html",
+      "note": "AMD 芯片组（含 CPU 集成控制器）驱动。AMD 官网没有独立的 chipsets 下载根路径（/support/download/chipsets 返回 404），入口统一在 drivers.html，选「 chipsets 」分类后再选平台（AM4/AM5）。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "10EC": {
+      "name": "Realtek",
+      "nameEn": "Realtek",
+      "kind": "net",
+      "driverPage": "https://www.realtek.com/Download/List?cate_id=584",
+      "deviceSearch": "https://www.realtek.com/Download/List",
+      "note": "瑞昱有线网卡（PCIe FE/GbE/2.5G/5G/10G）驱动页。声卡是同一站点的 cate_id=593（High Definition Audio Codecs）。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "14E4": {
+      "name": "Broadcom",
+      "nameEn": "Broadcom",
+      "kind": "net",
+      "driverPage": "https://www.broadcom.com/support/download-search",
+      "note": "博通网卡/无线。按产品线搜索，企业级网卡需要登录账号才能取到部分固件。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "168C": {
+      "name": "Qualcomm Atheros",
+      "nameEn": "Qualcomm Atheros",
+      "kind": "wireless",
+      "driverPage": "https://www.qualcomm.com/support",
+      "note": "Atheros 已被高通收购，AR 系列（AR5xxx/AR9xxx）早已停止在官网发布通用驱动，新版驱动只随整机/主板厂商发布。台式机独显网卡建议优先去主板厂商页面按型号取。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "8087": {
+      "name": "Intel",
+      "nameEn": "Intel",
+      "kind": "wireless",
+      "driverPage": "https://www.intel.cn/content/www/cn/zh/download-center/home.html",
+      "deviceSearch": "https://www.intel.cn/content/www/cn/zh/support/detect.html",
+      "note": "Intel 无线网卡与蓝牙模块（Wi-Fi 6/6E/7、AX200/AX210 等）都在下载中心，另有单独的「Intel 无线 Bluetooth 驱动」条目。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "0BDA": {
+      "name": "Realtek",
+      "nameEn": "Realtek",
+      "kind": "usb",
+      "driverPage": "https://www.realtek.com/Download/List?cate_id=585",
+      "note": "瑞昱 USB 有线网卡驱动页；同厂 USB 蓝牙/读卡器驱动需在站点内按产品线切换（USB 蓝牙驱动在 Bluetooth 分类下）。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "04F2": {
+      "name": "群光电子 Chicony",
+      "nameEn": "Chicony",
+      "kind": "camera",
+      "driverPage": "https://www.chicony.com/chicony/en",
+      "probeBlocked": true,
+      "note": "群光是摄像头/键盘 ODM，不单独对零售市场发布驱动，官网只有企业与产品页；实际驱动随整机发布，应按整机厂商（联想/戴尔/惠普）页面取。该站由 Cloudflare 托管并对脚本请求一律返回 403 挑战页，浏览器可正常打开，因此本条目由浏览器通道核验。",
+      "verified": "200 (browser lane) / 403 (script, Cloudflare challenge) 2026-11-17"
+    },
+    "046D": {
+      "name": "Logitech",
+      "nameEn": "Logitech",
+      "kind": "peripheral",
+      "driverPage": "https://www.logitech.com/zh-cn/software",
+      "deviceSearch": "https://support.logi.com/hc/zh-cn",
+      "note": "罗技外设软件入口。G 系列游戏设备用 G HUB（logitechg.com/zh-cn/software/ghub），办公键鼠用 Logi Options+。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "0B05": {
+      "name": "ASUSTeK",
+      "nameEn": "ASUSTeK",
+      "kind": "oem",
+      "driverPage": "https://www.asus.com.cn/support/download-center/",
+      "note": "华硕主板/笔记本驱动下载中心，按型号搜索。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1462": {
+      "name": "MSI 微星",
+      "nameEn": "MSI",
+      "kind": "oem",
+      "driverPage": "https://www.msi.cn/support/download",
+      "note": "微星主板/笔记本驱动下载，按型号搜索。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1043": {
+      "name": "ASUSTeK",
+      "nameEn": "ASUSTeK",
+      "kind": "oem",
+      "driverPage": "https://www.asus.com/support/download-center/",
+      "note": "华硕国际站下载中心（1043 常见于华硕主板设备 ID）。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "17AA": {
+      "name": "Lenovo 联想",
+      "nameEn": "Lenovo",
+      "kind": "oem",
+      "driverPage": "https://newsupport.lenovo.com.cn/",
+      "note": "联想中国服务支持站，输入主机编号（SN）或机型取驱动。国际机型用 support.lenovo.com。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1028": {
+      "name": "Dell 戴尔",
+      "nameEn": "Dell",
+      "kind": "oem",
+      "driverPage": "https://www.dell.com/support/home/zh-cn?app=drivers",
+      "note": "戴尔驱动与下载页，输入服务标签（Service Tag）或自动检测本机。",
+      "verified": "200 GET 2026-11-17"
+    },
+    "103C": {
+      "name": "HP 惠普",
+      "nameEn": "HP",
+      "kind": "oem",
+      "driverPage": "https://support.hp.com/cn-zh/drivers",
+      "note": "惠普驱动下载，按产品型号或序列号搜索；打印机驱动同站 support.hp.com/cn-zh/printer。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1AF4": {
+      "name": "Red Hat Virtio",
+      "nameEn": "Red Hat Virtio",
+      "kind": "virtualization",
+      "driverPage": "https://www.redhat.com/en/topics/virtualization",
+      "deviceSearch": "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/",
+      "note": "虚拟机的 virtio 半虚拟化设备。Windows 客机的 virtio 驱动（virtio-win.iso）由 Fedora 项目（Red Hat 上游）构建并长期发布，见 deviceSearch；不要从第三方站下。",
+      "verified": "200 HEAD 2026-11-17 (both)"
+    },
+    "15AD": {
+      "name": "VMware",
+      "nameEn": "VMware",
+      "kind": "virtualization",
+      "driverPage": "https://packages.vmware.com/tools/releases/latest/windows/",
+      "note": "VMware Tools for Windows 的官方直链目录。原 customerconnect.vmware.com 已跳转 Broadcom 支持站并返回 403（需登录），此路径仍是 VMware 自有域名且可直接下载。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "80EE": {
+      "name": "VirtualBox",
+      "nameEn": "Oracle VirtualBox",
+      "kind": "virtualization",
+      "driverPage": "https://www.virtualbox.org/wiki/Downloads",
+      "note": "增强功能包（Guest Additions）随 VirtualBox 安装包提供，装完虚拟机后在设备菜单里挂载即可。原先还登记了 ISO 镜像目录 download.virtualbox.org/virtualbox/，但该主机 GET 请求持续超时（HEAD 时好时坏），按「验证不通过的条目不录」原则已移除。",
+      "verified": "200 HEAD 2026-11-17"
+    }
+  },
+  "classes": {
+    "Display": {
+      "name": "显示适配器",
+      "nameEn": "Display adapter",
+      "hint": "显卡。先认 VEN_ 代码再选型号；笔记本双显卡（核显+独显）两个都要装。"
+    },
+    "Net": {
+      "name": "网络适配器",
+      "nameEn": "Network adapter",
+      "hint": "有线/无线网卡。网卡驱动装错会直接断网，更新前先备份当前驱动或准备好离线安装包。"
+    },
+    "Media": {
+      "name": "声音、视频和游戏控制器",
+      "nameEn": "Sound, video and game controllers",
+      "hint": "声卡、采集卡、部分游戏外设。Realtek 声卡在 cate_id=593。"
+    },
+    "SCSIAdapter": {
+      "name": "存储控制器",
+      "nameEn": "Storage controllers",
+      "hint": "SATA/NVMe/RAID 控制器。换主板或重装系统时缺这个会「找不到硬盘」，Intel RST / AMD RAID 都在这类。"
+    },
+    "USB": {
+      "name": "USB 控制器",
+      "nameEn": "Universal Serial Bus controllers",
+      "hint": "USB 主控与集线器。多数由芯片组驱动覆盖，单独装的场景少。"
+    },
+    "Bluetooth": {
+      "name": "蓝牙",
+      "nameEn": "Bluetooth",
+      "hint": "蓝牙模块。Intel 蓝牙与 Wi-Fi 常成对出现，型号要对上（AX200 的蓝牙不能装 AX210 的）。"
+    },
+    "HIDClass": {
+      "name": "人体学输入设备",
+      "nameEn": "Human Interface Devices",
+      "hint": "键鼠、手柄、触摸板等 HID 设备。多数走系统自带驱动，功能键/灯效需要厂商软件。"
+    },
+    "Printer": {
+      "name": "打印机",
+      "nameEn": "Printers",
+      "hint": "打印机/多功能一体机。优先用厂商的完整功能包，Windows 通用驱动会缺扫描与双面功能。"
+    },
+    "Camera": {
+      "name": "摄像头",
+      "nameEn": "Cameras",
+      "hint": "摄像头。群光/致伸这类 ODM 模组通常不单独发驱动，按整机厂商页面取。"
+    },
+    "AudioEndpoint": {
+      "name": "音频端点",
+      "nameEn": "Audio endpoints",
+      "hint": "音频输出/输入端点，不是独立硬件。端点异常一般是上层声卡驱动的问题，先修 Media 类。"
+    },
+    "System": {
+      "name": "系统设备",
+      "nameEn": "System devices",
+      "hint": "芯片组、主板资源、电源管理等。黄色感叹号常出现在这里，装芯片组驱动即可。"
+    },
+    "Mouse": {
+      "name": "鼠标",
+      "nameEn": "Mice and other pointing devices",
+      "hint": "鼠标。游戏鼠标的宏/DPI 需要厂商软件（罗技 G HUB、雷蛇 Synapse）。"
+    },
+    "Keyboard": {
+      "name": "键盘",
+      "nameEn": "Keyboards",
+      "hint": "键盘。机械键盘的灯效与改键需要厂商软件。"
+    },
+    "DiskDrive": {
+      "name": "磁盘驱动器",
+      "nameEn": "Disk drives",
+      "hint": "磁盘本身。固件更新有变砖风险，除非厂商明确修复了你遇到的问题，否则不要动。"
+    },
+    "Firmware": {
+      "name": "固件",
+      "nameEn": "Firmware",
+      "hint": "UEFI/BIOS/设备固件。更新期间绝对不能断电，笔记本先插电源并确认电量。"
+    }
+  },
+  "usbVendors": {
+    "046D": {
+      "name": "Logitech",
+      "nameEn": "Logitech",
+      "driverPage": "https://www.logitech.com/zh-cn/software",
+      "note": "罗技键鼠/耳机/摄像头。G 系列用 G HUB，办公系列用 Logi Options+。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "0BDA": {
+      "name": "Realtek",
+      "nameEn": "Realtek",
+      "driverPage": "https://www.realtek.com/Download/List?cate_id=585",
+      "note": "瑞昱 USB 网卡/读卡器/蓝牙模组。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "8087": {
+      "name": "Intel",
+      "nameEn": "Intel",
+      "driverPage": "https://www.intel.cn/content/www/cn/zh/download-center/home.html",
+      "note": "Intel 蓝牙/USB 相关模组，型号要与芯片对上。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "0A12": {
+      "name": "CSR (Cambridge Silicon Radio)",
+      "nameEn": "CSR",
+      "driverPage": "https://www.qualcomm.com/support",
+      "note": "CSR 已被高通收购（Qualcomm CSR）。BlueCore 系列早已停产，官网不再单独发布 Windows 驱动，实际由整机/适配器厂商提供。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "0B05": {
+      "name": "ASUSTeK",
+      "nameEn": "ASUSTeK",
+      "driverPage": "https://www.asus.com.cn/support/download-center/",
+      "note": "华硕外设/主板集成的 USB 设备，按型号搜索。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1532": {
+      "name": "Razer 雷蛇",
+      "nameEn": "Razer",
+      "driverPage": "https://www.razer.com/synapse-4",
+      "note": "雷蛇外设统一用 Razer Synapse 4，驱动随软件分发。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "04D9": {
+      "name": "Holtek 盛群",
+      "nameEn": "Holtek",
+      "driverPage": "https://www.holtek.com/",
+      "note": "盛群是 MCU 供应商，键鼠成品由品牌方贴牌，官网只有芯片资料；驱动去键盘/鼠标品牌方找。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1A2C": {
+      "name": "China Resource Semico 华润矽科",
+      "nameEn": "China Resource Semico",
+      "driverPage": "https://www.crmicro.com/",
+      "note": "华润微电子（CRMICRO）旗下矽科，多为键盘主控。官网是芯片厂站，不提供成品键鼠驱动，走品牌方。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "1050": {
+      "name": "Yubico",
+      "nameEn": "Yubico",
+      "driverPage": "https://www.yubico.com/support/download/",
+      "note": "YubiKey 安全密钥。Windows 端主要靠系统内置 CCID/智能卡支持，管理工具（Yubico Authenticator / YubiKey Manager）在这一页。",
+      "verified": "200 HEAD 2026-11-17"
+    },
+    "090C": {
+      "name": "Silicon Motion 慧荣",
+      "nameEn": "Silicon Motion",
+      "driverPage": "https://www.siliconmotion.com/",
+      "note": "慧荣主控常见于 U 盘/SSD 桥接芯片，官网提供量产工具与主控资料；品牌成品走品牌方。",
+      "verified": "200 HEAD 2026-11-17"
+    }
+  }
+}

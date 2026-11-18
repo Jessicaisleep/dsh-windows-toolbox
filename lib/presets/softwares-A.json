@@ -1,0 +1,386 @@
+{
+  "version": 1,
+  "captured": "2026-11-17",
+  "policy": "official-only",
+  "shard": "A",
+  "policyNote": "分片 A：im / office / browser / input。每一条的 homepage 与 downloadPage 都在 2026-11-17 用真实 HTTP 请求确认过：必须是厂商自己的域名、https、返回 2xx。下载站/聚合站一律不录；拿不准官网的候选直接剔除（见交付说明）。",
+  "categories": {
+    "im": { "zh": "聊天通讯", "en": "Messaging" },
+    "office": { "zh": "办公文档", "en": "Office" },
+    "browser": { "zh": "浏览器", "en": "Browsers" },
+    "input": { "zh": "输入法", "en": "Input methods" }
+  },
+  "softwares": [
+    {
+      "id": "tim",
+      "name": "TIM",
+      "nameEn": "TIM",
+      "publisher": "腾讯",
+      "category": "im",
+      "homepage": "https://tim.qq.com/",
+      "downloadPage": "https://tim.qq.com/download.html",
+      "winget": "Tencent.TIM",
+      "uninstallMatch": ["腾讯tim", "tim"]
+    },
+    {
+      "id": "yy",
+      "name": "YY语音",
+      "nameEn": "YY",
+      "publisher": "欢聚集团",
+      "category": "im",
+      "homepage": "https://www.yy.com/",
+      "downloadPage": "https://www.yy.com/pcyy/",
+      "winget": "YY.YY",
+      "uninstallMatch": ["yy语音", "yy9"]
+    },
+    {
+      "id": "infoflow",
+      "name": "如流",
+      "nameEn": "InfoFlow",
+      "publisher": "百度",
+      "category": "im",
+      "homepage": "https://infoflow.baidu.com/",
+      "downloadPage": "https://infoflow.baidu.com/",
+      "uninstallMatch": ["如流", "infoflow"]
+    },
+    {
+      "id": "ipmsg",
+      "name": "飞鸽传书",
+      "nameEn": "IP Messenger",
+      "publisher": "飞鸽传书",
+      "category": "im",
+      "homepage": "https://www.ipmsg.org.cn/",
+      "downloadPage": "https://www.ipmsg.org.cn/download/",
+      "uninstallMatch": ["飞鸽传书", "feigeqt", "ipmsg"]
+    },
+    {
+      "id": "wangwang",
+      "name": "阿里旺旺",
+      "nameEn": "AliWangWang",
+      "publisher": "阿里巴巴",
+      "category": "im",
+      "homepage": "https://wangwang.taobao.com/",
+      "downloadPage": "https://wangwang.taobao.com/",
+      "winget": "Alibaba.AliIM",
+      "uninstallMatch": ["阿里旺旺", "wangwang", "旺旺"]
+    },
+    {
+      "id": "microsoft-office",
+      "name": "Microsoft Office",
+      "nameEn": "Microsoft 365",
+      "publisher": "微软",
+      "category": "office",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-365",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-365/download-office",
+      "winget": "Microsoft.Office",
+      "uninstallMatch": ["microsoft 365", "microsoft office", "microsoft365"]
+    },
+    {
+      "id": "foxit-reader",
+      "name": "福昕阅读器",
+      "nameEn": "Foxit PDF Reader",
+      "publisher": "福昕软件",
+      "category": "office",
+      "homepage": "https://www.foxitsoftware.cn/",
+      "downloadPage": "https://www.foxitsoftware.cn/downloads/",
+      "winget": "Foxit.FoxitReader",
+      "uninstallMatch": ["foxit", "福昕"]
+    },
+    {
+      "id": "jisupdf",
+      "name": "极速PDF阅读器",
+      "nameEn": "Jisu PDF",
+      "publisher": "极速PDF",
+      "category": "office",
+      "homepage": "https://www.jisupdf.com/",
+      "downloadPage": "https://www.jisupdf.com/download",
+      "uninstallMatch": ["极速pdf", "jisupdf"]
+    },
+    {
+      "id": "chaoxing-reader",
+      "name": "超星阅读器",
+      "nameEn": "Chaoxing Reader",
+      "publisher": "超星",
+      "category": "office",
+      "homepage": "https://ssreader.chaoxing.com/",
+      "downloadPage": "https://ssreader.chaoxing.com/",
+      "uninstallMatch": ["超星阅读器", "ssreader", "超星"]
+    },
+    {
+      "id": "yinxiang",
+      "name": "印象笔记",
+      "nameEn": "Evernote",
+      "publisher": "印象笔记",
+      "category": "office",
+      "homepage": "https://www.yinxiang.com/",
+      "downloadPage": "https://www.yinxiang.com/dl-win/",
+      "winget": "Evernote.Evernote",
+      "uninstallMatch": ["印象笔记", "evernote", "yinxiang"]
+    },
+    {
+      "id": "youdao-note",
+      "name": "有道云笔记",
+      "nameEn": "Youdao Note",
+      "publisher": "网易有道",
+      "category": "office",
+      "homepage": "https://note.youdao.com/",
+      "downloadPage": "https://note.youdao.com/download.html",
+      "winget": "NetEase.YoudaoNote",
+      "uninstallMatch": ["有道云笔记", "youdaonote"]
+    },
+    {
+      "id": "wiz",
+      "name": "为知笔记",
+      "nameEn": "WizNote",
+      "publisher": "为知笔记",
+      "category": "office",
+      "homepage": "https://www.wiz.cn/",
+      "downloadPage": "https://www.wiz.cn/",
+      "uninstallMatch": ["为知笔记", "wiznote"]
+    },
+    {
+      "id": "shimo",
+      "name": "石墨文档",
+      "nameEn": "Shimo Docs",
+      "publisher": "石墨文档",
+      "category": "office",
+      "homepage": "https://shimo.im/",
+      "downloadPage": "https://shimo.im/download",
+      "uninstallMatch": ["石墨文档", "shimo"]
+    },
+    {
+      "id": "kdocs",
+      "name": "金山文档",
+      "nameEn": "Kingsoft Docs",
+      "publisher": "金山办公",
+      "category": "office",
+      "homepage": "https://www.kdocs.cn/",
+      "downloadPage": "https://plus.kdocs.cn/download",
+      "winget": "Kingsoft.KDocs",
+      "uninstallMatch": ["金山文档", "kdocs"]
+    },
+    {
+      "id": "onlyoffice",
+      "name": "ONLYOFFICE",
+      "nameEn": "ONLYOFFICE Desktop Editors",
+      "publisher": "Ascensio System SIA",
+      "category": "office",
+      "homepage": "https://www.onlyoffice.com/",
+      "downloadPage": "https://www.onlyoffice.com/download",
+      "winget": "ONLYOFFICE.DesktopEditors",
+      "uninstallMatch": ["onlyoffice", "only office"]
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "nameEn": "Notion",
+      "publisher": "Notion Labs",
+      "category": "office",
+      "homepage": "https://www.notion.com/",
+      "downloadPage": "https://www.notion.com/desktop",
+      "winget": "Notion.Notion",
+      "uninstallMatch": ["notion", "notion labs"]
+    },
+    {
+      "id": "xmind",
+      "name": "Xmind 思维导图",
+      "nameEn": "Xmind",
+      "publisher": "Xmind",
+      "category": "office",
+      "homepage": "https://xmind.cn/",
+      "downloadPage": "https://xmind.cn/download",
+      "winget": "Xmind.Xmind",
+      "uninstallMatch": ["xmind", "xmind desktop"]
+    },
+    {
+      "id": "mubu",
+      "name": "幕布",
+      "nameEn": "Mubu",
+      "publisher": "幕布",
+      "category": "office",
+      "homepage": "https://mubu.com/",
+      "downloadPage": "https://mubu.com/apps",
+      "uninstallMatch": ["幕布", "mubu"]
+    },
+    {
+      "id": "yuque",
+      "name": "语雀",
+      "nameEn": "Yuque",
+      "publisher": "蚂蚁集团",
+      "category": "office",
+      "homepage": "https://www.yuque.com/",
+      "downloadPage": "https://www.yuque.com/download",
+      "uninstallMatch": ["语雀", "yuque"]
+    },
+    {
+      "id": "sogou-browser",
+      "name": "搜狗高速浏览器",
+      "nameEn": "Sogou Explorer",
+      "publisher": "搜狗",
+      "category": "browser",
+      "homepage": "https://sogou.browser.qq.com/",
+      "downloadPage": "https://sogou.browser.qq.com/",
+      "uninstallMatch": ["搜狗高速浏览器", "搜狗浏览器", "sogoubrowser"]
+    },
+    {
+      "id": "360se",
+      "name": "360安全浏览器",
+      "nameEn": "360 Secure Browser",
+      "publisher": "360",
+      "category": "browser",
+      "homepage": "https://browser.360.cn/",
+      "downloadPage": "https://browser.360.cn/",
+      "winget": "360.360SE",
+      "uninstallMatch": ["360安全浏览器", "360se"]
+    },
+    {
+      "id": "360chrome",
+      "name": "360极速浏览器",
+      "nameEn": "360 Chrome",
+      "publisher": "360",
+      "category": "browser",
+      "homepage": "https://browser.360.cn/ee/",
+      "downloadPage": "https://browser.360.cn/ee/",
+      "winget": "360.360Chrome",
+      "uninstallMatch": ["360极速浏览器", "360chrome", "360cse"]
+    },
+    {
+      "id": "qqbrowser",
+      "name": "QQ浏览器",
+      "nameEn": "QQ Browser",
+      "publisher": "腾讯",
+      "category": "browser",
+      "homepage": "https://browser.qq.com/",
+      "downloadPage": "https://browser.qq.com/",
+      "winget": "Tencent.QQBrowser",
+      "uninstallMatch": ["qq浏览器", "qqbrowser"]
+    },
+    {
+      "id": "liebao",
+      "name": "猎豹浏览器",
+      "nameEn": "LieBao Browser",
+      "publisher": "猎豹移动",
+      "category": "browser",
+      "homepage": "https://www.liebao.cn/",
+      "downloadPage": "https://www.liebao.cn/download.html",
+      "uninstallMatch": ["猎豹浏览器", "猎豹安全浏览器", "liebao"]
+    },
+    {
+      "id": "maxthon",
+      "name": "傲游云浏览器",
+      "nameEn": "Maxthon",
+      "publisher": "傲游",
+      "category": "browser",
+      "homepage": "https://www.maxthon.cn/",
+      "downloadPage": "https://www.maxthon.cn/download/",
+      "winget": "Maxthon.Maxthon",
+      "uninstallMatch": ["傲游", "maxthon"]
+    },
+    {
+      "id": "theworld",
+      "name": "世界之窗浏览器",
+      "nameEn": "TheWorld Browser",
+      "publisher": "凤凰工作室",
+      "category": "browser",
+      "homepage": "https://www.theworld.cn/",
+      "downloadPage": "https://www.theworld.cn/",
+      "uninstallMatch": ["世界之窗", "theworld"]
+    },
+    {
+      "id": "centbrowser",
+      "name": "百分浏览器",
+      "nameEn": "Cent Browser",
+      "publisher": "Cent Studio",
+      "category": "browser",
+      "homepage": "https://www.centbrowser.cn/",
+      "downloadPage": "https://www.centbrowser.cn/",
+      "winget": "CentStudio.CentBrowser",
+      "uninstallMatch": ["百分浏览器", "cent browser", "centbrowser"]
+    },
+    {
+      "id": "twinkstar",
+      "name": "星愿浏览器",
+      "nameEn": "Twinkstar Browser",
+      "publisher": "北京天之歌者科技有限公司",
+      "category": "browser",
+      "homepage": "https://www.twinkstar.com/",
+      "downloadPage": "https://www.twinkstar.com/",
+      "winget": "Twinkstar.TwinkstarBrowser",
+      "uninstallMatch": ["星愿浏览器", "twinkstar"]
+    },
+    {
+      "id": "waterfox",
+      "name": "Waterfox",
+      "nameEn": "Waterfox",
+      "publisher": "Waterfox",
+      "category": "browser",
+      "homepage": "https://www.waterfox.com/",
+      "downloadPage": "https://www.waterfox.com/download/",
+      "winget": "Waterfox.Waterfox",
+      "uninstallMatch": ["waterfox", "waterfox classic"]
+    },
+    {
+      "id": "sogou-wubi",
+      "name": "搜狗五笔输入法",
+      "nameEn": "Sogou Wubi",
+      "publisher": "搜狗",
+      "category": "input",
+      "homepage": "https://wubi.sogou.com/",
+      "downloadPage": "https://wubi.sogou.com/",
+      "winget": "Sogou.SogouWBInput",
+      "uninstallMatch": ["搜狗五笔", "sogou wubi"]
+    },
+    {
+      "id": "qq-pinyin",
+      "name": "QQ拼音输入法",
+      "nameEn": "QQ Pinyin",
+      "publisher": "腾讯",
+      "category": "input",
+      "homepage": "https://qq.pinyin.cn/",
+      "downloadPage": "https://qq.pinyin.cn/",
+      "winget": "Tencent.QQPinyin",
+      "uninstallMatch": ["qq拼音", "qqpinyin"]
+    },
+    {
+      "id": "rime",
+      "name": "小狼毫输入法",
+      "nameEn": "RIME Weasel",
+      "publisher": "RIME Project",
+      "category": "input",
+      "homepage": "https://rime.im/",
+      "downloadPage": "https://rime.im/download/",
+      "winget": "Rime.Weasel",
+      "uninstallMatch": ["小狼毫", "weasel", "rime"]
+    },
+    {
+      "id": "xinshuru",
+      "name": "手心输入法",
+      "nameEn": "Xinshuru IME",
+      "publisher": "手心输入法",
+      "category": "input",
+      "homepage": "https://www.xinshuru.com/",
+      "downloadPage": "https://www.xinshuru.com/download.html",
+      "uninstallMatch": ["手心输入法", "xinshuru"]
+    },
+    {
+      "id": "wnwb",
+      "name": "万能五笔",
+      "nameEn": "WanNeng Wubi",
+      "publisher": "万能五笔",
+      "category": "input",
+      "homepage": "https://www.wnwb.com/",
+      "downloadPage": "https://www.wnwb.com/",
+      "uninstallMatch": ["万能五笔", "wnwb"]
+    },
+    {
+      "id": "thunisoft",
+      "name": "华宇拼音输入法",
+      "nameEn": "UniSpim",
+      "publisher": "华宇",
+      "category": "input",
+      "homepage": "https://pinyin.thunisoft.com/",
+      "downloadPage": "https://pinyin.thunisoft.com/",
+      "uninstallMatch": ["华宇拼音", "unispim", "紫光华宇"]
+    }
+  ]
+}

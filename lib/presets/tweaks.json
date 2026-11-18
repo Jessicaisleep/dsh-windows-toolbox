@@ -1,0 +1,1706 @@
+{
+  "source": "ChrisTitusTech/winutil",
+  "sourceUrl": "https://github.com/ChrisTitusTech/winutil",
+  "license": "MIT",
+  "captured": "2026-11-17",
+  "note": "Only the registry and service fields were taken. InvokeScript/UndoScript were deliberately dropped: they are arbitrary PowerShell that cannot be audited statically. Every entry carries its original value so a change can be reverted.",
+  "count": 51,
+  "tweaks": [
+    {
+      "id": "WPFTweaksActivity",
+      "content": "Activity History - Disable",
+      "description": "Stops Windows from publishing or uploading user activities while preserving clipboard history.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/activity",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "EnableActivityFeed",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "PublishUserActivities",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "UploadUserActivities",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭活动历史记录",
+      "whatZh": "Windows 会记录你打开过哪些文件和应用，并可能把它们上传给微软，用于跨设备同步。",
+      "descZh": "阻止 Windows 发布或上传你的使用活动记录，同时保留剪贴板历史。",
+      "effectZh": "写三项策略：活动源本身允许（EnableActivityFeed=1），但\"发布活动\"和\"上传活动\"都设为 0。结果是本机不再对外发布/上传你的打开记录，\"时间线\"里跨设备的最近活动会缺失；剪贴板历史（Win+V）仍然可用，不影响复制粘贴。",
+      "riskZh": "安全：只动活动记录的三项策略值，剪贴板历史明确保留。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksHiber",
+      "content": "Hibernation - Disable",
+      "description": "Hibernation is really meant for laptops as it saves what's in memory before turning the PC off. It really should never be used.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/hiber",
+      "registry": [
+        {
+          "path": "HKLM:\\System\\CurrentControlSet\\Control\\Session Manager\\Power",
+          "name": "HibernateEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FlyoutMenuSettings",
+          "name": "ShowHibernateOption",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭休眠",
+      "whatZh": "休眠是把内存里的东西写进硬盘再彻底断电，下次开机恢复现场，和\"睡眠\"不是一回事。",
+      "descZh": "休眠主要是笔记本用的功能，它会在关机前把内存里的内容保存到硬盘；其实平时不太该用它。",
+      "effectZh": "关闭后不能再用\"休眠\"，但会释放 C 盘一个约等于内存大小的隐藏文件 hiberfil.sys（本机 31.8 GB 内存，约合 32 GB；本机当前已无该文件，说明休眠本就关着）。睡眠（Sleep）不受影响。笔记本用户建议保留。",
+      "riskZh": "有代价：休眠功能消失，靠休眠保留未保存内容、超长待机的用法会失效；不损坏数据。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksRevertStartMenu",
+      "content": "Start Menu Previous Layout - Enable",
+      "description": "Bring back the old Start Menu layout from before the gradual rollout of the new one in 25H2. On newer versions of Windows !!THIS TWEAK WILL NOT WORK!!",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/revertstartmenu",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\ControlSet001\\Control\\FeatureManagement\\Overrides\\8\\3036241548",
+          "name": "EnabledState",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "恢复旧版开始菜单",
+      "whatZh": "微软从 25H2 起逐步换成新版开始菜单，这个开关的作用是退回旧布局。",
+      "descZh": "把开始菜单恢复成 25H2 逐步推送新布局之前的样子。在新版本 Windows 上这条改动不生效！！",
+      "effectZh": "本机 Win10（19045）上不适用：它改的是 25H2 新开始菜单的功能开关（FeatureManagement\\Overrides\\8\\3036241548），Win10 根本没有这个新版开始菜单，改了也不会有任何变化；原描述自己也写着 \"On newer versions of Windows !!THIS TWEAK WILL NOT WORK!!\"。",
+      "riskZh": "不推荐：本机 Win10 上改了完全没有效果，属于无效设置，只会让面板多一条\"看起来能用\"的假开关。",
+      "audienceZh": "不要动"
+    },
+    {
+      "id": "WPFTweaksLocation",
+      "content": "Location Tracking - Disable",
+      "description": "Disables Location Tracking.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/location",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
+          "name": "Value",
+          "value": "Deny",
+          "type": "String",
+          "original": "Allow"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Sensor\\Overrides\\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}",
+          "name": "SensorPermissionState",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\Maps",
+          "name": "AutoUpdateEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [
+        {
+          "name": "lfsvc",
+          "startupType": "Disabled",
+          "originalType": "Manual"
+        }
+      ],
+      "labelZh": "关闭定位跟踪",
+      "whatZh": "定位服务靠 GPS、Wi-Fi 热点和 IP 判断你在哪，地图、天气、查找设备等应用要用它。",
+      "descZh": "关闭定位跟踪。",
+      "effectZh": "关闭后系统层拒绝定位授权（ConsentStore 位置=Deny），传感器权限归零，地图应用不再自动更新离线地图，定位服务 lfsvc（原为手动）被禁用。代价：地图/天气的\"当前位置\"、\"查找我的设备\"、部分相机的地理标记都拿不到位置。",
+      "riskZh": "有代价：需要位置的功能（地图、天气当前城市、查找设备）会失效；不影响上网。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksServices",
+      "content": "Services - Set to Manual",
+      "description": "Sets some services to Manual startup.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/services",
+      "registry": [],
+      "service": [
+        {
+          "name": "CscService",
+          "startupType": "Disabled",
+          "originalType": "Manual"
+        },
+        {
+          "name": "DiagTrack",
+          "startupType": "Disabled",
+          "originalType": "Automatic"
+        },
+        {
+          "name": "MapsBroker",
+          "startupType": "Manual",
+          "originalType": "Automatic"
+        },
+        {
+          "name": "StorSvc",
+          "startupType": "Manual",
+          "originalType": "Automatic"
+        },
+        {
+          "name": "SharedAccess",
+          "startupType": "Disabled",
+          "originalType": "Automatic"
+        }
+      ],
+      "labelZh": "五个后台服务改手动",
+      "whatZh": "\"服务\"是常驻后台的系统小程序；这条把其中 5 个改掉启动方式：3 个禁用、2 个改成手动启动。",
+      "descZh": "把部分服务设为手动启动。",
+      "effectZh": "逐条改动：CscService（脱机文件同步）→禁用、DiagTrack（遥测）→禁用、MapsBroker（地图离线包下载）→手动、StorSvc（存储服务/存储建议）→手动、SharedAccess（网络共享 ICS，即\"移动热点\"）→禁用。代价：电脑不能再当热点共享网络，脱机文件同步失效，地图离线包不再自动更新，设置里的存储建议不再自动跑。关于更新与商店：这 5 个里没有 Windows Update 服务（wuauserv），系统更新照常下载安装；但 StorSvc 被改成手动会影响微软商店往非系统盘安装应用、以及存储页面的统计，DiagTrack 被禁用则让更新健康度上报和\"反馈中心\"失效。",
+      "riskZh": "有代价：移动热点/网络共享直接失效，脱机文件同步失效，商店装应用到别的盘可能失败；经常开热点或依赖商店的人不要动。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksBraveDebloat",
+      "content": "Brave Browser - Debloat",
+      "description": "Disables various annoyances like Brave Rewards, Leo AI, Crypto Wallet and VPN.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/bravedebloat",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveRewardsDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveWalletDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveVPNDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveAIChatEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveStatsPingEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveNewsDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveTalkDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "TorDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "BraveP3AEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "UrlKeyedAnonymizedDataCollectionEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "SafeBrowsingExtendedReportingEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\BraveSoftware\\Brave",
+          "name": "MetricsReportingEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "精简 Brave 浏览器",
+      "whatZh": "Brave 浏览器自带广告奖励、Leo AI、加密钱包、内置 VPN、新闻等附加功能，这条是批量关掉它们。",
+      "descZh": "关闭 Brave 奖励、Leo AI、加密钱包、VPN 等各种打扰人的附加功能。",
+      "effectZh": "关闭后 Brave 里没有广告奖励（BAT）、没有 Leo AI 侧栏、没有内置加密钱包、没有内置 VPN、没有 Brave News/Talk 和 Tor 私密窗口，也不再向 Brave 发送使用统计与匿名数据。上网和装扩展照常，只影响 Brave 本身。",
+      "riskZh": "有代价：正在用 Brave 奖励/钱包/内置 VPN 的人会一起失去；纯上网用户几乎无感。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksDisableWarningForUnsignedRdp",
+      "content": "RDP Unsigned File Warnings - Disable",
+      "description": "Disables warnings shown when launching unsigned RDP files introduced with the latest Windows 10 and 11 updates.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/disablewarningforunsignedrdp",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services\\Client",
+          "name": "RedirectionWarningDialogVersion",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\SOFTWARE\\Microsoft\\Terminal Server Client",
+          "name": "RdpLaunchConsentAccepted",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "关掉远程桌面警告",
+      "whatZh": "双击别人给的 .rdp 远程连接文件时，Windows 会弹\"未签名/来源不明\"的安全警告。",
+      "descZh": "关闭最近 Windows 10 和 11 更新引入的、启动未签名 RDP 文件时显示的警告。",
+      "effectZh": "关闭后双击未签名的 .rdp 文件直接发起连接，不再弹确认框。代价：你失去了对\"来源不明的远程主机\"的最后一道提醒，可能连到钓鱼服务器并交出凭据；同时 RedirectionWarningDialog 版本被下调。",
+      "riskZh": "不推荐：这道警告是防钓鱼的最后提示，关掉等于主动削弱远程连接的安全性。",
+      "audienceZh": "不要动"
+    },
+    {
+      "id": "WPFTweaksEdgeDebloat",
+      "content": "Microsoft Edge - Debloat",
+      "description": "Disables various telemetry options, popups, and other annoyances in Edge.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/edgedebloat",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\EdgeUpdate",
+          "name": "CreateDesktopShortcutDefault",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "PersonalizationReportingEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge\\ExtensionInstallBlocklist",
+          "name": "1",
+          "value": "ofefcgjbeghpigppfmkologfjadafddi",
+          "type": "String",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "ShowRecommendationsEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "HideFirstRunExperience",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "UserFeedbackAllowed",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "ConfigureDoNotTrack",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "AlternateErrorPagesEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "EdgeCollectionsEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "EdgeShoppingAssistantEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "MicrosoftEdgeInsiderPromotionEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "ShowMicrosoftRewards",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "WebWidgetAllowed",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "DiagnosticData",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "EdgeAssetDeliveryServiceEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "WalletDonationEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Edge",
+          "name": "DefaultBrowserSettingsCampaignEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "精简 Edge 浏览器",
+      "whatZh": "Edge 自带的推荐内容、购物助手、微软奖励、诊断上报、桌面快捷方式等，这里批量关掉。",
+      "descZh": "关闭 Edge 里的各种遥测选项、弹窗和其他打扰人的东西。",
+      "effectZh": "关闭后 Edge 不再个性化推荐、不显示购物助手/微软奖励/首次运行引导、不上报诊断数据、不弹默认浏览器宣传、不再自动创建桌面快捷方式，并开启\"请勿跟踪\"。代价：收藏集（Collections）功能被关，且黑名单里指定了一个扩展（ofefcgjbeghpigppfmkologfjadafddi）无法安装。",
+      "riskZh": "有代价：会一并关掉 Edge 收藏集并拉黑一个指定扩展，常用收藏集/该扩展的人会有感知。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksConsumerFeatures",
+      "content": "ConsumerFeatures - Disable",
+      "description": "Stops promoted app installs and reduces app suggestions from Microsoft Store content.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/consumerfeatures",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+          "name": "DisableWindowsConsumerFeatures",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "关掉推广应用推送",
+      "whatZh": "Windows 会在开始菜单和通知里\"推荐\"并偷偷装一些推广应用（小游戏、试用软件之类）。",
+      "descZh": "阻止自动推广安装应用，并减少微软商店内容带来的应用推荐。",
+      "effectZh": "开启后系统不再自动塞入推广应用，商店推荐位变少。代价：几乎没有，只是少一些\"你可能喜欢\"；已装的应用、商店搜索、系统更新都不受影响。",
+      "riskZh": "安全：只关推广推送，不动已装软件和更新。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksTelemetry",
+      "content": "Telemetry - Disable",
+      "description": "Disables Microsoft Telemetry.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/telemetry",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+          "name": "Enabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Privacy",
+          "name": "TailoredExperiencesWithDiagnosticDataEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy",
+          "name": "HasAccepted",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Input\\TIPC",
+          "name": "Enabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\InputPersonalization",
+          "name": "RestrictImplicitInkCollection",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\InputPersonalization",
+          "name": "RestrictImplicitTextCollection",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\InputPersonalization\\TrainedDataStore",
+          "name": "HarvestContacts",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Personalization\\Settings",
+          "name": "AcceptedPrivacyPolicy",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection",
+          "name": "AllowTelemetry",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "Start_TrackProgs",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "PublishUserActivities",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Siuf\\Rules",
+          "name": "NumberOfSIUFInPeriod",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Siuf\\Rules",
+          "name": "PeriodInNanoSeconds",
+          "value": "<RemoveEntry>",
+          "type": "QWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [
+        {
+          "name": "diagtrack",
+          "startupType": "Disabled",
+          "originalType": "Automatic"
+        },
+        {
+          "name": "WerSvc",
+          "startupType": "Disabled",
+          "originalType": "Manual"
+        }
+      ],
+      "labelZh": "关闭遥测上报",
+      "whatZh": "\"遥测\"是 Windows 定期收集你的使用习惯、崩溃信息、输入法和语音数据并上报微软。",
+      "descZh": "关闭微软遥测。",
+      "effectZh": "关闭后不再上报诊断数据（AllowTelemetry=0），广告 ID、输入法云联想与手写个性化、语音在线识别、时间线活动发布一起关；遥测服务 diagtrack 和错误报告服务 WerSvc 被禁用。代价：程序崩溃后不再自动上报错误，厂商远程排障少一份日志，部分\"体验改进\"反馈失效。",
+      "riskZh": "有代价：错误报告服务 WerSvc 被禁用，软件崩溃后不会再自动上传崩溃报告，排查问题时要自己开日志。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksDeliveryOptimization",
+      "content": "Delivery Optimization - Disable",
+      "description": "Stops Windows from using your bandwidth to upload updates to other PCs on the internet or local network.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/deliveryoptimization",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization",
+          "name": "DODownloadMode",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭更新P2P上传",
+      "whatZh": "\"传递优化\"是 Windows 更新时用你的上行带宽，把更新包分给局域网或互联网上的别的电脑。",
+      "descZh": "阻止 Windows 使用你的带宽向互联网或局域网内的其他电脑上传更新。",
+      "effectZh": "关闭后（DODownloadMode=0）你的电脑不再给别人上传更新包，省上行带宽、少占内存。代价：局域网里多台电脑同时更新时无法互相取包，各自重新下载，总流量更大、更新可能慢一点。",
+      "riskZh": "安全：只影响更新包的分发方式，本机更新照常下载。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksUTC",
+      "content": "Date & Time - Set Time to UTC",
+      "description": "Essential for computers that are dual booting. Fixes the time sync with Linux systems.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/utc",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation",
+          "name": "RealTimeIsUniversal",
+          "value": "1",
+          "type": "QWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "让主板时间按UTC存",
+      "whatZh": "Windows 习惯把你设的时钟直接写进主板（本地时间），Linux 默认写 UTC，双系统来回切就会差 8 小时。",
+      "descZh": "对双系统（双启动）电脑很关键，用来修正与 Linux 系统之间的时间不同步。",
+      "effectZh": "开启后（RealTimeIsUniversal=1）主板时钟按 UTC 存，Windows 按你选的时区换算显示；双系统切 Linux 不再差几个小时。代价：单系统用户没有收益；如果 BIOS 里的时间是按本地时间设的，开启后首次开机可能显示错时间，需要重新校时一次。",
+      "riskZh": "有代价：只对双系统有意义，单系统开启后时间可能先乱一次，需要重新同步。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksRemoveHomeAndGallery",
+      "content": "File Explorer Home and Gallery - Disable",
+      "description": "Removes the Home and Gallery from Explorer and sets This PC as default.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/removehomeandgallery",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Classes\\CLSID\\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}",
+          "name": "System.IsPinnedToNameSpaceTree",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Classes\\CLSID\\{e88865ea-0e1c-4e20-9aa6-edcd0212c87c}",
+          "name": "System.IsPinnedToNameSpaceTree",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "LaunchTo",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "去掉主页和图库",
+      "whatZh": "资源管理器左侧导航里的\"主页\"和\"图库\"两个入口，图库还会扫描你所有的图片文件夹。",
+      "descZh": "从资源管理器中移除\"主页\"和\"图库\"，并把默认打开位置设为\"此电脑\"。",
+      "effectZh": "关闭后资源管理器左侧没有主页/图库，打开时直接落在\"此电脑\"。代价：想快速看\"最近使用文件\"和\"全部图片汇总\"时少了入口，文件本身不动。",
+      "riskZh": "安全：只是隐藏导航入口，文件和数据一律不动。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksDisplay",
+      "content": "Visual Effects - Set to Best Performance",
+      "description": "Sets the system preferences to performance. You can do this manually with sysdm.cpl as well.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/display",
+      "registry": [
+        {
+          "path": "HKCU:\\Control Panel\\Desktop",
+          "name": "DragFullWindows",
+          "value": "0",
+          "type": "String",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Desktop",
+          "name": "MenuShowDelay",
+          "value": "200",
+          "type": "String",
+          "original": "400"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Desktop\\WindowMetrics",
+          "name": "MinAnimate",
+          "value": "0",
+          "type": "String",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Keyboard",
+          "name": "KeyboardDelay",
+          "value": "0",
+          "type": "String",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "ListviewAlphaSelect",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "ListviewShadow",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "TaskbarAnimations",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\VisualEffects",
+          "name": "VisualFXSetting",
+          "value": "3",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\DWM",
+          "name": "EnableAeroPeek",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "TaskbarMn",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "视觉特效调到最省",
+      "whatZh": "窗口动画、菜单淡入、阴影、拖拽显示内容等美化特效，这条把它们全设成\"最佳性能\"。",
+      "descZh": "把系统效果偏好设为性能优先；也可以在 sysdm.cpl（系统属性-高级-性能）里手动做同样的事。",
+      "effectZh": "关闭后窗口动画、菜单淡入、拖拽时显示窗口内容、任务栏动画、列表阴影与半透明选中、Aero Peek 预览全部消失，界面切换变成\"硬切\"，菜单弹出延迟从 400ms 降到 200ms。老机器会更跟手；代价是观感明显变朴素。",
+      "riskZh": "有代价：视觉观感明显变粗糙（无动画、无阴影、无预览）；只是好看问题，不是故障，可随时改回。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksRestorePoint",
+      "content": "Restore Point - Create",
+      "description": "Creates a restore point at runtime in case a revert is needed from WinUtil modifications.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/restorepoint",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\SystemRestore",
+          "name": "SystemRestorePointCreationFrequency",
+          "value": "0",
+          "type": "DWord",
+          "original": "1440"
+        }
+      ],
+      "service": [],
+      "labelZh": "允许建系统还原点",
+      "whatZh": "系统还原点是给系统盘拍的快照，出问题时能把系统设置退回到那个时点。",
+      "descZh": "运行时创建一个还原点，以便需要时撤销 WinUtil 的修改。",
+      "effectZh": "把\"最短创建间隔\"从 1440 分钟（一天）改成 0，于是可以随时手动建还原点。代价：还原点会占 C 盘空间（每个通常几个 GB），且本项只解除频率限制、本身不建点，还需要系统保护处于开启状态才有效。",
+      "riskZh": "安全：只是解除频率限制，不删任何数据，反而多一层后悔药。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksEndTaskOnTaskbar",
+      "content": "End Task With Right Click - Enable",
+      "description": "Enables option to end task when right-clicking a program in the taskbar.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/endtaskontaskbar",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\TaskbarDeveloperSettings",
+          "name": "TaskbarEndTask",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "右键任务栏结束任务",
+      "whatZh": "在任务栏图标上右键，菜单里多一项\"结束任务\"，程序卡死时不用再开任务管理器。",
+      "descZh": "允许在任务栏上右键单击程序时选择结束任务。",
+      "effectZh": "开启后（TaskbarEndTask=1）任务栏图标右键菜单出现\"结束任务\"。代价：误点会直接强杀程序，没保存的文档会丢；这是 Win11 才有的菜单项，本机 Win10 19045 上通常不显示，改了可能看不到效果。",
+      "riskZh": "有代价：误点会强杀程序导致未保存内容丢失；且本机 Win10 上大概率无效。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksStorage",
+      "content": "Storage Sense - Disable",
+      "description": "Storage Sense deletes temp files automatically.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/storage",
+      "registry": [
+        {
+          "path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\StorageSense\\Parameters\\StoragePolicy",
+          "name": "01",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭存储感知",
+      "whatZh": "\"存储感知\"是系统自动清临时文件、清空回收站、清理旧下载的自动清理功能。",
+      "descZh": "存储感知会自动删除临时文件。",
+      "effectZh": "关闭后（StoragePolicy 01=0）系统不再自动清临时文件、回收站和旧下载，磁盘空间需要自己手动清。代价：长期不管，C 盘会被缓存慢慢占满；没有数据损坏风险。",
+      "riskZh": "有代价：失去自动清理，长期使用 C 盘会逐渐变满，需要自己定期清。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksWindowsAI",
+      "content": "Windows AI - Disable And Remove",
+      "description": "Removes and disables all AI features/packages",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/windowsai",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+          "name": "SettingsPageVisibility",
+          "value": "hide:aicomponents",
+          "type": "String",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\WindowsNotepad",
+          "name": "DisableAIFeatures",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "关掉系统内置AI功能",
+      "whatZh": "Win11 往系统里塞了 Copilot、记事本 AI（改写/总结）等 AI 组件，这条把入口藏起来并禁用。",
+      "descZh": "移除并禁用所有 AI 功能与组件包。",
+      "effectZh": "开启后设置里隐藏\"AI 组件\"页（SettingsPageVisibility=hide:aicomponents），记事本的 AI 功能被禁用（DisableAIFeatures=1）。代价：以后真用上 Copilot/记事本 AI 时会发现功能不可用。本机 Win10 19045 上只有部分较新更新才带 Copilot，记事本 AI 一般没有，改了多半无感。",
+      "riskZh": "有代价：Win11 / 带 Copilot 的 Win10 上会让 Copilot 与记事本 AI 不可用；其余机器上属于基本无效的操作。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksWPBT",
+      "content": "Windows Platform Binary Table (WPBT) - Disable",
+      "description": "If enabled, WPBT allows your computer vendor to execute programs at boot time, such as anti-theft software, software drivers, as well as force install software without user consent. Poses potential security risk.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/wpbt",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Session Manager",
+          "name": "DisableWpbtExecution",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "禁止主板开机塞程序",
+      "whatZh": "WPBT 让主板固件能把一段程序塞进 Windows，开机自动运行——厂商常用它装自家软件或防盗工具。",
+      "descZh": "若保持启用，WPBT 允许电脑厂商在开机时执行程序，例如防盗软件、驱动，甚至未经用户同意强行安装软件，构成潜在安全风险。",
+      "effectZh": "开启（DisableWpbtExecution=1）后，主板固件不能再往系统里塞可执行程序。代价：厂商基于 WPBT 的防盗/资产管理工具（如部分商务机的 Absolute 类功能、厂商控制中心）会失效，个别品牌机的预装驱动安装流程可能受影响。",
+      "riskZh": "有代价：厂商的防盗与固件级管理工具会失效；换来的是防止被静默安装软件。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksPreventDeviceMetadataFromNetwork",
+      "content": "Prevent Device Companion Apps",
+      "description": "Prevents additional software from being installed when plugging in devices (e.g. Ads when plugging in a monitor). Poses potential security risk.",
+      "category": "Essential Tweaks",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/essential-tweaks/preventdevicemetadatafromnetwork",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Device Metadata",
+          "name": "PreventDeviceMetadataFromNetwork",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "阻止设备附带应用",
+      "whatZh": "插上显示器、键鼠、打印机时，Windows 会去网上下载厂商的\"配套应用\"并弹窗推荐。",
+      "descZh": "阻止插入设备时被额外安装软件（例如插上显示器就弹广告或推广应用）。构成潜在安全风险。",
+      "effectZh": "开启后插设备只装驱动，不再自动下载厂商推广应用。代价：确实想用厂商配套软件（调灯效、改快捷键、打印机工具）时得自己去官网下载，个别设备的高级功能需要该软件才能用。",
+      "riskZh": "有代价：厂商配套软件不再自动安装，需要手动装才能用高级功能。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksRazerBlock",
+      "content": "Razer Software Auto-Install - Disable",
+      "description": "Blocks ALL Razer Software installations. The hardware works fine without any software.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/razerblock",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\DriverSearching",
+          "name": "SearchOrderConfig",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Device Installer",
+          "name": "DisableCoInstallers",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "阻止雷蛇软件自动装",
+      "whatZh": "插上雷蛇鼠标键盘时 Windows 会自动装雷蛇 Synapse，这条阻断这类自动安装。",
+      "descZh": "阻止所有雷蛇软件的安装。不装任何软件，雷蛇硬件也能正常工作。",
+      "effectZh": "开启后插雷蛇设备不再自动装 Synapse。但看注册表能确认它不止针对雷蛇：SearchOrderConfig=0 关掉驱动自动搜索、DisableCoInstallers=1 关掉设备协同程序——这两个是全局设置。代价：所有设备的驱动都可能不再自动联网查找，雷蛇的宏/灯效/DPI 精细调节也一起没有。",
+      "riskZh": "不推荐：改的是全局驱动搜索与设备协同安装，不止雷蛇；动手后可能出现别的设备装不上驱动。",
+      "audienceZh": "不要动"
+    },
+    {
+      "id": "WPFTweaksDisableNotifications",
+      "content": "System Tray Notifications & Calendar - Disable",
+      "description": "Disables all Notifications INCLUDING Calendar.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/disablenotifications",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Windows\\Explorer",
+          "name": "DisableNotificationCenter",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications",
+          "name": "ToastEnabled",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭通知与日程弹窗",
+      "whatZh": "右下角弹出的通知中心，以及点时钟弹出来的日历/日程面板。",
+      "descZh": "关闭所有通知，包括日历。",
+      "effectZh": "关闭后不再弹任何应用通知（ToastEnabled=0），通知中心被禁用，点时钟也不出日历面板。代价：微信/邮件/更新提醒等重要通知全都收不到，只能自己看应用。",
+      "riskZh": "有代价：所有应用通知（含重要提醒）都收不到，容易漏消息。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFTweaksIPv46",
+      "content": "IPv6 - Set IPv4 as Preferred",
+      "description": "Setting the IPv4 preference can have latency and security benefits on private networks where IPv6 is not configured.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/ipv46",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters",
+          "name": "DisabledComponents",
+          "value": "32",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "优先走IPv4",
+      "whatZh": "IPv4/IPv6 是上网的两套地址协议；这条不是关掉 v6，而是让系统优先用 v4。",
+      "descZh": "在没有配置 IPv6 的私有网络中，把 IPv4 设为优先可以降低延迟并提升安全性。",
+      "effectZh": "开启后（DisabledComponents=32，只关闭\"优先使用 IPv6\"，不关协议本身）在同时有 v4/v6 的网络里先走 v4。代价：纯 IPv6 网络（部分校园网、运营商专线）可能变慢或连不上；局域网 IPv6 发现类功能受影响。",
+      "riskZh": "有代价：纯 IPv6 环境可能出问题；普通家庭宽带通常无感，可随时改回。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksTeredo",
+      "content": "Teredo - Disable",
+      "description": "Teredo network tunneling is an IPv6 feature that can cause additional latency, but may cause problems with some games.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/teredo",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters",
+          "name": "DisabledComponents",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "关闭Teredo隧道",
+      "whatZh": "Teredo 是让只有 IPv4 的机器通过隧道用上 IPv6 的老技术，联机游戏和 P2P 会用到。",
+      "descZh": "Teredo 网络隧道是 IPv6 的一项功能，可能带来额外延迟，但也可能让某些游戏出问题。",
+      "effectZh": "关闭后（DisabledComponents=1 即仅禁用 Teredo）少一层隧道转发与暴露面，延迟略降。代价：依赖 Teredo 的 P2P 联机（部分 Xbox 服务、老游戏）可能匹配不到人或连不上。",
+      "riskZh": "有代价：少数依赖 Teredo 的联机游戏/服务会连不上。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksDisableSearchIndexing",
+      "content": "Windows Search Indexing - Disable",
+      "description": "Stops and disables the Windows Search service (WSearch) to cut background disk activity, mainly useful on mechanical hard drives. Warning: file searches in Explorer and the Start menu become much slower because Windows no longer maintains a search index. Undo restores the service and starts it again.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/disablesearchindexing",
+      "registry": [],
+      "service": [
+        {
+          "name": "WSearch",
+          "startupType": "Disabled",
+          "originalType": "Automatic"
+        }
+      ],
+      "labelZh": "关闭搜索索引",
+      "whatZh": "Windows 会在后台给文件建索引，这样你在开始菜单或资源管理器按名字搜文件几乎是瞬时的。",
+      "descZh": "停止并禁用 Windows 搜索服务（WSearch）以减少后台磁盘活动，对机械硬盘最有用。警告：资源管理器和开始菜单里的文件搜索会慢很多，因为系统不再维护搜索索引。撤销会恢复并重新启动该服务。",
+      "effectZh": "关闭后后台磁盘读写减少，机械硬盘最明显。代价：开始菜单和资源管理器搜文件明显变慢（改成逐目录扫描），Outlook 搜索也会变慢；固态硬盘用户几乎只亏不赚。",
+      "riskZh": "有代价：搜文件会明显变慢，SSD 机器上收益基本可以忽略。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFTweaksDisableIPv6",
+      "content": "IPv6 - Disable",
+      "description": "Disables IPv6.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/disableipv6",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\Tcpip6\\Parameters",
+          "name": "DisabledComponents",
+          "value": "255",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "彻底关闭IPv6",
+      "whatZh": "直接把 IPv6 协议整体禁用（255），不是像上一条那样只调优先级。",
+      "descZh": "禁用 IPv6。",
+      "effectZh": "关闭后系统只用 IPv4。代价：纯 IPv6 网络（部分校园网、运营商、IPv6-only 热点）直接上不了网；某些游戏、远程服务和局域网 IPv6 发现失效；出问题时现象是\"能连 Wi-Fi 但没网\"，很难自己判断。",
+      "riskZh": "不推荐：动的是网络基础协议，纯 IPv6 环境会直接断网且难以自查。",
+      "audienceZh": "不要动"
+    },
+    {
+      "id": "WPFTweaksDisableBGapps",
+      "content": "Background Apps - Disable",
+      "description": "Disables all Microsoft Store apps from running in the background, which has to be done individually since Windows 11.",
+      "category": "z__Advanced Tweaks - CAUTION",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/z--advanced-tweaks---caution/disablebgapps",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+          "name": "GlobalUserDisabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "禁止应用后台运行",
+      "whatZh": "商店应用（微信、邮件、音乐等 UWP 应用）可以退到后台继续跑，以便随时收消息。",
+      "descZh": "禁止所有微软商店应用在后台运行；从 Windows 11 起这些应用原本要一个一个关。",
+      "effectZh": "开启后（GlobalUserDisabled=1）所有商店应用切走即暂停，省内存和省电。代价：微信/邮件/日历等不再后台收消息，必须打开应用才会更新；桌面版（非商店版）程序不受此开关限制，仍会自启。",
+      "riskZh": "有代价：后台消息推送会延迟或收不到，需要手动打开应用。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleDetailedBSoD",
+      "content": "BSoD Verbose Mode",
+      "description": "Gives more information when you blue screen.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/detailedbsod",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CrashControl",
+          "name": "DisplayParameters",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        },
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\CrashControl",
+          "name": "DisableEmoticon",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "蓝屏显示详细信息",
+      "whatZh": "蓝屏（死机蓝屏）时屏幕上的信息；默认只显示一个哭泣表情，不显示错误代码。",
+      "descZh": "蓝屏时给出更多信息。",
+      "effectZh": "开启后蓝屏会显示错误代码与参数（DisplayParameters=1）并去掉哭泣表情。代价：屏幕内容变技术化，不影响系统运行；搜错误码时反而更好查原因。",
+      "riskZh": "安全：只改蓝屏画面的显示内容，不改系统行为。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleBatteryPercentage",
+      "content": "System Tray Battery Percentage",
+      "description": "Shows numeric battery percentage next to the battery icon in the system tray.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/batterypercentage",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "IsBatteryPercentageEnabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "电池显示百分比",
+      "whatZh": "任务栏电池图标旁边直接显示 87% 这样的数字电量，而不是只有一根光秃秃的图标。",
+      "descZh": "在通知区域的电池图标旁显示数字电量百分比。",
+      "effectZh": "开启后（IsBatteryPercentageEnabled=1）任务栏能直接看到百分比。代价：没有，只是图标旁多几个字；这个注册表项是较新版本才支持的，本机 Win10 19045 上大概率不生效。",
+      "riskZh": "安全：纯显示设置；本机 Win10 上可能无效。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleDarkMode",
+      "content": "Dark Theme for Windows",
+      "description": "Dark Mode for the system and applications.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/darkmode",
+      "registry": [
+        {
+          "path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+          "name": "AppsUseLightTheme",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize",
+          "name": "SystemUsesLightTheme",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "深色主题",
+      "whatZh": "系统和应用整体换成深色背景，夜里看不刺眼。",
+      "descZh": "让系统和应用使用深色模式。",
+      "effectZh": "开启后（AppsUseLightTheme/SystemUsesLightTheme=0）系统和应用变深色。代价：部分老软件不跟系统主题仍是白底；截图、打印观感不同。",
+      "riskZh": "安全：纯外观设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleShowExt",
+      "content": "File Explorer File Extensions",
+      "description": "Shows .file extensions in Explorer (.exe, .png, etc.)",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/showext",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "HideFileExt",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "显示文件扩展名",
+      "whatZh": "让文件显示 .exe/.png/.docx 这样的后缀，能一眼看出文件真实类型。",
+      "descZh": "在资源管理器中显示文件扩展名（.exe、.png 等）。",
+      "effectZh": "开启后（HideFileExt=0）能看到后缀，重命名时也会带着后缀。代价：改名时容易把后缀一起改掉导致文件打不开；好处是能识破\"照片.exe\"这种伪装。",
+      "riskZh": "安全：纯显示设置，但改名时注意别把后缀删了。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleHiddenFiles",
+      "content": "File Explorer Hidden Files",
+      "description": "Reveals hidden files in Explorer.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/hiddenfiles",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "Hidden",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "显示隐藏文件",
+      "whatZh": "系统与软件把一些关键文件藏起来（AppData、.git、桌面配置等），防止被误删。",
+      "descZh": "在资源管理器中显示隐藏文件。",
+      "effectZh": "开启后（Hidden=1）能看到 AppData、.git 等隐藏项，方便排障和清理。代价：系统文件也变可见，界面更乱，误删可能弄坏软件甚至系统。",
+      "riskZh": "有代价：隐藏的系统文件变可见，误删可能导致软件或系统异常。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFToggleVerboseLogon",
+      "content": "Logon Verbose Mode",
+      "description": "Show detailed messages during startup/shutdown.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/verboselogon",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+          "name": "VerboseStatus",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "开关机显示详细过程",
+      "whatZh": "开机、关机、登录时显示\"正在应用组策略\"\"正在等待服务\"这类详细步骤，而不是只转圈。",
+      "descZh": "在启动/关机时显示详细消息。",
+      "effectZh": "开启后开机画面会显示每一步在做什么，卡住时能看出卡在哪。代价：不会让开机变快，信息量变大反而显得慢；企业域环境会多刷几屏策略文本。",
+      "riskZh": "安全：只改显示内容，不改变启动行为。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFToggleNewOutlook",
+      "content": "Microsoft Outlook New Version",
+      "description": "This will ensure the new Outlook application is used.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/newoutlook",
+      "registry": [
+        {
+          "path": "HKCU:\\SOFTWARE\\Microsoft\\Office\\16.0\\Outlook\\Preferences",
+          "name": "UseNewOutlook",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Office\\16.0\\Outlook\\Options\\General",
+          "name": "HideNewOutlookToggle",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Office\\16.0\\Outlook\\Options\\General",
+          "name": "DoNewOutlookAutoMigration",
+          "value": "0",
+          "type": "DWord",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Software\\Policies\\Microsoft\\Office\\16.0\\Outlook\\Preferences",
+          "name": "NewOutlookMigrationUserSetting",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "强制用新版Outlook",
+      "whatZh": "微软把 Outlook 客户端换成基于网页的新版，这条强制切过去并禁止自动迁回经典版。",
+      "descZh": "确保使用新版 Outlook 应用程序。",
+      "effectZh": "开启后（UseNewOutlook=1）Outlook 启动新版、隐藏\"切换回经典版\"开关、关闭自动迁移回旧版。代价：新版功能不全，部分 COM 插件、PST 文件、复杂规则不支持；用惯经典版的人会明显不适应。",
+      "riskZh": "有代价：切到新版后部分经典功能与插件不可用，难直接退回。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFToggleScrollbars",
+      "content": "Scrollbars Always Visible",
+      "description": "If enabled, scrollbars will always be visible. If disabled, Windows will automatically hide scrollbars when not in use.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/scrollbars",
+      "registry": [
+        {
+          "path": "HKCU:\\Control Panel\\Accessibility",
+          "name": "DynamicScrollbars",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "滚动条一直显示",
+      "whatZh": "Windows 默认会把滚动条在不用时自动藏起来，鼠标不动就看不见，容易不知道页面还能往下滚。",
+      "descZh": "开启后滚动条始终可见；关闭时 Windows 会在不使用时自动隐藏滚动条。",
+      "effectZh": "开启后（DynamicScrollbars=0）滚动条常驻。代价：占一点窗口边缘空间，观感不如自动隐藏干净。",
+      "riskZh": "安全：纯外观设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleMouseAcceleration",
+      "content": "Mouse Acceleration",
+      "description": "Makes it so Cursor movement is affected by the speed of your physical mouse movements.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/mouseacceleration",
+      "registry": [
+        {
+          "path": "HKCU:\\Control Panel\\Mouse",
+          "name": "MouseSpeed",
+          "value": "1",
+          "type": "String",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Mouse",
+          "name": "MouseThreshold1",
+          "value": "6",
+          "type": "String",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Mouse",
+          "name": "MouseThreshold2",
+          "value": "10",
+          "type": "String",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "鼠标加速度",
+      "whatZh": "鼠标移动越快，指针跑得越远（不是 1:1 跟手），日常操作省力但打游戏难瞄。",
+      "descZh": "让指针的移动速度受到你实际移动鼠标快慢的影响。",
+      "effectZh": "开启后（MouseSpeed=1、阈值 6/10）指针带加速度。代价：FPS 游戏里手感不线性、难以稳定瞄准；要电竞手感就关掉它（MouseSpeed=0）恢复 1:1。",
+      "riskZh": "安全：只影响鼠标手感，随时可改回。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleNumLock",
+      "content": "Num Lock on Startup",
+      "description": "Toggle the Num Lock key state when your computer starts.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/numlock",
+      "registry": [
+        {
+          "path": "HKU:\\.Default\\Control Panel\\Keyboard",
+          "name": "InitialKeyboardIndicators",
+          "value": "2",
+          "type": "String",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Control Panel\\Keyboard",
+          "name": "InitialKeyboardIndicators",
+          "value": "2",
+          "type": "String",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "开机自动开小键盘",
+      "whatZh": "开机时数字小键盘（Num Lock）要不要自动点亮。",
+      "descZh": "在电脑启动时切换 Num Lock 键的状态。",
+      "effectZh": "开启后（InitialKeyboardIndicators=2）开机小键盘直接可用，输密码不用先按一下 Num Lock。代价：笔记本没有独立小键盘、或把小键盘当方向键用时，会变成数字键。",
+      "riskZh": "安全：只影响按键初始状态。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleWindowSnapping",
+      "content": "Window Snapping",
+      "description": "Toggles the window snapping feature when dragging windows.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/windowsnapping",
+      "registry": [
+        {
+          "path": "HKCU:\\Control Panel\\Desktop",
+          "name": "WindowArrangementActive",
+          "value": "1",
+          "type": "String",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "窗口贴边分屏",
+      "whatZh": "把窗口拖到屏幕边缘，自动占半屏或四分之一屏（Win10/11 的分屏贴靠）。",
+      "descZh": "切换拖动窗口时的窗口贴靠（自动分屏）功能。",
+      "effectZh": "开启后（WindowArrangementActive=1）拖窗口到边缘自动吸附分屏。代价：拖窗口经过边缘会被\"粘\"一下，不习惯的人觉得别扭。",
+      "riskZh": "安全：纯行为设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleStandbyFix",
+      "content": "S0 Sleep Network Connectivity",
+      "description": "Toggles network connectivity during S0 Sleep which is low power idle in modern laptops.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/standbyfix",
+      "registry": [
+        {
+          "path": "HKCU:\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\\f15576e8-98b7-4186-b944-eafa664402d9",
+          "name": "ACSettingIndex",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "待机时保持联网",
+      "whatZh": "现代笔记本用\"S0 待机\"（像手机息屏），这条控制待机期间网络要不要保持连接。",
+      "descZh": "切换 S0 睡眠（现代笔记本的低功耗空闲状态）期间的网络连接。",
+      "effectZh": "开启（ACSettingIndex=1）后待机时保持联网，后台同步、远程唤醒、下载继续。代价：待机耗电明显增加，合盖放包里会掉电甚至发热。",
+      "riskZh": "有代价：待机更耗电，放包里可能明显掉电发热。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFToggleS3Sleep",
+      "content": "S3 Sleep",
+      "description": "Toggles between Modern Standby and S3 Sleep, which cuts off power to the CPU while continuing to refresh the memory.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/s3sleep",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Power",
+          "name": "PlatformAoAcOverride",
+          "value": "0",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "改用传统S3睡眠",
+      "whatZh": "S3 是传统睡眠（内存供电、CPU 断电）；现代待机（S0）则像手机息屏，随时联网。",
+      "descZh": "在现代待机与 S3 睡眠之间切换；S3 会切断 CPU 供电，但继续刷新内存以保留现场。",
+      "effectZh": "开启（PlatformAoAcOverride=0）后改用 S3，睡眠更省电、更像\"关机保现场\"。代价：部分新笔记本固件不支持 S3，改了可能睡下去唤不醒、黑屏或直接重启；需重启生效，出问题得手动改回，属于硬件相关风险。",
+      "riskZh": "有代价：新机器可能睡眠失败或唤不醒，属于有硬件风险的系统级改动。",
+      "audienceZh": "进阶用户"
+    },
+    {
+      "id": "WPFToggleHideSettingsHome",
+      "content": "Settings Home Page",
+      "description": "Toggles the Home Page in the Windows Settings app.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/hidesettingshome",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+          "name": "SettingsPageVisibility",
+          "value": "show:home",
+          "type": "String",
+          "original": "hide:home"
+        }
+      ],
+      "service": [],
+      "labelZh": "设置首页显隐",
+      "whatZh": "\"设置\"应用打开时那屏带账户信息、推荐卡片的首页。",
+      "descZh": "切换 Windows 设置应用里的主页。",
+      "effectZh": "设为 show:home 保留首页；设为 hide:home 则设置直接进分类列表。代价：只是入口，无功能损失。",
+      "riskZh": "安全：纯界面入口，不影响任何功能。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleBingSearch",
+      "content": "Start Menu Bing Search",
+      "description": "Toggles Bing web search results in Windows Search.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/bingsearch",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+          "name": "BingSearchEnabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "开始菜单联网搜索",
+      "whatZh": "在开始菜单输入关键词时，除了本机文件和应用的搜索结果，还会去必应搜网页。",
+      "descZh": "切换 Windows 搜索中的必应网页搜索结果。",
+      "effectZh": "关闭后（BingSearchEnabled=0）搜索只查本机文件和应用，不再跳网页，也少一部分联想上报。代价：想快速查天气、百科时少了联网结果。",
+      "riskZh": "安全：只影响搜索结果来源，本机文件搜索照常。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleLoginBlur",
+      "content": "Logon Screen Acrylic Blur",
+      "description": "Toggles the acrylic blur effect on login screen background.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/loginblur",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+          "name": "DisableAcrylicBackgroundOnLogon",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "登录界面毛玻璃",
+      "whatZh": "登录/锁屏背景那层半透明模糊（亚克力）效果。",
+      "descZh": "切换登录界面背景的亚克力模糊效果。",
+      "effectZh": "开启后（DisableAcrylicBackgroundOnLogon=0）登录界面背景模糊。代价：几乎无；老机器登录瞬间多一点渲染开销。",
+      "riskZh": "安全：纯外观设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleDisableLockscreen",
+      "content": "Lock Screen - Disable",
+      "description": "Skips the lock screen entirely and goes directly to the sign-in screen on boot and wake.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/disablelockscreen",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization",
+          "name": "NoLockScreen",
+          "value": "1",
+          "type": "DWord",
+          "original": "<RemoveEntry>"
+        }
+      ],
+      "service": [],
+      "labelZh": "跳过锁屏直接登录",
+      "whatZh": "锁屏是开机后那张带时间、壁纸、要按一下（或滑动）才能上去的屏。",
+      "descZh": "完全跳过锁屏，开机和唤醒后直接进入登录界面。",
+      "effectZh": "开启（NoLockScreen=1）后开机/唤醒直接到输密码界面，少按一次。代价：看不到锁屏上的时间、通知和聚焦壁纸；企业策略强制锁屏时可能被组策略覆盖。",
+      "riskZh": "安全：只省一步操作，仍然需要密码登录。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleStartMenuRecommendations",
+      "content": "Start Menu Recommendations",
+      "description": "Toggles the recommendations section in the Start Menu. WARNING: This will also disable Windows Spotlight on your Lock Screen as a side effect.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/startmenurecommendations",
+      "registry": [
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Start",
+          "name": "HideRecommendedSection",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Microsoft\\PolicyManager\\current\\device\\Education",
+          "name": "IsEducationEnvironment",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        },
+        {
+          "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+          "name": "HideRecommendedSection",
+          "value": "0",
+          "type": "DWord",
+          "original": "1"
+        }
+      ],
+      "service": [],
+      "labelZh": "开始菜单推荐区",
+      "whatZh": "开始菜单下半部分\"推荐\"和\"最近添加\"那一块。",
+      "descZh": "切换开始菜单里的推荐区。警告：副作用是锁屏上的 Windows 聚焦（每天换壁纸）也会一起被关掉。",
+      "effectZh": "这一条改的是\"推荐区是否隐藏\"：写入 0 表示显示推荐区，写 1 表示隐藏（默认就是隐藏）。方向容易搞反，动手前请确认当前值。真正代价是原描述已警告的副作用：无论开关朝哪边，只要碰了这块策略，锁屏的 Windows 聚焦（每天换壁纸）都会一起失效，锁屏变成静态图。",
+      "riskZh": "有代价：会连带关掉锁屏的 Windows 聚焦每日壁纸，而且开关方向反直觉，容易设成自己不想要的样子。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleStickyKeys",
+      "content": "Sticky Keys",
+      "description": "Toggles the Sticky Keys, which activate when clicking shift rapidly.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/stickykeys",
+      "registry": [
+        {
+          "path": "HKCU:\\Control Panel\\Accessibility\\StickyKeys",
+          "name": "Flags",
+          "value": "506",
+          "type": "DWord",
+          "original": "58"
+        }
+      ],
+      "service": [],
+      "labelZh": "粘滞键",
+      "whatZh": "辅助功能：让 Shift/Ctrl/Alt 按一下就\"粘住\"，方便单手同时按组合键。",
+      "descZh": "切换粘滞键；连续按 Shift 时会激活它。",
+      "effectZh": "开启（Flags=506）后连按 Shift 触发粘滞键。代价：玩游戏连按 Shift 很容易误触发弹窗打断操作；关掉则失去这项辅助功能。",
+      "riskZh": "安全：只是辅助功能开关，误触了关掉即可。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleTaskbarAlignment",
+      "content": "Taskbar Centered Icons",
+      "description": "Toggles the Taskbar alignment either to the left or center.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/taskbaralignment",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "TaskbarAl",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "任务栏图标居中",
+      "whatZh": "任务栏图标是靠左排列还是居中排列（Win11 默认居中，Win10 一直靠左）。",
+      "descZh": "切换任务栏对齐方式为靠左或居中。",
+      "effectZh": "开启后（TaskbarAl=1）图标居中，关闭则靠左。代价：纯外观；本机 Win10 没有这个居中式任务栏，改了不会有变化。",
+      "riskZh": "安全：纯外观设置；本机 Win10 上基本无效。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleTaskbarSearch",
+      "content": "Taskbar Search Icon",
+      "description": "Toggles the Search Button on the Taskbar.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/taskbarsearch",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+          "name": "SearchboxTaskbarMode",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "任务栏搜索框",
+      "whatZh": "任务栏上那个搜索框/放大镜按钮。",
+      "descZh": "切换任务栏上的搜索按钮。",
+      "effectZh": "开启显示搜索框，关闭则隐藏。代价：隐藏后仍可按 Win 键直接输入搜索，功能不丢，只是少了入口。",
+      "riskZh": "安全：纯外观设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleTaskView",
+      "content": "Taskbar Task View Icon",
+      "description": "Toggles the Task View Button in the Taskbar.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/taskview",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+          "name": "ShowTaskViewButton",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "任务栏任务视图",
+      "whatZh": "任务栏上的\"任务视图\"按钮，点开是所有窗口总览和虚拟桌面。",
+      "descZh": "切换任务栏中的任务视图按钮。",
+      "effectZh": "开启后（ShowTaskViewButton=1）显示按钮。代价：隐藏后 Win+Tab 和多指手势仍可用，功能不丢。",
+      "riskZh": "安全：纯外观设置。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleGameMode",
+      "content": "Game Mode",
+      "description": "Toggles Windows prioritizes gaming performance by allocating system resources to games.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/gamemode",
+      "registry": [
+        {
+          "path": "HKCU:\\Software\\Microsoft\\GameBar",
+          "name": "AllowAutoGameMode",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        },
+        {
+          "path": "HKCU:\\Software\\Microsoft\\GameBar",
+          "name": "AutoGameModeEnabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "游戏模式",
+      "whatZh": "玩游戏时系统暂停不必要的后台工作，把 CPU/GPU 资源优先给游戏。",
+      "descZh": "切换 Windows 是否通过把系统资源分配给游戏来优先保证游戏性能。",
+      "effectZh": "开启后（AllowAutoGameMode/AutoGameModeEnabled=1）游戏运行时后台任务被压后。代价：后台下载、录屏、直播软件可能被降优先级；配置好的机器几乎无感。",
+      "riskZh": "安全：可随时关闭，失败概率低。",
+      "audienceZh": "日常用户"
+    },
+    {
+      "id": "WPFToggleLongPaths",
+      "content": "Enable Long Paths",
+      "description": "Toggles support for file paths longer than 260 characters in Explorer.",
+      "category": "Customize Preferences",
+      "link": "https://winutil.christitus.com/code-reference/tweaks/customize-preferences/longpaths",
+      "registry": [
+        {
+          "path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\FileSystem",
+          "name": "LongPathsEnabled",
+          "value": "1",
+          "type": "DWord",
+          "original": "0"
+        }
+      ],
+      "service": [],
+      "labelZh": "支持超长文件路径",
+      "whatZh": "Windows 老限制是文件路径最长 260 个字符，超了就报错；这条解开限制。",
+      "descZh": "切换资源管理器对超过 260 个字符的文件路径的支持。",
+      "effectZh": "开启后（LongPathsEnabled=1）深层嵌套目录和长文件名可以正常读写，解压深层 node_modules 之类不再报错。代价：部分老软件不认长路径反而出错；备份/同步工具也需要支持，必要时改回。",
+      "riskZh": "有代价：个别老软件遇到长路径会异常，属于兼容性问题，可按需关回。",
+      "audienceZh": "进阶用户"
+    }
+  ]
+}

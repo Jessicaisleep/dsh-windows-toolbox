@@ -1,0 +1,2731 @@
+{
+  "version": 1,
+  "captured": "2026-11-17",
+  "policy": "official-only",
+  "policyNote": "Every URL in this file MUST point at the vendor's own domain. No download portals, no mirrors, no ad-wrapped redirectors. Each entry is HTTP-verified by tools/verify-catalog.mjs and the result is recorded in `verified`.",
+  "note": "Curated by hand because no reusable catalog of Chinese software official links exists (checked GitHub, 2026-11-17). 360's own softdt.dat is an identification-rule table (ID/NAME/OSVER/OSBIT/REG/LINK/VERONLYREG, GBK registry match rules) with zero download URLs - its catalogue lives server-side.",
+  "categories": {
+    "im": {
+      "zh": "聊天通讯",
+      "en": "Messaging"
+    },
+    "office": {
+      "zh": "办公文档",
+      "en": "Office"
+    },
+    "media": {
+      "zh": "影音播放",
+      "en": "Media"
+    },
+    "browser": {
+      "zh": "浏览器",
+      "en": "Browsers"
+    },
+    "input": {
+      "zh": "输入法",
+      "en": "Input methods"
+    },
+    "dev": {
+      "zh": "开发工具",
+      "en": "Development"
+    },
+    "system": {
+      "zh": "系统工具",
+      "en": "System tools"
+    },
+    "security": {
+      "zh": "安全防护",
+      "en": "Security"
+    },
+    "utility": {
+      "zh": "实用工具",
+      "en": "Utilities"
+    },
+    "graphics": {
+      "zh": "图形图像",
+      "en": "Graphics"
+    },
+    "network": {
+      "zh": "网络工具",
+      "en": "Network"
+    }
+  },
+  "softwares": [
+    {
+      "id": "dingtalk",
+      "name": "钉钉",
+      "nameEn": "DingTalk",
+      "publisher": "阿里巴巴",
+      "category": "im",
+      "homepage": "https://www.dingtalk.com/",
+      "downloadPage": "https://www.dingtalk.com/download",
+      "winget": "Alibaba.DingTalk",
+      "uninstallMatch": [
+        "钉钉",
+        "DingTalk"
+      ]
+    },
+    {
+      "id": "feishu",
+      "name": "飞书",
+      "nameEn": "Feishu",
+      "publisher": "字节跳动",
+      "category": "im",
+      "homepage": "https://www.feishu.cn/",
+      "downloadPage": "https://www.feishu.cn/download",
+      "winget": "ByteDance.Feishu",
+      "uninstallMatch": [
+        "飞书",
+        "Feishu",
+        "Lark"
+      ]
+    },
+    {
+      "id": "infoflow",
+      "name": "如流",
+      "nameEn": "InfoFlow",
+      "publisher": "百度",
+      "category": "im",
+      "homepage": "https://infoflow.baidu.com/",
+      "downloadPage": "https://infoflow.baidu.com/",
+      "uninstallMatch": [
+        "如流",
+        "infoflow"
+      ]
+    },
+    {
+      "id": "ipmsg",
+      "name": "飞鸽传书",
+      "nameEn": "IP Messenger",
+      "publisher": "飞鸽传书",
+      "category": "im",
+      "homepage": "https://www.ipmsg.org.cn/",
+      "downloadPage": "https://www.ipmsg.org.cn/download/",
+      "uninstallMatch": [
+        "飞鸽传书",
+        "feigeqt",
+        "ipmsg"
+      ]
+    },
+    {
+      "id": "qq",
+      "name": "QQ",
+      "nameEn": "QQ",
+      "publisher": "腾讯",
+      "category": "im",
+      "homepage": "https://im.qq.com/",
+      "downloadPage": "https://im.qq.com/pcqq",
+      "winget": "Tencent.QQ",
+      "uninstallMatch": [
+        "QQ",
+        "腾讯QQ"
+      ]
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "nameEn": "Telegram",
+      "publisher": "Telegram FZ-LLC",
+      "category": "im",
+      "homepage": "https://telegram.org/",
+      "downloadPage": "https://desktop.telegram.org/",
+      "winget": "Telegram.TelegramDesktop",
+      "uninstallMatch": [
+        "Telegram"
+      ]
+    },
+    {
+      "id": "tim",
+      "name": "TIM",
+      "nameEn": "TIM",
+      "publisher": "腾讯",
+      "category": "im",
+      "homepage": "https://tim.qq.com/",
+      "downloadPage": "https://tim.qq.com/download.html",
+      "winget": "Tencent.TIM",
+      "uninstallMatch": [
+        "腾讯tim",
+        "tim"
+      ]
+    },
+    {
+      "id": "wangwang",
+      "name": "阿里旺旺",
+      "nameEn": "AliWangWang",
+      "publisher": "阿里巴巴",
+      "category": "im",
+      "homepage": "https://wangwang.taobao.com/",
+      "downloadPage": "https://wangwang.taobao.com/",
+      "winget": "Alibaba.AliIM",
+      "uninstallMatch": [
+        "阿里旺旺",
+        "wangwang",
+        "旺旺"
+      ]
+    },
+    {
+      "id": "wechat",
+      "name": "微信",
+      "nameEn": "WeChat",
+      "publisher": "腾讯",
+      "category": "im",
+      "homepage": "https://pc.weixin.qq.com/",
+      "downloadPage": "https://pc.weixin.qq.com/",
+      "winget": "Tencent.WeChat",
+      "uninstallMatch": [
+        "微信",
+        "WeChat"
+      ]
+    },
+    {
+      "id": "wecom",
+      "name": "企业微信",
+      "nameEn": "WeCom",
+      "publisher": "腾讯",
+      "category": "im",
+      "homepage": "https://work.weixin.qq.com/",
+      "downloadPage": "https://work.weixin.qq.com/#indexDownload",
+      "uninstallMatch": [
+        "企业微信",
+        "WeCom",
+        "WXWork"
+      ]
+    },
+    {
+      "id": "yy",
+      "name": "YY语音",
+      "nameEn": "YY",
+      "publisher": "欢聚集团",
+      "category": "im",
+      "homepage": "https://www.yy.com/",
+      "downloadPage": "https://www.yy.com/pcyy/",
+      "winget": "YY.YY",
+      "uninstallMatch": [
+        "yy语音",
+        "yy9"
+      ]
+    },
+    {
+      "id": "chaoxing-reader",
+      "name": "超星阅读器",
+      "nameEn": "Chaoxing Reader",
+      "publisher": "超星",
+      "category": "office",
+      "homepage": "https://ssreader.chaoxing.com/",
+      "downloadPage": "https://ssreader.chaoxing.com/",
+      "uninstallMatch": [
+        "超星阅读器",
+        "ssreader",
+        "超星"
+      ]
+    },
+    {
+      "id": "foxit-reader",
+      "name": "福昕阅读器",
+      "nameEn": "Foxit PDF Reader",
+      "publisher": "福昕软件",
+      "category": "office",
+      "homepage": "https://www.foxitsoftware.cn/",
+      "downloadPage": "https://www.foxitsoftware.cn/downloads/",
+      "winget": "Foxit.FoxitReader",
+      "uninstallMatch": [
+        "foxit",
+        "福昕"
+      ]
+    },
+    {
+      "id": "jisupdf",
+      "name": "极速PDF阅读器",
+      "nameEn": "Jisu PDF",
+      "publisher": "极速PDF",
+      "category": "office",
+      "homepage": "https://www.jisupdf.com/",
+      "downloadPage": "https://www.jisupdf.com/download",
+      "uninstallMatch": [
+        "极速pdf",
+        "jisupdf"
+      ]
+    },
+    {
+      "id": "kdocs",
+      "name": "金山文档",
+      "nameEn": "Kingsoft Docs",
+      "publisher": "金山办公",
+      "category": "office",
+      "homepage": "https://www.kdocs.cn/",
+      "downloadPage": "https://plus.kdocs.cn/download",
+      "winget": "Kingsoft.KDocs",
+      "uninstallMatch": [
+        "金山文档",
+        "kdocs"
+      ]
+    },
+    {
+      "id": "libreoffice",
+      "name": "LibreOffice",
+      "nameEn": "LibreOffice",
+      "publisher": "The Document Foundation",
+      "category": "office",
+      "homepage": "https://www.libreoffice.org/",
+      "downloadPage": "https://www.libreoffice.org/download/download-libreoffice/",
+      "winget": "TheDocumentFoundation.LibreOffice",
+      "uninstallMatch": [
+        "LibreOffice"
+      ]
+    },
+    {
+      "id": "microsoft-office",
+      "name": "Microsoft Office",
+      "nameEn": "Microsoft 365",
+      "publisher": "微软",
+      "category": "office",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-365",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-365/download-office",
+      "winget": "Microsoft.Office",
+      "uninstallMatch": [
+        "microsoft 365",
+        "microsoft office",
+        "microsoft365"
+      ]
+    },
+    {
+      "id": "mubu",
+      "name": "幕布",
+      "nameEn": "Mubu",
+      "publisher": "幕布",
+      "category": "office",
+      "homepage": "https://mubu.com/",
+      "downloadPage": "https://mubu.com/apps",
+      "uninstallMatch": [
+        "幕布",
+        "mubu"
+      ]
+    },
+    {
+      "id": "netease-mail",
+      "name": "网易邮箱大师",
+      "nameEn": "NetEase Mail Master",
+      "publisher": "网易",
+      "category": "office",
+      "homepage": "https://mail.163.com/dashi/",
+      "downloadPage": "https://mail.163.com/dashi/",
+      "uninstallMatch": [
+        "邮箱大师",
+        "MailMaster"
+      ]
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "nameEn": "Notion",
+      "publisher": "Notion Labs",
+      "category": "office",
+      "homepage": "https://www.notion.com/",
+      "downloadPage": "https://www.notion.com/desktop",
+      "winget": "Notion.Notion",
+      "uninstallMatch": [
+        "notion",
+        "notion labs"
+      ]
+    },
+    {
+      "id": "onlyoffice",
+      "name": "ONLYOFFICE",
+      "nameEn": "ONLYOFFICE Desktop Editors",
+      "publisher": "Ascensio System SIA",
+      "category": "office",
+      "homepage": "https://www.onlyoffice.com/",
+      "downloadPage": "https://www.onlyoffice.com/download",
+      "winget": "ONLYOFFICE.DesktopEditors",
+      "uninstallMatch": [
+        "onlyoffice",
+        "only office"
+      ]
+    },
+    {
+      "id": "shimo",
+      "name": "石墨文档",
+      "nameEn": "Shimo Docs",
+      "publisher": "石墨文档",
+      "category": "office",
+      "homepage": "https://shimo.im/",
+      "downloadPage": "https://shimo.im/download",
+      "uninstallMatch": [
+        "石墨文档",
+        "shimo"
+      ]
+    },
+    {
+      "id": "wiz",
+      "name": "为知笔记",
+      "nameEn": "WizNote",
+      "publisher": "为知笔记",
+      "category": "office",
+      "homepage": "https://www.wiz.cn/",
+      "downloadPage": "https://www.wiz.cn/",
+      "uninstallMatch": [
+        "为知笔记",
+        "wiznote"
+      ]
+    },
+    {
+      "id": "wps",
+      "name": "WPS Office",
+      "nameEn": "WPS Office",
+      "publisher": "金山办公",
+      "category": "office",
+      "homepage": "https://www.wps.cn/",
+      "downloadPage": "https://www.wps.cn/",
+      "winget": "Kingsoft.WPSOffice",
+      "uninstallMatch": [
+        "WPS Office",
+        "WPS"
+      ]
+    },
+    {
+      "id": "xmind",
+      "name": "Xmind 思维导图",
+      "nameEn": "Xmind",
+      "publisher": "Xmind",
+      "category": "office",
+      "homepage": "https://xmind.cn/",
+      "downloadPage": "https://xmind.cn/download",
+      "winget": "Xmind.Xmind",
+      "uninstallMatch": [
+        "xmind",
+        "xmind desktop"
+      ]
+    },
+    {
+      "id": "yinxiang",
+      "name": "印象笔记",
+      "nameEn": "Evernote",
+      "publisher": "印象笔记",
+      "category": "office",
+      "homepage": "https://www.yinxiang.com/",
+      "downloadPage": "https://www.yinxiang.com/dl-win/",
+      "winget": "Evernote.Evernote",
+      "uninstallMatch": [
+        "印象笔记",
+        "evernote",
+        "yinxiang"
+      ]
+    },
+    {
+      "id": "youdao-note",
+      "name": "有道云笔记",
+      "nameEn": "Youdao Note",
+      "publisher": "网易有道",
+      "category": "office",
+      "homepage": "https://note.youdao.com/",
+      "downloadPage": "https://note.youdao.com/download.html",
+      "winget": "NetEase.YoudaoNote",
+      "uninstallMatch": [
+        "有道云笔记",
+        "youdaonote"
+      ]
+    },
+    {
+      "id": "youdaodict",
+      "name": "网易有道词典",
+      "nameEn": "Youdao Dictionary",
+      "publisher": "网易有道",
+      "category": "office",
+      "homepage": "https://cidian.youdao.com/",
+      "downloadPage": "https://cidian.youdao.com/",
+      "uninstallMatch": [
+        "有道词典",
+        "Youdao"
+      ]
+    },
+    {
+      "id": "yuque",
+      "name": "语雀",
+      "nameEn": "Yuque",
+      "publisher": "蚂蚁集团",
+      "category": "office",
+      "homepage": "https://www.yuque.com/",
+      "downloadPage": "https://www.yuque.com/download",
+      "uninstallMatch": [
+        "语雀",
+        "yuque"
+      ]
+    },
+    {
+      "id": "360chrome",
+      "name": "360极速浏览器",
+      "nameEn": "360 Chrome",
+      "publisher": "360",
+      "category": "browser",
+      "homepage": "https://browser.360.cn/ee/",
+      "downloadPage": "https://browser.360.cn/ee/",
+      "winget": "360.360Chrome",
+      "uninstallMatch": [
+        "360极速浏览器",
+        "360chrome",
+        "360cse"
+      ]
+    },
+    {
+      "id": "360se",
+      "name": "360安全浏览器",
+      "nameEn": "360 Secure Browser",
+      "publisher": "360",
+      "category": "browser",
+      "homepage": "https://browser.360.cn/",
+      "downloadPage": "https://browser.360.cn/",
+      "winget": "360.360SE",
+      "uninstallMatch": [
+        "360安全浏览器",
+        "360se"
+      ]
+    },
+    {
+      "id": "centbrowser",
+      "name": "百分浏览器",
+      "nameEn": "Cent Browser",
+      "publisher": "Cent Studio",
+      "category": "browser",
+      "homepage": "https://www.centbrowser.cn/",
+      "downloadPage": "https://www.centbrowser.cn/",
+      "winget": "CentStudio.CentBrowser",
+      "uninstallMatch": [
+        "百分浏览器",
+        "cent browser",
+        "centbrowser"
+      ]
+    },
+    {
+      "id": "chrome",
+      "name": "Google Chrome",
+      "nameEn": "Google Chrome",
+      "publisher": "Google",
+      "category": "browser",
+      "homepage": "https://www.google.com/chrome/",
+      "downloadPage": "https://www.google.com/chrome/",
+      "winget": "Google.Chrome",
+      "uninstallMatch": [
+        "Google Chrome",
+        "Chrome"
+      ]
+    },
+    {
+      "id": "edge",
+      "name": "Microsoft Edge",
+      "nameEn": "Microsoft Edge",
+      "publisher": "Microsoft",
+      "category": "browser",
+      "homepage": "https://www.microsoft.com/edge",
+      "downloadPage": "https://www.microsoft.com/edge/download",
+      "winget": "Microsoft.Edge",
+      "uninstallMatch": [
+        "Microsoft Edge"
+      ]
+    },
+    {
+      "id": "firefox",
+      "name": "Mozilla Firefox",
+      "nameEn": "Mozilla Firefox",
+      "publisher": "Mozilla",
+      "category": "browser",
+      "homepage": "https://www.mozilla.org/firefox/",
+      "downloadPage": "https://www.mozilla.org/firefox/new/",
+      "winget": "Mozilla.Firefox",
+      "uninstallMatch": [
+        "Mozilla Firefox",
+        "Firefox"
+      ]
+    },
+    {
+      "id": "liebao",
+      "name": "猎豹浏览器",
+      "nameEn": "LieBao Browser",
+      "publisher": "猎豹移动",
+      "category": "browser",
+      "homepage": "https://www.liebao.cn/",
+      "downloadPage": "https://www.liebao.cn/download.html",
+      "uninstallMatch": [
+        "猎豹浏览器",
+        "猎豹安全浏览器",
+        "liebao"
+      ]
+    },
+    {
+      "id": "maxthon",
+      "name": "傲游云浏览器",
+      "nameEn": "Maxthon",
+      "publisher": "傲游",
+      "category": "browser",
+      "homepage": "https://www.maxthon.cn/",
+      "downloadPage": "https://www.maxthon.cn/download/",
+      "winget": "Maxthon.Maxthon",
+      "uninstallMatch": [
+        "傲游",
+        "maxthon"
+      ]
+    },
+    {
+      "id": "qqbrowser",
+      "name": "QQ浏览器",
+      "nameEn": "QQ Browser",
+      "publisher": "腾讯",
+      "category": "browser",
+      "homepage": "https://browser.qq.com/",
+      "downloadPage": "https://browser.qq.com/",
+      "winget": "Tencent.QQBrowser",
+      "uninstallMatch": [
+        "qq浏览器",
+        "qqbrowser"
+      ]
+    },
+    {
+      "id": "sogou-browser",
+      "name": "搜狗高速浏览器",
+      "nameEn": "Sogou Explorer",
+      "publisher": "搜狗",
+      "category": "browser",
+      "homepage": "https://sogou.browser.qq.com/",
+      "downloadPage": "https://sogou.browser.qq.com/",
+      "uninstallMatch": [
+        "搜狗高速浏览器",
+        "搜狗浏览器",
+        "sogoubrowser"
+      ]
+    },
+    {
+      "id": "theworld",
+      "name": "世界之窗浏览器",
+      "nameEn": "TheWorld Browser",
+      "publisher": "凤凰工作室",
+      "category": "browser",
+      "homepage": "https://www.theworld.cn/",
+      "downloadPage": "https://www.theworld.cn/",
+      "uninstallMatch": [
+        "世界之窗",
+        "theworld"
+      ]
+    },
+    {
+      "id": "twinkstar",
+      "name": "星愿浏览器",
+      "nameEn": "Twinkstar Browser",
+      "publisher": "北京天之歌者科技有限公司",
+      "category": "browser",
+      "homepage": "https://www.twinkstar.com/",
+      "downloadPage": "https://www.twinkstar.com/",
+      "winget": "Twinkstar.TwinkstarBrowser",
+      "uninstallMatch": [
+        "星愿浏览器",
+        "twinkstar"
+      ]
+    },
+    {
+      "id": "waterfox",
+      "name": "Waterfox",
+      "nameEn": "Waterfox",
+      "publisher": "Waterfox",
+      "category": "browser",
+      "homepage": "https://www.waterfox.com/",
+      "downloadPage": "https://www.waterfox.com/download/",
+      "winget": "Waterfox.Waterfox",
+      "uninstallMatch": [
+        "waterfox",
+        "waterfox classic"
+      ]
+    },
+    {
+      "id": "baidu-input",
+      "name": "百度输入法",
+      "nameEn": "Baidu IME",
+      "publisher": "百度",
+      "category": "input",
+      "homepage": "https://shurufa.baidu.com/",
+      "downloadPage": "https://shurufa.baidu.com/",
+      "uninstallMatch": [
+        "百度输入法",
+        "Baidu IME"
+      ]
+    },
+    {
+      "id": "iflytek-input",
+      "name": "讯飞输入法",
+      "nameEn": "iFlytek IME",
+      "publisher": "科大讯飞",
+      "category": "input",
+      "homepage": "https://srf.xunfei.cn/",
+      "downloadPage": "https://srf.xunfei.cn/",
+      "uninstallMatch": [
+        "讯飞输入法",
+        "iFlytek"
+      ]
+    },
+    {
+      "id": "qq-pinyin",
+      "name": "QQ拼音输入法",
+      "nameEn": "QQ Pinyin",
+      "publisher": "腾讯",
+      "category": "input",
+      "homepage": "https://qq.pinyin.cn/",
+      "downloadPage": "https://qq.pinyin.cn/",
+      "winget": "Tencent.QQPinyin",
+      "uninstallMatch": [
+        "qq拼音",
+        "qqpinyin"
+      ]
+    },
+    {
+      "id": "rime",
+      "name": "小狼毫输入法",
+      "nameEn": "RIME Weasel",
+      "publisher": "RIME Project",
+      "category": "input",
+      "homepage": "https://rime.im/",
+      "downloadPage": "https://rime.im/download/",
+      "winget": "Rime.Weasel",
+      "uninstallMatch": [
+        "小狼毫",
+        "weasel",
+        "rime"
+      ]
+    },
+    {
+      "id": "sogou-input",
+      "name": "搜狗输入法",
+      "nameEn": "Sogou Pinyin",
+      "publisher": "搜狗",
+      "category": "input",
+      "homepage": "https://shurufa.sogou.com/",
+      "downloadPage": "https://shurufa.sogou.com/",
+      "uninstallMatch": [
+        "搜狗输入法",
+        "Sogou"
+      ]
+    },
+    {
+      "id": "sogou-wubi",
+      "name": "搜狗五笔输入法",
+      "nameEn": "Sogou Wubi",
+      "publisher": "搜狗",
+      "category": "input",
+      "homepage": "https://wubi.sogou.com/",
+      "downloadPage": "https://wubi.sogou.com/",
+      "winget": "Sogou.SogouWBInput",
+      "uninstallMatch": [
+        "搜狗五笔",
+        "sogou wubi"
+      ]
+    },
+    {
+      "id": "thunisoft",
+      "name": "华宇拼音输入法",
+      "nameEn": "UniSpim",
+      "publisher": "华宇",
+      "category": "input",
+      "homepage": "https://pinyin.thunisoft.com/",
+      "downloadPage": "https://pinyin.thunisoft.com/",
+      "uninstallMatch": [
+        "华宇拼音",
+        "unispim",
+        "紫光华宇"
+      ]
+    },
+    {
+      "id": "wechat-input",
+      "name": "微信输入法",
+      "nameEn": "WeChat Input",
+      "publisher": "腾讯",
+      "category": "input",
+      "homepage": "https://z.weixin.qq.com/",
+      "downloadPage": "https://z.weixin.qq.com/",
+      "uninstallMatch": [
+        "微信输入法",
+        "WeChatInput"
+      ]
+    },
+    {
+      "id": "wnwb",
+      "name": "万能五笔",
+      "nameEn": "WanNeng Wubi",
+      "publisher": "万能五笔",
+      "category": "input",
+      "homepage": "https://www.wnwb.com/",
+      "downloadPage": "https://www.wnwb.com/",
+      "uninstallMatch": [
+        "万能五笔",
+        "wnwb"
+      ]
+    },
+    {
+      "id": "xinshuru",
+      "name": "手心输入法",
+      "nameEn": "Xinshuru IME",
+      "publisher": "手心输入法",
+      "category": "input",
+      "homepage": "https://www.xinshuru.com/",
+      "downloadPage": "https://www.xinshuru.com/download.html",
+      "uninstallMatch": [
+        "手心输入法",
+        "xinshuru"
+      ]
+    },
+    {
+      "id": "aimp",
+      "name": "AIMP 音乐播放器",
+      "nameEn": "AIMP",
+      "publisher": "AIMP",
+      "category": "media",
+      "homepage": "https://www.aimp.ru/",
+      "downloadPage": "https://www.aimp.ru/?do=download",
+      "winget": "AIMP.AIMP",
+      "uninstallMatch": [
+        "aimp",
+        "aimp player"
+      ]
+    },
+    {
+      "id": "audacity",
+      "name": "Audacity",
+      "nameEn": "Audacity",
+      "publisher": "Muse Group",
+      "category": "media",
+      "homepage": "https://www.audacityteam.org/",
+      "downloadPage": "https://www.audacityteam.org/download/",
+      "winget": "Audacity.Audacity",
+      "uninstallMatch": [
+        "Audacity"
+      ]
+    },
+    {
+      "id": "bandicam",
+      "name": "Bandicam 录屏",
+      "nameEn": "Bandicam",
+      "publisher": "Bandisoft",
+      "category": "media",
+      "homepage": "https://www.bandicam.com/",
+      "downloadPage": "https://www.bandicam.com/downloads/",
+      "uninstallMatch": [
+        "bandicam",
+        "bandisoft"
+      ]
+    },
+    {
+      "id": "bilibili",
+      "name": "哔哩哔哩",
+      "nameEn": "Bilibili",
+      "publisher": "哔哩哔哩",
+      "category": "media",
+      "homepage": "https://www.bilibili.com/",
+      "downloadPage": "https://app.bilibili.com/",
+      "uninstallMatch": [
+        "哔哩哔哩",
+        "Bilibili"
+      ]
+    },
+    {
+      "id": "cctv",
+      "name": "央视影音",
+      "nameEn": "CCTV Video (CBox)",
+      "publisher": "China Central Television",
+      "category": "media",
+      "homepage": "https://app.cctv.com/",
+      "downloadPage": "https://app.cctv.com/index.shtml",
+      "uninstallMatch": [
+        "cctv",
+        "cbox",
+        "央视影音"
+      ]
+    },
+    {
+      "id": "davinci",
+      "name": "DaVinci Resolve 达芬奇",
+      "nameEn": "DaVinci Resolve",
+      "publisher": "Blackmagic Design",
+      "category": "media",
+      "homepage": "https://www.blackmagicdesign.com/products/davinciresolve",
+      "downloadPage": "https://www.blackmagicdesign.com/products/davinciresolve",
+      "uninstallMatch": [
+        "davinci resolve",
+        "达芬奇",
+        "blackmagic"
+      ]
+    },
+    {
+      "id": "douyu",
+      "name": "斗鱼直播",
+      "nameEn": "Douyu",
+      "publisher": "Douyu",
+      "category": "media",
+      "homepage": "https://www.douyu.com/",
+      "downloadPage": "https://www.douyu.com/client",
+      "uninstallMatch": [
+        "douyu",
+        "斗鱼"
+      ]
+    },
+    {
+      "id": "ffmpeg",
+      "name": "FFmpeg",
+      "nameEn": "FFmpeg",
+      "publisher": "FFmpeg Team",
+      "category": "media",
+      "homepage": "https://ffmpeg.org/",
+      "downloadPage": "https://ffmpeg.org/download.html",
+      "uninstallMatch": [
+        "FFmpeg"
+      ]
+    },
+    {
+      "id": "foobar2000",
+      "name": "foobar2000",
+      "nameEn": "foobar2000",
+      "publisher": "Peter Pawlowski",
+      "category": "media",
+      "homepage": "https://www.foobar2000.org/",
+      "downloadPage": "https://www.foobar2000.org/download",
+      "winget": "PeterPawlowski.foobar2000",
+      "uninstallMatch": [
+        "foobar2000"
+      ]
+    },
+    {
+      "id": "formatfactory",
+      "name": "格式工厂",
+      "nameEn": "Format Factory",
+      "publisher": "Free Time",
+      "category": "media",
+      "homepage": "https://www.pcfreetime.com/",
+      "downloadPage": "https://www.pcfreetime.com/formatfactory/CN/download.html",
+      "uninstallMatch": [
+        "formatfactory",
+        "格式工厂",
+        "pcfreetime"
+      ]
+    },
+    {
+      "id": "handbrake",
+      "name": "HandBrake",
+      "nameEn": "HandBrake",
+      "publisher": "HandBrake Team",
+      "category": "media",
+      "homepage": "https://handbrake.fr/",
+      "downloadPage": "https://handbrake.fr/downloads.php",
+      "winget": "HandBrake.HandBrake",
+      "uninstallMatch": [
+        "HandBrake"
+      ]
+    },
+    {
+      "id": "huya",
+      "name": "虎牙直播",
+      "nameEn": "Huya",
+      "publisher": "Huya",
+      "category": "media",
+      "homepage": "https://www.huya.com/",
+      "downloadPage": "https://www.huya.com/download/",
+      "uninstallMatch": [
+        "huya",
+        "虎牙"
+      ]
+    },
+    {
+      "id": "iqiyi",
+      "name": "爱奇艺",
+      "nameEn": "iQIYI",
+      "publisher": "iQIYI",
+      "category": "media",
+      "homepage": "https://www.iqiyi.com/",
+      "downloadPage": "https://www.iqiyi.com/appstore.html",
+      "uninstallMatch": [
+        "iqiyi",
+        "爱奇艺"
+      ]
+    },
+    {
+      "id": "jianying",
+      "name": "剪映专业版",
+      "nameEn": "CapCut",
+      "publisher": "字节跳动",
+      "category": "media",
+      "homepage": "https://www.capcut.cn/",
+      "downloadPage": "https://www.capcut.cn/",
+      "uninstallMatch": [
+        "剪映",
+        "CapCut",
+        "JianYing"
+      ]
+    },
+    {
+      "id": "klite",
+      "name": "K-Lite 编解码包",
+      "nameEn": "K-Lite Codec Pack",
+      "publisher": "CodecGuide",
+      "category": "media",
+      "homepage": "https://codecguide.com/",
+      "downloadPage": "https://codecguide.com/download_kl.htm",
+      "winget": "CodecGuide.K-LiteCodecPack.Standard",
+      "uninstallMatch": [
+        "k-lite",
+        "klite",
+        "codec pack"
+      ]
+    },
+    {
+      "id": "kugou",
+      "name": "酷狗音乐",
+      "nameEn": "KuGou Music",
+      "publisher": "Tencent Music Entertainment (KuGou)",
+      "category": "media",
+      "homepage": "https://www.kugou.com/",
+      "downloadPage": "https://download.kugou.com/",
+      "uninstallMatch": [
+        "kugou",
+        "酷狗音乐"
+      ]
+    },
+    {
+      "id": "kuwo",
+      "name": "酷我音乐",
+      "nameEn": "Kuwo Music",
+      "publisher": "Tencent Music Entertainment (Kuwo)",
+      "category": "media",
+      "homepage": "https://www.kuwo.cn/",
+      "downloadPage": "https://www.kuwo.cn/down",
+      "uninstallMatch": [
+        "kuwo",
+        "酷我音乐"
+      ]
+    },
+    {
+      "id": "mgtv",
+      "name": "芒果TV",
+      "nameEn": "MGTV",
+      "publisher": "Mango Excellent Media",
+      "category": "media",
+      "homepage": "https://www.mgtv.com/",
+      "downloadPage": "https://www.mgtv.com/app/",
+      "uninstallMatch": [
+        "mgtv",
+        "芒果tv",
+        "芒果"
+      ]
+    },
+    {
+      "id": "migu",
+      "name": "咪咕音乐",
+      "nameEn": "Migu Music",
+      "publisher": "China Mobile Migu",
+      "category": "media",
+      "homepage": "https://music.migu.cn/",
+      "downloadPage": "https://music.migu.cn/v5/",
+      "uninstallMatch": [
+        "migu",
+        "咪咕音乐"
+      ]
+    },
+    {
+      "id": "mpc-be",
+      "name": "MPC-BE 播放器",
+      "nameEn": "MPC-BE",
+      "publisher": "MPC-BE project",
+      "category": "media",
+      "homepage": "https://github.com/Aleksoid1978/MPC-BE",
+      "downloadPage": "https://github.com/Aleksoid1978/MPC-BE/releases",
+      "winget": "MPC-BE.MPC-BE",
+      "uninstallMatch": [
+        "mpc-be",
+        "mpc be"
+      ]
+    },
+    {
+      "id": "mpc-hc",
+      "name": "MPC-HC 播放器",
+      "nameEn": "MPC-HC",
+      "publisher": "MPC-HC project",
+      "category": "media",
+      "homepage": "https://mpc-hc.org/",
+      "downloadPage": "https://mpc-hc.org/downloads/",
+      "winget": "clsid2.mpc-hc",
+      "uninstallMatch": [
+        "mpc-hc",
+        "mpc hc",
+        "media player classic"
+      ]
+    },
+    {
+      "id": "netease-music",
+      "name": "网易云音乐",
+      "nameEn": "NetEase Cloud Music",
+      "publisher": "网易",
+      "category": "media",
+      "homepage": "https://music.163.com/",
+      "downloadPage": "https://music.163.com/download",
+      "uninstallMatch": [
+        "网易云音乐",
+        "CloudMusic"
+      ]
+    },
+    {
+      "id": "obs",
+      "name": "OBS Studio",
+      "nameEn": "OBS Studio",
+      "publisher": "OBS Project",
+      "category": "media",
+      "homepage": "https://obsproject.com/",
+      "downloadPage": "https://obsproject.com/download",
+      "winget": "OBSProject.OBSStudio",
+      "uninstallMatch": [
+        "OBS Studio"
+      ]
+    },
+    {
+      "id": "potplayer",
+      "name": "PotPlayer",
+      "nameEn": "PotPlayer",
+      "publisher": "Kakao",
+      "category": "media",
+      "homepage": "https://potplayer.daum.net/",
+      "downloadPage": "https://potplayer.daum.net/",
+      "uninstallMatch": [
+        "PotPlayer"
+      ]
+    },
+    {
+      "id": "qqmusic",
+      "name": "QQ音乐",
+      "nameEn": "QQ Music",
+      "publisher": "腾讯",
+      "category": "media",
+      "homepage": "https://y.qq.com/",
+      "downloadPage": "https://y.qq.com/download/",
+      "uninstallMatch": [
+        "QQ音乐",
+        "QQMusic"
+      ]
+    },
+    {
+      "id": "screentogif",
+      "name": "ScreenToGif 录屏",
+      "nameEn": "ScreenToGif",
+      "publisher": "Nicke Manarin",
+      "category": "media",
+      "homepage": "https://github.com/NickeManarin/ScreenToGif",
+      "downloadPage": "https://github.com/NickeManarin/ScreenToGif/releases",
+      "winget": "NickeManarin.ScreenToGif",
+      "uninstallMatch": [
+        "screentogif",
+        "screen to gif"
+      ]
+    },
+    {
+      "id": "shotcut",
+      "name": "Shotcut 视频剪辑",
+      "nameEn": "Shotcut",
+      "publisher": "Meltytech",
+      "category": "media",
+      "homepage": "https://shotcut.org/",
+      "downloadPage": "https://shotcut.org/download/",
+      "winget": "Meltytech.Shotcut",
+      "uninstallMatch": [
+        "shotcut",
+        "meltytech"
+      ]
+    },
+    {
+      "id": "tencentvideo",
+      "name": "腾讯视频",
+      "nameEn": "Tencent Video",
+      "publisher": "Tencent",
+      "category": "media",
+      "homepage": "https://v.qq.com/",
+      "downloadPage": "https://v.qq.com/download.html",
+      "uninstallMatch": [
+        "tencent video",
+        "qqlive",
+        "腾讯视频"
+      ]
+    },
+    {
+      "id": "vlc",
+      "name": "VLC media player",
+      "nameEn": "VLC media player",
+      "publisher": "VideoLAN",
+      "category": "media",
+      "homepage": "https://www.videolan.org/vlc/",
+      "downloadPage": "https://www.videolan.org/vlc/download-windows.html",
+      "winget": "VideoLAN.VLC",
+      "uninstallMatch": [
+        "VLC media player",
+        "VLC"
+      ]
+    },
+    {
+      "id": "youku",
+      "name": "优酷",
+      "nameEn": "Youku",
+      "publisher": "Youku (Alibaba)",
+      "category": "media",
+      "homepage": "https://www.youku.com/",
+      "downloadPage": "https://www.youku.com/ku/webhome",
+      "uninstallMatch": [
+        "youku",
+        "优酷"
+      ]
+    },
+    {
+      "id": "2345pic",
+      "name": "2345看图王",
+      "nameEn": "2345 Pic Viewer",
+      "publisher": "2345.com",
+      "category": "graphics",
+      "homepage": "https://pic.2345.cc/",
+      "downloadPage": "https://pic.2345.cc/",
+      "uninstallMatch": [
+        "2345pic",
+        "2345看图王",
+        "2345explorer"
+      ]
+    },
+    {
+      "id": "blender",
+      "name": "Blender",
+      "nameEn": "Blender",
+      "publisher": "Blender Foundation",
+      "category": "graphics",
+      "homepage": "https://www.blender.org/",
+      "downloadPage": "https://www.blender.org/download/",
+      "winget": "BlenderFoundation.Blender",
+      "uninstallMatch": [
+        "Blender"
+      ]
+    },
+    {
+      "id": "gimp",
+      "name": "GIMP",
+      "nameEn": "GIMP",
+      "publisher": "GIMP Team",
+      "category": "graphics",
+      "homepage": "https://www.gimp.org/",
+      "downloadPage": "https://www.gimp.org/downloads/",
+      "winget": "GIMP.GIMP",
+      "uninstallMatch": [
+        "GIMP"
+      ]
+    },
+    {
+      "id": "honeyview",
+      "name": "Honeyview",
+      "nameEn": "Honeyview",
+      "publisher": "Bandisoft",
+      "category": "graphics",
+      "homepage": "https://www.bandisoft.com/honeyview/",
+      "downloadPage": "https://www.bandisoft.com/honeyview/",
+      "uninstallMatch": [
+        "Honeyview"
+      ]
+    },
+    {
+      "id": "imageglass",
+      "name": "ImageGlass",
+      "nameEn": "ImageGlass",
+      "publisher": "Duong Diep",
+      "category": "graphics",
+      "homepage": "https://imageglass.org/",
+      "downloadPage": "https://imageglass.org/download",
+      "winget": "DuongDiep.ImageGlass",
+      "uninstallMatch": [
+        "ImageGlass"
+      ]
+    },
+    {
+      "id": "inkscape",
+      "name": "Inkscape",
+      "nameEn": "Inkscape",
+      "publisher": "Inkscape Project",
+      "category": "graphics",
+      "homepage": "https://inkscape.org/",
+      "downloadPage": "https://inkscape.org/release/",
+      "winget": "Inkscape.Inkscape",
+      "uninstallMatch": [
+        "Inkscape"
+      ]
+    },
+    {
+      "id": "irfanview",
+      "name": "IrfanView 看图",
+      "nameEn": "IrfanView",
+      "publisher": "Irfan Skiljan",
+      "category": "graphics",
+      "homepage": "https://www.irfanview.com/",
+      "downloadPage": "https://www.irfanview.com/64bit.htm",
+      "winget": "IrfanSkiljan.IrfanView",
+      "uninstallMatch": [
+        "irfanview",
+        "irfan view"
+      ]
+    },
+    {
+      "id": "krita",
+      "name": "Krita 数字绘画",
+      "nameEn": "Krita",
+      "publisher": "KDE",
+      "category": "graphics",
+      "homepage": "https://krita.org/",
+      "downloadPage": "https://krita.org/en/download/",
+      "winget": "KDE.Krita",
+      "uninstallMatch": [
+        "krita",
+        "kde krita"
+      ]
+    },
+    {
+      "id": "meitu",
+      "name": "美图秀秀",
+      "nameEn": "Meitu",
+      "publisher": "Meitu",
+      "category": "graphics",
+      "homepage": "https://pc.meitu.com/",
+      "downloadPage": "https://pc.meitu.com/download/",
+      "uninstallMatch": [
+        "meitu",
+        "美图秀秀"
+      ]
+    },
+    {
+      "id": "neoimaging",
+      "name": "光影魔术手",
+      "nameEn": "NeoImaging",
+      "publisher": "NeoImaging",
+      "category": "graphics",
+      "homepage": "https://www.neoimaging.cn/",
+      "downloadPage": "https://www.neoimaging.cn/download.html",
+      "uninstallMatch": [
+        "neoimaging",
+        "光影魔术手"
+      ]
+    },
+    {
+      "id": "paintnet",
+      "name": "Paint.NET 图像编辑",
+      "nameEn": "Paint.NET",
+      "publisher": "dotPDN",
+      "category": "graphics",
+      "homepage": "https://paint.net/",
+      "downloadPage": "https://paint.net/download.html",
+      "winget": "dotPDN.PaintDotNet",
+      "uninstallMatch": [
+        "paint.net",
+        "paintnet"
+      ]
+    },
+    {
+      "id": "xnview",
+      "name": "XnView 看图",
+      "nameEn": "XnView",
+      "publisher": "XnSoft",
+      "category": "graphics",
+      "homepage": "https://www.xnview.com/",
+      "downloadPage": "https://www.xnview.com/en/xnview/",
+      "winget": "XnSoft.XnViewMP",
+      "uninstallMatch": [
+        "xnview",
+        "xnsoft"
+      ]
+    },
+    {
+      "id": "androidstudio",
+      "name": "Android Studio",
+      "nameEn": "Android Studio",
+      "publisher": "Google",
+      "category": "dev",
+      "homepage": "https://developer.android.google.cn/studio",
+      "downloadPage": "https://developer.android.google.cn/studio",
+      "winget": "Google.AndroidStudio",
+      "uninstallMatch": [
+        "android studio",
+        "android-studio"
+      ]
+    },
+    {
+      "id": "dbeaver",
+      "name": "DBeaver 数据库管理",
+      "nameEn": "DBeaver",
+      "publisher": "DBeaver Corp",
+      "category": "dev",
+      "homepage": "https://dbeaver.io/",
+      "downloadPage": "https://dbeaver.io/download/",
+      "winget": "DBeaver.DBeaver.Community",
+      "uninstallMatch": [
+        "dbeaver",
+        "dbeaver community"
+      ]
+    },
+    {
+      "id": "filezilla",
+      "name": "FileZilla",
+      "nameEn": "FileZilla",
+      "publisher": "FileZilla Project",
+      "category": "dev",
+      "homepage": "https://filezilla-project.org/",
+      "downloadPage": "https://filezilla-project.org/download.php?type=client",
+      "winget": "TimKosse.FileZilla.Client",
+      "uninstallMatch": [
+        "FileZilla"
+      ]
+    },
+    {
+      "id": "git",
+      "name": "Git for Windows",
+      "nameEn": "Git for Windows",
+      "publisher": "Git Project",
+      "category": "dev",
+      "homepage": "https://git-scm.com/",
+      "downloadPage": "https://git-scm.com/download/win",
+      "winget": "Git.Git",
+      "uninstallMatch": [
+        "Git"
+      ]
+    },
+    {
+      "id": "githubdesktop",
+      "name": "GitHub Desktop",
+      "nameEn": "GitHub Desktop",
+      "publisher": "GitHub",
+      "category": "dev",
+      "homepage": "https://github.com/apps/desktop",
+      "downloadPage": "https://github.com/apps/desktop",
+      "winget": "GitHub.GitHubDesktop",
+      "uninstallMatch": [
+        "github desktop",
+        "githubdesktop"
+      ]
+    },
+    {
+      "id": "heidisql",
+      "name": "HeidiSQL 数据库客户端",
+      "nameEn": "HeidiSQL",
+      "publisher": "HeidiSQL",
+      "category": "dev",
+      "homepage": "https://www.heidisql.com/",
+      "downloadPage": "https://www.heidisql.com/download.php",
+      "winget": "HeidiSQL.HeidiSQL",
+      "uninstallMatch": [
+        "heidisql",
+        "heidi sql"
+      ]
+    },
+    {
+      "id": "idea",
+      "name": "IntelliJ IDEA",
+      "nameEn": "IntelliJ IDEA Community",
+      "publisher": "JetBrains",
+      "category": "dev",
+      "homepage": "https://www.jetbrains.com/idea/",
+      "downloadPage": "https://www.jetbrains.com/idea/download/",
+      "winget": "JetBrains.IntelliJIDEA.Community",
+      "uninstallMatch": [
+        "intellij idea",
+        "jetbrains"
+      ]
+    },
+    {
+      "id": "mobaxterm",
+      "name": "MobaXterm 终端工具",
+      "nameEn": "MobaXterm",
+      "publisher": "Mobatek",
+      "category": "dev",
+      "homepage": "https://mobaxterm.mobatek.net/",
+      "downloadPage": "https://mobaxterm.mobatek.net/download.html",
+      "winget": "Mobatek.MobaXterm",
+      "uninstallMatch": [
+        "mobaxterm",
+        "mobatek"
+      ]
+    },
+    {
+      "id": "navicat",
+      "name": "Navicat 数据库管理",
+      "nameEn": "Navicat Premium",
+      "publisher": "PremiumSoft CyberTech",
+      "category": "dev",
+      "homepage": "https://www.navicat.com/",
+      "downloadPage": "https://www.navicat.com/en/download/navicat-premium",
+      "uninstallMatch": [
+        "navicat",
+        "premiumsoft"
+      ]
+    },
+    {
+      "id": "neovim",
+      "name": "Neovim 编辑器",
+      "nameEn": "Neovim",
+      "publisher": "Neovim project",
+      "category": "dev",
+      "homepage": "https://neovim.io/",
+      "downloadPage": "https://github.com/neovim/neovim/releases",
+      "winget": "Neovim.Neovim",
+      "uninstallMatch": [
+        "neovim",
+        "nvim"
+      ]
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "nameEn": "Node.js",
+      "publisher": "OpenJS Foundation",
+      "category": "dev",
+      "homepage": "https://nodejs.org/",
+      "downloadPage": "https://nodejs.org/en/download",
+      "winget": "OpenJS.NodeJS.LTS",
+      "uninstallMatch": [
+        "Node.js"
+      ]
+    },
+    {
+      "id": "notepad3",
+      "name": "Notepad3 文本编辑器",
+      "nameEn": "Notepad3",
+      "publisher": "Rizonesoft",
+      "category": "dev",
+      "homepage": "https://www.rizonesoft.com/",
+      "downloadPage": "https://www.rizonesoft.com/downloads/notepad3/",
+      "winget": "Rizonesoft.Notepad3",
+      "uninstallMatch": [
+        "notepad3",
+        "rizonesoft"
+      ]
+    },
+    {
+      "id": "notepadpp",
+      "name": "Notepad++",
+      "nameEn": "Notepad++",
+      "publisher": "Don HO",
+      "category": "dev",
+      "homepage": "https://notepad-plus-plus.org/",
+      "downloadPage": "https://notepad-plus-plus.org/downloads/",
+      "winget": "Notepad++.Notepad++",
+      "uninstallMatch": [
+        "Notepad++"
+      ]
+    },
+    {
+      "id": "postman",
+      "name": "Postman 接口调试",
+      "nameEn": "Postman",
+      "publisher": "Postman",
+      "category": "dev",
+      "homepage": "https://www.postman.com/",
+      "downloadPage": "https://www.postman.com/downloads/",
+      "winget": "Postman.Postman",
+      "uninstallMatch": [
+        "postman",
+        "postman agent"
+      ]
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell 7",
+      "nameEn": "PowerShell 7",
+      "publisher": "Microsoft",
+      "category": "dev",
+      "homepage": "https://learn.microsoft.com/powershell/",
+      "downloadPage": "https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows",
+      "winget": "Microsoft.PowerShell",
+      "uninstallMatch": [
+        "powershell-7",
+        "powershell 7",
+        "pwsh"
+      ]
+    },
+    {
+      "id": "putty",
+      "name": "PuTTY",
+      "nameEn": "PuTTY",
+      "publisher": "Simon Tatham",
+      "category": "dev",
+      "homepage": "https://www.putty.org/",
+      "downloadPage": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+      "winget": "PuTTY.PuTTY",
+      "uninstallMatch": [
+        "PuTTY"
+      ]
+    },
+    {
+      "id": "pycharm",
+      "name": "PyCharm",
+      "nameEn": "PyCharm Community",
+      "publisher": "JetBrains",
+      "category": "dev",
+      "homepage": "https://www.jetbrains.com/pycharm/",
+      "downloadPage": "https://www.jetbrains.com/pycharm/download/",
+      "winget": "JetBrains.PyCharm.Community",
+      "uninstallMatch": [
+        "pycharm",
+        "jetbrains pycharm"
+      ]
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "nameEn": "Python",
+      "publisher": "Python Software Foundation",
+      "category": "dev",
+      "homepage": "https://www.python.org/",
+      "downloadPage": "https://www.python.org/downloads/",
+      "winget": "Python.Python.3.13",
+      "uninstallMatch": [
+        "Python"
+      ]
+    },
+    {
+      "id": "sublimetext",
+      "name": "Sublime Text",
+      "nameEn": "Sublime Text",
+      "publisher": "Sublime HQ",
+      "category": "dev",
+      "homepage": "https://www.sublimetext.com/",
+      "downloadPage": "https://www.sublimetext.com/download",
+      "winget": "SublimeHQ.SublimeText.4",
+      "uninstallMatch": [
+        "sublime text",
+        "sublime_text"
+      ]
+    },
+    {
+      "id": "tortoisegit",
+      "name": "TortoiseGit",
+      "nameEn": "TortoiseGit",
+      "publisher": "TortoiseGit project",
+      "category": "dev",
+      "homepage": "https://tortoisegit.org/",
+      "downloadPage": "https://tortoisegit.org/download/",
+      "winget": "TortoiseGit.TortoiseGit",
+      "uninstallMatch": [
+        "tortoisegit",
+        "tortoise git"
+      ]
+    },
+    {
+      "id": "virtualbox",
+      "name": "VirtualBox 虚拟机",
+      "nameEn": "Oracle VM VirtualBox",
+      "publisher": "Oracle",
+      "category": "dev",
+      "homepage": "https://www.virtualbox.org/",
+      "downloadPage": "https://www.virtualbox.org/wiki/Downloads",
+      "winget": "Oracle.VirtualBox",
+      "uninstallMatch": [
+        "virtualbox",
+        "oracle vm"
+      ]
+    },
+    {
+      "id": "vscode",
+      "name": "Visual Studio Code",
+      "nameEn": "Visual Studio Code",
+      "publisher": "Microsoft",
+      "category": "dev",
+      "homepage": "https://code.visualstudio.com/",
+      "downloadPage": "https://code.visualstudio.com/Download",
+      "winget": "Microsoft.VisualStudioCode",
+      "uninstallMatch": [
+        "Visual Studio Code"
+      ]
+    },
+    {
+      "id": "windowsterminal",
+      "name": "Windows Terminal 终端",
+      "nameEn": "Windows Terminal",
+      "publisher": "Microsoft",
+      "category": "dev",
+      "homepage": "https://github.com/microsoft/terminal",
+      "downloadPage": "https://github.com/microsoft/terminal/releases",
+      "winget": "Microsoft.WindowsTerminal",
+      "uninstallMatch": [
+        "windows terminal",
+        "windowsterminal"
+      ]
+    },
+    {
+      "id": "winscp",
+      "name": "WinSCP",
+      "nameEn": "WinSCP",
+      "publisher": "Martin Prikryl",
+      "category": "dev",
+      "homepage": "https://winscp.net/",
+      "downloadPage": "https://winscp.net/eng/download.php",
+      "winget": "WinSCP.WinSCP",
+      "uninstallMatch": [
+        "WinSCP"
+      ]
+    },
+    {
+      "id": "wireshark",
+      "name": "Wireshark 抓包分析",
+      "nameEn": "Wireshark",
+      "publisher": "Wireshark Foundation",
+      "category": "dev",
+      "homepage": "https://www.wireshark.org/",
+      "downloadPage": "https://www.wireshark.org/download.html",
+      "winget": "WiresharkFoundation.Wireshark",
+      "uninstallMatch": [
+        "wireshark",
+        "wireshark foundation"
+      ]
+    },
+    {
+      "id": "360zip",
+      "name": "360压缩",
+      "nameEn": "360 Zip",
+      "publisher": "360",
+      "category": "utility",
+      "homepage": "https://yasuo.360.cn/",
+      "downloadPage": "https://yasuo.360.cn/",
+      "uninstallMatch": [
+        "360压缩",
+        "360Zip"
+      ]
+    },
+    {
+      "id": "7zip",
+      "name": "7-Zip",
+      "nameEn": "7-Zip",
+      "publisher": "Igor Pavlov",
+      "category": "utility",
+      "homepage": "https://www.7-zip.org/",
+      "downloadPage": "https://www.7-zip.org/download.html",
+      "winget": "7zip.7zip",
+      "uninstallMatch": [
+        "7-Zip"
+      ]
+    },
+    {
+      "id": "bandizip",
+      "name": "Bandizip",
+      "nameEn": "Bandizip",
+      "publisher": "Bandisoft",
+      "category": "utility",
+      "homepage": "https://www.bandisoft.com/bandizip/",
+      "downloadPage": "https://www.bandisoft.com/bandizip/",
+      "winget": "Bandisoft.Bandizip",
+      "uninstallMatch": [
+        "Bandizip"
+      ]
+    },
+    {
+      "id": "bleachbit",
+      "name": "BleachBit",
+      "nameEn": "BleachBit",
+      "publisher": "BleachBit",
+      "category": "utility",
+      "homepage": "https://www.bleachbit.org/",
+      "downloadPage": "https://www.bleachbit.org/download",
+      "winget": "BleachBit.BleachBit",
+      "uninstallMatch": [
+        "bleachbit",
+        "bleachbit console"
+      ]
+    },
+    {
+      "id": "bulk-crap-uninstaller",
+      "name": "Bulk Crap Uninstaller",
+      "nameEn": "Bulk Crap Uninstaller",
+      "publisher": "Klocman",
+      "category": "utility",
+      "homepage": "https://www.bcuninstaller.com/",
+      "downloadPage": "https://www.bcuninstaller.com/",
+      "winget": "Klocman.BulkCrapUninstaller",
+      "uninstallMatch": [
+        "bulk crap uninstaller",
+        "bcuninstaller"
+      ]
+    },
+    {
+      "id": "ccleaner",
+      "name": "CCleaner",
+      "nameEn": "CCleaner",
+      "publisher": "Piriform",
+      "category": "utility",
+      "homepage": "https://www.ccleaner.com/",
+      "downloadPage": "https://www.ccleaner.com/ccleaner/download/",
+      "winget": "Piriform.CCleaner",
+      "uninstallMatch": [
+        "ccleaner",
+        "piriform ccleaner"
+      ]
+    },
+    {
+      "id": "ditto",
+      "name": "Ditto",
+      "nameEn": "Ditto",
+      "publisher": "Scott Brogden",
+      "category": "utility",
+      "homepage": "https://github.com/sabrogden/Ditto",
+      "downloadPage": "https://github.com/sabrogden/Ditto/releases",
+      "winget": "Ditto.Ditto",
+      "uninstallMatch": [
+        "ditto",
+        "ditto portable"
+      ]
+    },
+    {
+      "id": "everything",
+      "name": "Everything",
+      "nameEn": "Everything",
+      "publisher": "voidtools",
+      "category": "utility",
+      "homepage": "https://www.voidtools.com/",
+      "downloadPage": "https://www.voidtools.com/downloads/",
+      "winget": "voidtools.Everything",
+      "uninstallMatch": [
+        "Everything"
+      ]
+    },
+    {
+      "id": "flow-launcher",
+      "name": "Flow Launcher",
+      "nameEn": "Flow Launcher",
+      "publisher": "Flow Launcher",
+      "category": "utility",
+      "homepage": "https://www.flowlauncher.com/",
+      "downloadPage": "https://github.com/Flow-Launcher/Flow.Launcher/releases",
+      "winget": "Flow-Launcher.Flow-Launcher",
+      "uninstallMatch": [
+        "flow launcher",
+        "flowlauncher"
+      ]
+    },
+    {
+      "id": "geekuninstaller",
+      "name": "Geek Uninstaller",
+      "nameEn": "Geek Uninstaller",
+      "publisher": "Thomas Koen",
+      "category": "utility",
+      "homepage": "https://geekuninstaller.com/",
+      "downloadPage": "https://geekuninstaller.com/download",
+      "uninstallMatch": [
+        "Geek Uninstaller"
+      ]
+    },
+    {
+      "id": "listary",
+      "name": "Listary",
+      "nameEn": "Listary",
+      "publisher": "Bopsoft",
+      "category": "utility",
+      "homepage": "https://www.listary.com/",
+      "downloadPage": "https://www.listary.com/download",
+      "uninstallMatch": [
+        "listary",
+        "listary pro"
+      ]
+    },
+    {
+      "id": "nanazip",
+      "name": "NanaZip",
+      "nameEn": "NanaZip",
+      "publisher": "M2Team",
+      "category": "utility",
+      "homepage": "https://github.com/M2Team/NanaZip",
+      "downloadPage": "https://github.com/M2Team/NanaZip/releases",
+      "winget": "M2Team.NanaZip",
+      "uninstallMatch": [
+        "NanaZip"
+      ]
+    },
+    {
+      "id": "peazip",
+      "name": "PeaZip",
+      "nameEn": "PeaZip",
+      "publisher": "Giorgio Tani",
+      "category": "utility",
+      "homepage": "https://peazip.github.io/",
+      "downloadPage": "https://peazip.github.io/download-installer-p-windows.html",
+      "winget": "Giorgiotani.Peazip",
+      "uninstallMatch": [
+        "peazip",
+        "pea zip"
+      ]
+    },
+    {
+      "id": "pixpin",
+      "name": "PixPin",
+      "nameEn": "PixPin",
+      "publisher": "PixPin",
+      "category": "utility",
+      "homepage": "https://pixpin.cn/",
+      "downloadPage": "https://pixpin.cn/",
+      "uninstallMatch": [
+        "PixPin"
+      ]
+    },
+    {
+      "id": "poweriso",
+      "name": "PowerISO",
+      "nameEn": "PowerISO",
+      "publisher": "Power Software",
+      "category": "utility",
+      "homepage": "https://www.poweriso.com/",
+      "downloadPage": "https://www.poweriso.com/download.htm",
+      "winget": "PowerSoftware.PowerISO",
+      "uninstallMatch": [
+        "poweriso",
+        "power iso"
+      ]
+    },
+    {
+      "id": "powertoys",
+      "name": "PowerToys",
+      "nameEn": "PowerToys",
+      "publisher": "Microsoft",
+      "category": "utility",
+      "homepage": "https://learn.microsoft.com/windows/powertoys/",
+      "downloadPage": "https://github.com/microsoft/PowerToys/releases",
+      "winget": "Microsoft.PowerToys",
+      "uninstallMatch": [
+        "PowerToys"
+      ]
+    },
+    {
+      "id": "quicker",
+      "name": "Quicker",
+      "nameEn": "Quicker",
+      "publisher": "上海嘉虹信息科技发展有限公司",
+      "category": "utility",
+      "homepage": "https://www.getquicker.net/",
+      "downloadPage": "https://www.getquicker.net/Download",
+      "uninstallMatch": [
+        "quicker",
+        "getquicker"
+      ]
+    },
+    {
+      "id": "revo-uninstaller",
+      "name": "Revo Uninstaller",
+      "nameEn": "Revo Uninstaller",
+      "publisher": "VS Revo Group",
+      "category": "utility",
+      "homepage": "https://www.revouninstaller.com/",
+      "downloadPage": "https://www.revouninstaller.com/revo-uninstaller-free-download/",
+      "winget": "RevoUninstaller.RevoUninstaller",
+      "uninstallMatch": [
+        "revo uninstaller",
+        "revouninstaller"
+      ]
+    },
+    {
+      "id": "sharex",
+      "name": "ShareX",
+      "nameEn": "ShareX",
+      "publisher": "ShareX Team",
+      "category": "utility",
+      "homepage": "https://getsharex.com/",
+      "downloadPage": "https://getsharex.com/downloads",
+      "winget": "ShareX.ShareX",
+      "uninstallMatch": [
+        "sharex",
+        "share x"
+      ]
+    },
+    {
+      "id": "snipaste",
+      "name": "Snipaste",
+      "nameEn": "Snipaste",
+      "publisher": "Le Liu",
+      "category": "utility",
+      "homepage": "https://www.snipaste.com/",
+      "downloadPage": "https://www.snipaste.com/download.html",
+      "winget": "Snipaste.Snipaste",
+      "uninstallMatch": [
+        "Snipaste"
+      ]
+    },
+    {
+      "id": "sumatrapdf",
+      "name": "SumatraPDF",
+      "nameEn": "SumatraPDF",
+      "publisher": "Krzysztof Kowalczyk",
+      "category": "utility",
+      "homepage": "https://www.sumatrapdfreader.org/",
+      "downloadPage": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
+      "winget": "SumatraPDF.SumatraPDF",
+      "uninstallMatch": [
+        "SumatraPDF"
+      ]
+    },
+    {
+      "id": "treesize-free",
+      "name": "TreeSize Free",
+      "nameEn": "TreeSize Free",
+      "publisher": "JAM Software",
+      "category": "utility",
+      "homepage": "https://www.jam-software.com/treesize",
+      "downloadPage": "https://www.jam-software.com/treesize",
+      "winget": "JAMSoftware.TreeSize.Free",
+      "uninstallMatch": [
+        "treesize",
+        "treesize free"
+      ]
+    },
+    {
+      "id": "ultraiso",
+      "name": "UltraISO 软碟通",
+      "nameEn": "UltraISO",
+      "publisher": "EZB Systems",
+      "category": "utility",
+      "homepage": "https://www.ezbsystems.com/ultraiso/",
+      "downloadPage": "https://www.ezbsystems.com/ultraiso/download.htm",
+      "winget": "EZBSystems.UltraISO",
+      "uninstallMatch": [
+        "ultraiso",
+        "软碟通"
+      ]
+    },
+    {
+      "id": "winrar",
+      "name": "WinRAR",
+      "nameEn": "WinRAR",
+      "publisher": "RARLAB",
+      "category": "utility",
+      "homepage": "https://www.win-rar.com/",
+      "downloadPage": "https://www.win-rar.com/download.html",
+      "winget": "RARLab.WinRAR",
+      "uninstallMatch": [
+        "WinRAR"
+      ]
+    },
+    {
+      "id": "wox",
+      "name": "Wox",
+      "nameEn": "Wox",
+      "publisher": "Wox Launcher",
+      "category": "utility",
+      "homepage": "https://github.com/Wox-launcher/Wox",
+      "downloadPage": "https://github.com/Wox-launcher/Wox/releases",
+      "winget": "Wox.Wox",
+      "uninstallMatch": [
+        "wox",
+        "wox launcher"
+      ]
+    },
+    {
+      "id": "aida64",
+      "name": "AIDA64",
+      "nameEn": "AIDA64",
+      "publisher": "FinalWire",
+      "category": "system",
+      "homepage": "https://www.aida64.com/",
+      "downloadPage": "https://www.aida64.com/downloads",
+      "winget": "FinalWire.AIDA64.Extreme",
+      "uninstallMatch": [
+        "aida64",
+        "finalwire"
+      ]
+    },
+    {
+      "id": "autohotkey",
+      "name": "AutoHotkey",
+      "nameEn": "AutoHotkey",
+      "publisher": "AutoHotkey Foundation",
+      "category": "system",
+      "homepage": "https://www.autohotkey.com/",
+      "downloadPage": "https://www.autohotkey.com/download/",
+      "winget": "AutoHotkey.AutoHotkey",
+      "uninstallMatch": [
+        "AutoHotkey"
+      ]
+    },
+    {
+      "id": "autoruns",
+      "name": "Autoruns",
+      "nameEn": "Autoruns",
+      "publisher": "Microsoft",
+      "category": "system",
+      "homepage": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+      "downloadPage": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+      "winget": "Microsoft.Sysinternals.Autoruns",
+      "uninstallMatch": [
+        "autoruns",
+        "autorunsc"
+      ]
+    },
+    {
+      "id": "cpuz",
+      "name": "CPU-Z",
+      "nameEn": "CPU-Z",
+      "publisher": "CPUID",
+      "category": "system",
+      "homepage": "https://www.cpuid.com/softwares/cpu-z.html",
+      "downloadPage": "https://www.cpuid.com/softwares/cpu-z.html",
+      "winget": "CPUID.CPU-Z",
+      "uninstallMatch": [
+        "CPU-Z"
+      ]
+    },
+    {
+      "id": "crystaldiskinfo",
+      "name": "CrystalDiskInfo",
+      "nameEn": "CrystalDiskInfo",
+      "publisher": "Crystal Dew World",
+      "category": "system",
+      "homepage": "https://crystalmark.info/en/software/crystaldiskinfo/",
+      "downloadPage": "https://crystalmark.info/en/download/",
+      "winget": "CrystalDewWorld.CrystalDiskInfo",
+      "uninstallMatch": [
+        "CrystalDiskInfo"
+      ]
+    },
+    {
+      "id": "crystaldiskmark",
+      "name": "CrystalDiskMark",
+      "nameEn": "CrystalDiskMark",
+      "publisher": "Crystal Dew World",
+      "category": "system",
+      "homepage": "https://crystalmark.info/en/software/crystaldiskmark/",
+      "downloadPage": "https://crystalmark.info/en/download/",
+      "winget": "CrystalDewWorld.CrystalDiskMark",
+      "uninstallMatch": [
+        "crystaldiskmark",
+        "crystal disk mark"
+      ]
+    },
+    {
+      "id": "diskgenius",
+      "name": "DiskGenius",
+      "nameEn": "DiskGenius",
+      "publisher": "易数科技",
+      "category": "system",
+      "homepage": "https://www.diskgenius.cn/",
+      "downloadPage": "https://www.diskgenius.cn/download.php",
+      "uninstallMatch": [
+        "DiskGenius"
+      ]
+    },
+    {
+      "id": "dism",
+      "name": "Dism++",
+      "nameEn": "Dism++",
+      "publisher": "初雨团队",
+      "category": "system",
+      "homepage": "https://chuyu.me/",
+      "downloadPage": "https://github.com/Chuyu-Team/Dism-Multi-language/releases/latest",
+      "uninstallMatch": [
+        "Dism++"
+      ]
+    },
+    {
+      "id": "driver-genius",
+      "name": "驱动精灵",
+      "nameEn": "DriverGenius",
+      "publisher": "DriverGenius",
+      "category": "system",
+      "homepage": "https://www.drivergenius.com/",
+      "downloadPage": "https://www.drivergenius.com/dgq.shtml",
+      "uninstallMatch": [
+        "驱动精灵",
+        "drivergenius"
+      ]
+    },
+    {
+      "id": "drivethe-life",
+      "name": "驱动人生",
+      "nameEn": "Driver The Life",
+      "publisher": "深圳市驱动人生科技股份有限公司",
+      "category": "system",
+      "homepage": "https://www.160.com/",
+      "downloadPage": "https://www.160.com/",
+      "uninstallMatch": [
+        "驱动人生",
+        "drivethe"
+      ]
+    },
+    {
+      "id": "gpu-z",
+      "name": "GPU-Z",
+      "nameEn": "GPU-Z",
+      "publisher": "TechPowerUp",
+      "category": "system",
+      "homepage": "https://www.techpowerup.com/gpuz/",
+      "downloadPage": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+      "winget": "TechPowerUp.GPU-Z",
+      "uninstallMatch": [
+        "gpu-z",
+        "gpuz"
+      ]
+    },
+    {
+      "id": "hwinfo",
+      "name": "HWiNFO",
+      "nameEn": "HWiNFO",
+      "publisher": "REALiX",
+      "category": "system",
+      "homepage": "https://www.hwinfo.com/",
+      "downloadPage": "https://www.hwinfo.com/download/",
+      "winget": "REALiX.HWiNFO",
+      "uninstallMatch": [
+        "HWiNFO"
+      ]
+    },
+    {
+      "id": "mofang",
+      "name": "软媒魔方",
+      "nameEn": "Ruanmei Mofang",
+      "publisher": "软媒",
+      "category": "system",
+      "homepage": "https://mofang.ruanmei.com/",
+      "downloadPage": "https://mofang.ruanmei.com/",
+      "uninstallMatch": [
+        "软媒魔方",
+        "mofang"
+      ]
+    },
+    {
+      "id": "ntlite",
+      "name": "NTLite",
+      "nameEn": "NTLite",
+      "publisher": "Nlitesoft",
+      "category": "system",
+      "homepage": "https://www.ntlite.com/",
+      "downloadPage": "https://www.ntlite.com/download/",
+      "uninstallMatch": [
+        "ntlite",
+        "nt lite"
+      ]
+    },
+    {
+      "id": "process-explorer",
+      "name": "Process Explorer",
+      "nameEn": "Process Explorer",
+      "publisher": "Microsoft",
+      "category": "system",
+      "homepage": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+      "downloadPage": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+      "winget": "Microsoft.Sysinternals.ProcessExplorer",
+      "uninstallMatch": [
+        "process explorer",
+        "procexp"
+      ]
+    },
+    {
+      "id": "process-lasso",
+      "name": "Process Lasso",
+      "nameEn": "Process Lasso",
+      "publisher": "Bitsum",
+      "category": "system",
+      "homepage": "https://bitsum.com/",
+      "downloadPage": "https://bitsum.com/downloads/",
+      "uninstallMatch": [
+        "process lasso",
+        "processlasso"
+      ]
+    },
+    {
+      "id": "rufus",
+      "name": "Rufus",
+      "nameEn": "Rufus",
+      "publisher": "Akeo",
+      "category": "system",
+      "homepage": "https://rufus.ie/",
+      "downloadPage": "https://rufus.ie/",
+      "winget": "Rufus.Rufus",
+      "uninstallMatch": [
+        "Rufus"
+      ]
+    },
+    {
+      "id": "system-informer",
+      "name": "System Informer",
+      "nameEn": "System Informer",
+      "publisher": "System Informer",
+      "category": "system",
+      "homepage": "https://systeminformer.com/",
+      "downloadPage": "https://systeminformer.com/",
+      "uninstallMatch": [
+        "system informer",
+        "systeminformer"
+      ]
+    },
+    {
+      "id": "tbtool",
+      "name": "图吧工具箱",
+      "nameEn": "TBTool",
+      "publisher": "图吧工具箱",
+      "category": "system",
+      "homepage": "https://www.tbtool.cn/",
+      "downloadPage": "https://www.tbtool.cn/download/",
+      "uninstallMatch": [
+        "图吧工具箱",
+        "tbtool"
+      ]
+    },
+    {
+      "id": "ventoy",
+      "name": "Ventoy",
+      "nameEn": "Ventoy",
+      "publisher": "Ventoy",
+      "category": "system",
+      "homepage": "https://www.ventoy.net/",
+      "downloadPage": "https://www.ventoy.net/en/download.html",
+      "winget": "Ventoy.Ventoy",
+      "uninstallMatch": [
+        "Ventoy"
+      ]
+    },
+    {
+      "id": "wepe",
+      "name": "微PE工具箱",
+      "nameEn": "WePE",
+      "publisher": "微PE工具箱",
+      "category": "system",
+      "homepage": "https://www.wepe.com.cn/",
+      "downloadPage": "https://www.wepe.com.cn/download.html",
+      "uninstallMatch": [
+        "微pe",
+        "wepe"
+      ]
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "nameEn": "1Password",
+      "publisher": "AgileBits",
+      "category": "security",
+      "homepage": "https://1password.com/",
+      "downloadPage": "https://1password.com/downloads/",
+      "winget": "AgileBits.1Password",
+      "uninstallMatch": [
+        "1password",
+        "agilebits"
+      ]
+    },
+    {
+      "id": "360-safe",
+      "name": "360安全卫士",
+      "nameEn": "360 Total Security",
+      "publisher": "360",
+      "category": "security",
+      "homepage": "https://weishi.360.cn/",
+      "downloadPage": "https://weishi.360.cn/",
+      "uninstallMatch": [
+        "360安全卫士",
+        "360safe"
+      ]
+    },
+    {
+      "id": "avast",
+      "name": "Avast",
+      "nameEn": "Avast",
+      "publisher": "Gen Digital",
+      "category": "security",
+      "homepage": "https://www.avast.com/",
+      "downloadPage": "https://www.avast.com/free-antivirus-download",
+      "uninstallMatch": [
+        "avast",
+        "avast free antivirus"
+      ]
+    },
+    {
+      "id": "bitwarden",
+      "name": "Bitwarden",
+      "nameEn": "Bitwarden",
+      "publisher": "Bitwarden Inc.",
+      "category": "security",
+      "homepage": "https://bitwarden.com/",
+      "downloadPage": "https://bitwarden.com/download/",
+      "winget": "Bitwarden.Bitwarden",
+      "uninstallMatch": [
+        "Bitwarden"
+      ]
+    },
+    {
+      "id": "cryptomator",
+      "name": "Cryptomator",
+      "nameEn": "Cryptomator",
+      "publisher": "Skymatic",
+      "category": "security",
+      "homepage": "https://cryptomator.org/",
+      "downloadPage": "https://cryptomator.org/downloads/",
+      "winget": "Cryptomator.Cryptomator",
+      "uninstallMatch": [
+        "cryptomator",
+        "skymatic"
+      ]
+    },
+    {
+      "id": "eset",
+      "name": "ESET NOD32",
+      "nameEn": "ESET",
+      "publisher": "ESET",
+      "category": "security",
+      "homepage": "https://www.eset.com/cn/",
+      "downloadPage": "https://www.eset.com/cn/download-home/",
+      "winget": "ESET.Nod32",
+      "uninstallMatch": [
+        "eset",
+        "nod32"
+      ]
+    },
+    {
+      "id": "huorong",
+      "name": "火绒安全",
+      "nameEn": "Huorong Security",
+      "publisher": "火绒",
+      "category": "security",
+      "homepage": "https://www.huorong.cn/",
+      "downloadPage": "https://www.huorong.cn/person5.html",
+      "uninstallMatch": [
+        "火绒",
+        "Huorong"
+      ]
+    },
+    {
+      "id": "kaspersky",
+      "name": "卡巴斯基",
+      "nameEn": "Kaspersky",
+      "publisher": "卡巴斯基实验室",
+      "category": "security",
+      "homepage": "https://www.kaspersky.com.cn/",
+      "downloadPage": "https://www.kaspersky.com.cn/downloads",
+      "uninstallMatch": [
+        "kaspersky",
+        "卡巴斯基"
+      ]
+    },
+    {
+      "id": "keepass",
+      "name": "KeePass",
+      "nameEn": "KeePass",
+      "publisher": "Dominik Reichl",
+      "category": "security",
+      "homepage": "https://keepass.info/",
+      "downloadPage": "https://keepass.info/download.html",
+      "winget": "DominikReichl.KeePass",
+      "uninstallMatch": [
+        "KeePass"
+      ]
+    },
+    {
+      "id": "malwarebytes",
+      "name": "Malwarebytes",
+      "nameEn": "Malwarebytes",
+      "publisher": "Malwarebytes",
+      "category": "security",
+      "homepage": "https://www.malwarebytes.com/",
+      "downloadPage": "https://www.malwarebytes.com/mwb-download",
+      "winget": "Malwarebytes.Malwarebytes",
+      "uninstallMatch": [
+        "malwarebytes",
+        "mbam"
+      ]
+    },
+    {
+      "id": "norton",
+      "name": "诺顿",
+      "nameEn": "Norton",
+      "publisher": "Gen Digital",
+      "category": "security",
+      "homepage": "https://cn.norton.com/",
+      "downloadPage": "https://cn.norton.com/downloads",
+      "uninstallMatch": [
+        "norton",
+        "诺顿"
+      ]
+    },
+    {
+      "id": "tencent-pcmgr",
+      "name": "腾讯电脑管家",
+      "nameEn": "Tencent PC Manager",
+      "publisher": "腾讯",
+      "category": "security",
+      "homepage": "https://guanjia.qq.com/",
+      "downloadPage": "https://guanjia.qq.com/",
+      "uninstallMatch": [
+        "电脑管家",
+        "qqpcmgr"
+      ]
+    },
+    {
+      "id": "veracrypt",
+      "name": "VeraCrypt",
+      "nameEn": "VeraCrypt",
+      "publisher": "IDRIX",
+      "category": "security",
+      "homepage": "https://www.veracrypt.io/",
+      "downloadPage": "https://www.veracrypt.io/en/Downloads.html",
+      "winget": "IDRIX.VeraCrypt",
+      "uninstallMatch": [
+        "veracrypt",
+        "vera crypt"
+      ]
+    },
+    {
+      "id": "115",
+      "name": "115生活",
+      "nameEn": "115",
+      "publisher": "广东一一五科技股份有限公司",
+      "category": "network",
+      "homepage": "https://115.com/",
+      "downloadPage": "https://115.com/download.html",
+      "uninstallMatch": [
+        "115网盘",
+        "115"
+      ]
+    },
+    {
+      "id": "aliyundrive",
+      "name": "阿里云盘",
+      "nameEn": "Aliyun Drive",
+      "publisher": "阿里巴巴",
+      "category": "network",
+      "homepage": "https://www.alipan.com/",
+      "downloadPage": "https://www.alipan.com/download",
+      "uninstallMatch": [
+        "阿里云盘",
+        "AliyunDrive",
+        "Alipan"
+      ]
+    },
+    {
+      "id": "anydesk",
+      "name": "AnyDesk",
+      "nameEn": "AnyDesk",
+      "publisher": "AnyDesk",
+      "category": "network",
+      "homepage": "https://anydesk.com/",
+      "downloadPage": "https://anydesk.com/en/downloads/windows",
+      "winget": "AnyDeskSoftwareGmbH.AnyDesk",
+      "uninstallMatch": [
+        "AnyDesk"
+      ]
+    },
+    {
+      "id": "baidunetdisk",
+      "name": "百度网盘",
+      "nameEn": "Baidu Netdisk",
+      "publisher": "百度",
+      "category": "network",
+      "homepage": "https://pan.baidu.com/",
+      "downloadPage": "https://pan.baidu.com/download",
+      "uninstallMatch": [
+        "百度网盘",
+        "BaiduNetdisk"
+      ]
+    },
+    {
+      "id": "fdm",
+      "name": "Free Download Manager",
+      "nameEn": "Free Download Manager",
+      "publisher": "SoftDeluxe",
+      "category": "network",
+      "homepage": "https://www.freedownloadmanager.org/",
+      "downloadPage": "https://www.freedownloadmanager.org/download.htm",
+      "winget": "SoftDeluxe.FreeDownloadManager",
+      "uninstallMatch": [
+        "free download manager",
+        "fdm"
+      ]
+    },
+    {
+      "id": "idm",
+      "name": "Internet Download Manager",
+      "nameEn": "Internet Download Manager",
+      "publisher": "Tonec",
+      "category": "network",
+      "homepage": "https://www.internetdownloadmanager.com/",
+      "downloadPage": "https://www.internetdownloadmanager.com/download.html",
+      "winget": "Tonec.InternetDownloadManager",
+      "uninstallMatch": [
+        "internet download manager",
+        "idm"
+      ]
+    },
+    {
+      "id": "jianguoyun",
+      "name": "坚果云",
+      "nameEn": "Nutstore",
+      "publisher": "上海亦存网络科技有限公司",
+      "category": "network",
+      "homepage": "https://www.jianguoyun.com/",
+      "downloadPage": "https://www.jianguoyun.com/s/downloads",
+      "winget": "Nutstore.Nutstore",
+      "uninstallMatch": [
+        "坚果云",
+        "nutstore"
+      ]
+    },
+    {
+      "id": "onedrive",
+      "name": "OneDrive",
+      "nameEn": "OneDrive",
+      "publisher": "Microsoft",
+      "category": "network",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-365/onedrive/",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-365/onedrive/download",
+      "winget": "Microsoft.OneDrive",
+      "uninstallMatch": [
+        "onedrive",
+        "microsoft onedrive"
+      ]
+    },
+    {
+      "id": "parsec",
+      "name": "Parsec",
+      "nameEn": "Parsec",
+      "publisher": "Parsec Cloud",
+      "category": "network",
+      "homepage": "https://parsec.app/",
+      "downloadPage": "https://parsec.app/downloads",
+      "winget": "Parsec.Parsec",
+      "uninstallMatch": [
+        "parsec",
+        "parsec cloud"
+      ]
+    },
+    {
+      "id": "quark",
+      "name": "夸克网盘",
+      "nameEn": "Quark Drive",
+      "publisher": "阿里巴巴",
+      "category": "network",
+      "homepage": "https://pan.quark.cn/",
+      "downloadPage": "https://pan.quark.cn/",
+      "uninstallMatch": [
+        "夸克",
+        "Quark"
+      ]
+    },
+    {
+      "id": "rustdesk",
+      "name": "RustDesk",
+      "nameEn": "RustDesk",
+      "publisher": "RustDesk",
+      "category": "network",
+      "homepage": "https://rustdesk.com/",
+      "downloadPage": "https://github.com/rustdesk/rustdesk/releases",
+      "uninstallMatch": [
+        "rustdesk",
+        "rust desk"
+      ]
+    },
+    {
+      "id": "sunlogin",
+      "name": "向日葵远程控制",
+      "nameEn": "Sunlogin",
+      "publisher": "贝锐",
+      "category": "network",
+      "homepage": "https://sunlogin.oray.com/",
+      "downloadPage": "https://sunlogin.oray.com/download",
+      "uninstallMatch": [
+        "向日葵",
+        "Sunlogin"
+      ]
+    },
+    {
+      "id": "teams",
+      "name": "Microsoft Teams",
+      "nameEn": "Microsoft Teams",
+      "publisher": "Microsoft",
+      "category": "network",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-teams/download-app",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-teams/download-app",
+      "winget": "Microsoft.Teams",
+      "uninstallMatch": [
+        "microsoft teams",
+        "teams"
+      ]
+    },
+    {
+      "id": "teamviewer",
+      "name": "TeamViewer",
+      "nameEn": "TeamViewer",
+      "publisher": "TeamViewer",
+      "category": "network",
+      "homepage": "https://www.teamviewer.com/",
+      "downloadPage": "https://www.teamviewer.com/en/download/windows/",
+      "winget": "TeamViewer.TeamViewer",
+      "uninstallMatch": [
+        "TeamViewer"
+      ]
+    },
+    {
+      "id": "tencent-meeting",
+      "name": "腾讯会议",
+      "nameEn": "Tencent Meeting",
+      "publisher": "腾讯",
+      "category": "network",
+      "homepage": "https://meeting.tencent.com/",
+      "downloadPage": "https://meeting.tencent.com/download/",
+      "uninstallMatch": [
+        "腾讯会议",
+        "TencentMeeting",
+        "WeMeet"
+      ]
+    },
+    {
+      "id": "tianyi-cloud",
+      "name": "天翼云盘",
+      "nameEn": "Tianyi Cloud",
+      "publisher": "中国电信",
+      "category": "network",
+      "homepage": "https://cloud.189.cn/",
+      "downloadPage": "https://cloud.189.cn/web/static/download-client/",
+      "uninstallMatch": [
+        "天翼云盘",
+        "189"
+      ]
+    },
+    {
+      "id": "todesk",
+      "name": "ToDesk",
+      "nameEn": "ToDesk",
+      "publisher": "ToDesk",
+      "category": "network",
+      "homepage": "https://www.todesk.com/",
+      "downloadPage": "https://www.todesk.com/download.html",
+      "uninstallMatch": [
+        "ToDesk"
+      ]
+    },
+    {
+      "id": "weiyun",
+      "name": "腾讯微云",
+      "nameEn": "Weiyun",
+      "publisher": "腾讯",
+      "category": "network",
+      "homepage": "https://www.weiyun.com/",
+      "downloadPage": "https://www.weiyun.com/download.html",
+      "winget": "Tencent.Weiyun",
+      "uninstallMatch": [
+        "微云",
+        "weiyun"
+      ]
+    },
+    {
+      "id": "xunlei",
+      "name": "迅雷",
+      "nameEn": "Thunder",
+      "publisher": "迅雷",
+      "category": "network",
+      "homepage": "https://www.xunlei.com/",
+      "downloadPage": "https://www.xunlei.com/",
+      "uninstallMatch": [
+        "迅雷",
+        "Thunder"
+      ]
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "nameEn": "Zoom",
+      "publisher": "Zoom Communications",
+      "category": "network",
+      "homepage": "https://zoom.us/",
+      "downloadPage": "https://zoom.us/download",
+      "winget": "Zoom.Zoom",
+      "uninstallMatch": [
+        "zoom",
+        "zoom workplace"
+      ]
+    }
+  ]
+}

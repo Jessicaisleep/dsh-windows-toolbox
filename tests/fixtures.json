@@ -1,0 +1,1610 @@
+{
+  "captured": "2026-11-18",
+  "halves": {
+    "toolbox": {
+      "ns": "/dsh-windows-toolbox/api/toolbox/",
+      "payloads": {
+        "/dsh-windows-toolbox/api/toolbox/status": {
+          "ok": true,
+          "name": "dsh-windows-toolbox",
+          "version": "0.1.0",
+          "host": {
+            "interpreter": "pwsh (PS 7)",
+            "elevated": false,
+            "user": "26035",
+            "os": "Microsoft Windows 10 专业版 (build 19045)"
+          },
+          "catalogue": [
+            {
+              "id": "junk",
+              "label": "垃圾清理",
+              "labelEn": "Junk cleanup",
+              "tagline": "扫描可安全删除的临时文件、缓存与回收站",
+              "detail": "只清理固定白名单内的目录内容，目录本身一定保留；需要管理员权限的目标在未提权时会明确跳过，不会假装清理成功。",
+              "risk": "destructive",
+              "actions": [
+                "scan",
+                "clean"
+              ],
+              "defaultParams": {},
+              "view": "junk",
+              "group": "cleanup",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "bigfiles",
+              "label": "大文件查找",
+              "labelEn": "Large files",
+              "tagline": "找出占用空间最多的单个文件",
+              "detail": "按大小阈值递归扫描选定的根目录，只读不删。根目录只能按预设 id 选择，不接受任意路径，避免扫到共享或别人的目录。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {
+                "root": "user",
+                "minMb": 100,
+                "limit": 200
+              },
+              "view": "files",
+              "group": "cleanup",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "dupfiles",
+              "label": "重复文件",
+              "labelEn": "Duplicate files",
+              "tagline": "按内容哈希找出真正重复的文件",
+              "detail": "三级漏斗：先按大小分组，再比对前 64 KiB，最后对幸存者算全量 SHA256。只有全量哈希相同才算重复，不会把同名文件误报成重复。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {
+                "root": "user",
+                "minKb": 1024,
+                "limit": 100
+              },
+              "view": "groups",
+              "group": "cleanup",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "netdiag",
+              "label": "断网急救箱",
+              "labelEn": "Network repair",
+              "tagline": "上不了网？先找断在哪一环，再一键修",
+              "detail": "先按链路顺序检查网卡、IP、网关、DNS、外网、代理、hosts，报出第一个失败的环节——那是真正的故障点，后面的失败都是它的结果。另外两项体检：Wi-Fi 信号强度与实际收发速率、以及把五个公共 DNS 和当前设置的 DNS 逐个实测一遍给出排名。修的时候给 7 个动作：清 DNS 缓存、重续 IP、重置 Winsock、重置 TCP/IP、重置 WinHTTP 代理、清 IE 代理、重启网卡。免提权的三项能直接跑；需要管理员的三项会给出完整命令并提示用「以管理员身份重试」；重置类要重启才完全生效，界面上会明说。DNS 只接受五个公开候选或「自动获取」，改之前先把旧值备份到磁盘并给出回滚命令。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "repair",
+                "dnspick"
+              ],
+              "defaultParams": {
+                "action": "scan"
+              },
+              "view": "steps",
+              "group": "network",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "health",
+              "label": "系统体检",
+              "labelEn": "Health check",
+              "tagline": "磁盘、内存、服务、设备、防护一次过一遍",
+              "detail": "每项都给出实测值、判定阈值和修复方向，不给没有依据的分数。只读，不自动修复任何问题。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "proc",
+              "label": "任务管理器",
+              "labelEn": "Task manager",
+              "tagline": "谁在偷吃 CPU、内存和磁盘",
+              "detail": "CPU 占用是两次采样求差算出来的（不是读 Get-Process 那个累计值），已排除 Idle 与 System。给出 CPU / 内存 / 磁盘 IO 各前 5 名、总览和一句白话说结论。只读，不结束任何进程。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "diskhealth",
+              "label": "硬盘健康",
+              "labelEn": "Disk health",
+              "tagline": "提前发现硬盘要坏的前兆",
+              "detail": "控制器报告的健康状态、型号、总线、序列号、分区占用都能直接读到。SMART 详细读数（通电小时、温度、磨损、读写错误）需要管理员权限；NVMe 盘的「故障预测」走的是 Windows 只枚举 ATA/SATA 的通道，本机拿不到——这两条会分开如实说明，不会填 0 假装健康。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "security",
+              "label": "系统安全防护",
+              "labelEn": "System security",
+              "tagline": "UAC、Defender、SMB、RDP、Autorun、LSA 一次过一遍",
+              "detail": "360 把它叫「防黑加固」。这里只读报告每一项的当前值和安全基线，并指出差在哪——不改任何设置。每一项都带原始注册表/WMI 读数，不是评分。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "privacy",
+              "label": "隐私保镖",
+              "labelEn": "Privacy guard",
+              "tagline": "遥测、广告 ID、定位、活动历史、应用权限总览",
+              "detail": "读 Windows 的 ConsentStore 与隐私相关策略，报告哪些开关是开的、哪些应用拿到了敏感权限。只读。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm",
+              "label": "权限管理",
+              "labelEn": "App permissions",
+              "tagline": "逐个应用看谁拿到了摄像头、麦克风、文件系统权限",
+              "detail": "和 privacy 不重复：那边看全局开关，这边看逐应用明细。能把「哪个应用在什么时候用过摄像头」追到具体时间，也能发现「门是开着的但还没有人走进来」这种隐患。只读。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "popup",
+              "label": "弹窗过滤",
+              "labelEn": "Popup sources",
+              "tagline": "找出弹窗的源头：进程、计划任务、已装软件、通知设置",
+              "detail": "360 用常驻钩子实时拦截；DSH 插件是会话级、可随时卸载的，挂不了 SetWinEventHook。所以这里不做拦截，只公布弹窗来源让用户自己关——数可见窗口、识别可疑窗口、追到计划任务与安装的软件。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "speedtest",
+              "label": "宽带测速",
+              "labelEn": "Speed test",
+              "tagline": "下载、上传、延迟、抖动，多端点回退",
+              "detail": "纯只读 HTTP 测速，不装任何东西。单点结果不可信——本机实测同一网络两轮相差 3 倍，所以列表里会同时给出所用端点与回退情况，告诉你这个数字有多可信。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "network",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "homepage",
+              "label": "主页防护",
+              "labelEn": "Homepage guard",
+              "tagline": "检查浏览器主页是否被改，快捷方式有没有被塞网址",
+              "detail": "扫 IE 起始页、策略、Edge/Chrome 启动页，以及桌面与开始菜单里所有 .lnk 的目标行有没有被追加 URL。发现被改时可以写回（默认预演，写前自动 reg export 备份）。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "slim",
+              "label": "系统盘瘦身",
+              "labelEn": "Slim system drive",
+              "tagline": "pagefile、休眠、Windows.old、更新缓存、AppData 大头",
+              "detail": "只算不改。特别会点出 pagefile 这种「不能删只能迁」的项目，避免用户以为删掉就省空间。WinSxS 不递归（枚举极慢），指向 DISM 分析命令。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "cleanup",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "rescue",
+              "label": "系统急救箱",
+              "labelEn": "System rescue",
+              "tagline": "待重启、sfc/DISM、还原点、事件日志、Defender",
+              "detail": "把「系统到底有没有坏」拆成可判定的项：sfc 与 DISM 在未提权时会如实 skip 而不是报通过；Get-WinEvent 无匹配事件是正常情况，会记成 0 条而不是读取失败。只读，不自动修任何东西。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "backup",
+              "label": "备份还原",
+              "labelEn": "Backup / restore",
+              "tagline": "导出注册表键，并在改任何东西之前自动备份",
+              "detail": "本机零还原点、VSS 停用，所以「创建还原点」这条路不通。可行的备份是把要改的注册表键 reg export 到 %LOCALAPPDATA%\\dsh-windows-toolbox\\regbackup，恢复时 reg import 回去。默认预演，只有 dryRun:false 才落盘。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "system",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "software",
+              "label": "软件管家",
+              "labelEn": "Software manager",
+              "tagline": "已装程序、官网目录命中、winget 可升级清单",
+              "detail": "官网目录只收录厂商自己的下载页——没有第三方下载站、没有短链、没有聚合页。可升级清单来自 winget 的本地元数据，不联网猜版本。安装与升级动作本版本不接线，只给命令让用户自己执行。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "apps",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "softmgr",
+              "label": "软件管家进阶",
+              "labelEn": "Software deep clean",
+              "tagline": "卸载残留、软件搬家可行性、软件权限",
+              "detail": "卸载后会留下三类残渣：安装目录、AppData 配置、注册表键。这里只扫描并列出证据，不删。软件搬家只做可行性分析（目标盘空间、占用进程、链接点），不真的搬——搬移正在被引用的目录会毁掉已装程序。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {
+                "action": "scan"
+              },
+              "view": "checks",
+              "group": "apps",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "drivers",
+              "label": "驱动清单",
+              "labelEn": "Driver inventory",
+              "tagline": "第三方驱动包、问题设备、未签名驱动",
+              "detail": "从注册表 DriverDatabase 枚举驱动包并折回设备，不用 pnputil 的本地化文本（那玩意在中文控制台下会被代码页搞坏，静默匹配 0 条）。只读。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "apps",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "drivers2",
+              "label": "驱动更新检查",
+              "labelEn": "Driver update check",
+              "tagline": "缺驱动的硬件、偏旧的驱动、厂商官网入口",
+              "detail": "必须说清楚：Windows 本地没有厂商最新版本数据库，所以这里不会、也不能声称检测到了新版本。它只报「哪些硬件没有驱动」和「哪些驱动日期偏旧」，并给出厂商官网，去哪下载由用户决定。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "apps",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "contextmenu",
+              "label": "右键管理",
+              "labelEn": "Context menu",
+              "tagline": "资源管理器右键菜单项的启用与屏蔽",
+              "detail": "枚举 12 个 shellex 挂载位置，用 Shell Extensions\\Approved 的空串机制屏蔽单项（值必须存在且为空=阻止，删掉值不等于禁用）。HKCU 免提权可写，HKLM 需要管理员。默认预演。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "apps",
+              "coverage": "full",
+              "needsAdmin": false
+            },
+            {
+              "id": "winsettings",
+              "label": "WINDOWS 设置",
+              "labelEn": "Windows settings",
+              "tagline": "深色模式、扩展名、任务栏、24 小时制等常用开关",
+              "detail": "只读扫描 38 项常用设置并报告当前值。写回只支持 HKCU 项（免提权），且先校验值类型——DWORD 传字符串会「写了但不生效」，所以这类请求直接拒绝。Win11 专有项在 Win10 上如实报「未设置=系统默认」。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {
+                "action": "scan"
+              },
+              "view": "checks",
+              "group": "system",
+              "coverage": "partial",
+              "needsAdmin": false
+            },
+            {
+              "id": "phone",
+              "label": "手机助手",
+              "labelEn": "Phone link",
+              "tagline": "Phone Link、已配对设备、WPD 与 MTP 驱动状态",
+              "detail": "AppX 枚举必须走 5.1 桥接并验证条数大于零——PS7 下 Get-AppxPackage 会静默返回空，看起来像「没装任何应用」。设备列表区分「当前连接」与「历史配对」，不会把幽灵记录报成已连接。",
+              "risk": "readonly",
+              "actions": [
+                "scan"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "apps",
+              "coverage": "readonly",
+              "needsAdmin": false
+            },
+            {
+              "id": "tweaks",
+              "label": "优化预设",
+              "labelEn": "Tweak presets",
+              "tagline": "51 项常用优化，逐项预演后再动手",
+              "detail": "数据来自 winutil（MIT），只保留注册表值与服务启动类型两类改动，丢掉了原项目里 27 条任意 PowerShell 脚本。默认预演；真写之前把每个键 reg export 备份，备份失败就中止。",
+              "risk": "reversible",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {
+                "action": "scan"
+              },
+              "view": "checks",
+              "group": "system",
+              "coverage": "partial",
+              "needsAdmin": true
+            },
+            {
+              "id": "shredder",
+              "label": "文件粉碎机",
+              "labelEn": "File shredder",
+              "tagline": "覆盖写后删除指定文件（SSD 上无效，会说明原因）",
+              "detail": "只接受显式传入的单个文件路径：不收通配符、不递归目录、拒绝系统目录与可执行扩展名、拒绝硬链接与重解析点。默认预演。SSD 上覆盖写会被主控重映射，真实效果有限——这一点会写在结果里，不当作能保证销毁。",
+              "risk": "destructive",
+              "actions": [
+                "scan",
+                "apply"
+              ],
+              "defaultParams": {},
+              "view": "checks",
+              "group": "cleanup",
+              "coverage": "partial",
+              "needsAdmin": false
+            }
+          ],
+          "capabilities": [
+            {
+              "id": "junk",
+              "cached": true,
+              "itemCount": 6,
+              "at": 1794919995560
+            },
+            {
+              "id": "bigfiles",
+              "cached": true,
+              "itemCount": 0,
+              "at": 1794919995560
+            },
+            {
+              "id": "dupfiles",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "netdiag",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "health",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "security",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "privacy",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "perm",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "popup",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "speedtest",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "homepage",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "slim",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "rescue",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "backup",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "software",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "softmgr",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "drivers",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "drivers2",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "contextmenu",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "winsettings",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "phone",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "tweaks",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            },
+            {
+              "id": "shredder",
+              "cached": false,
+              "itemCount": 0,
+              "at": 0
+            }
+          ],
+          "groups": [
+            {
+              "id": "cleanup",
+              "label": "清理与空间",
+              "labelEn": "Cleanup & space"
+            },
+            {
+              "id": "system",
+              "label": "系统与安全",
+              "labelEn": "System & security"
+            },
+            {
+              "id": "network",
+              "label": "网络",
+              "labelEn": "Network"
+            },
+            {
+              "id": "apps",
+              "label": "应用与外壳",
+              "labelEn": "Apps & shell"
+            }
+          ],
+          "junkGroups": [
+            {
+              "id": "temp",
+              "label": "临时文件",
+              "labelEn": "Temporary",
+              "targets": [
+                "user-temp",
+                "windows-temp"
+              ]
+            },
+            {
+              "id": "browser",
+              "label": "浏览器缓存",
+              "labelEn": "Browser",
+              "targets": [
+                "edge-cache"
+              ]
+            }
+          ],
+          "scanRoots": [
+            {
+              "id": "user",
+              "label": "用户目录"
+            },
+            {
+              "id": "downloads",
+              "label": "下载"
+            }
+          ]
+        },
+        "/dsh-windows-toolbox/api/toolbox/result?id=junk": {
+          "ok": true,
+          "cached": false,
+          "items": [
+            {
+              "id": "user-temp",
+              "label": "用户临时文件",
+              "path": "C:\\Users\\26035\\AppData\\Local\\Temp",
+              "kind": "dirContent",
+              "exists": true,
+              "blocked": false,
+              "needsAdmin": false,
+              "files": 5795,
+              "bytes": 619128167,
+              "note": ""
+            },
+            {
+              "id": "windows-temp",
+              "label": "系统临时文件",
+              "path": "C:\\Windows\\Temp",
+              "kind": "dirContent",
+              "exists": true,
+              "blocked": true,
+              "needsAdmin": true,
+              "files": 292,
+              "bytes": 143514433,
+              "note": ""
+            },
+            {
+              "id": "crash-dumps",
+              "label": "崩溃转储",
+              "path": "C:\\Users\\26035\\AppData\\Local\\CrashDumps",
+              "kind": "dirContent",
+              "exists": true,
+              "blocked": false,
+              "needsAdmin": false,
+              "files": 10,
+              "bytes": 14807622,
+              "note": ""
+            },
+            {
+              "id": "wer-report",
+              "label": "错误报告缓存",
+              "path": "C:\\Users\\26035\\AppData\\Local\\Microsoft\\Windows\\WER",
+              "kind": "dirContent",
+              "exists": false,
+              "blocked": false,
+              "needsAdmin": false,
+              "files": 0,
+              "bytes": 0,
+              "note": ""
+            },
+            {
+              "id": "inet-cache",
+              "label": "IE/系统网络缓存",
+              "path": "C:\\Users\\26035\\AppData\\Local\\Microsoft\\Windows\\INetCache",
+              "kind": "dirContent",
+              "exists": true,
+              "blocked": false,
+              "needsAdmin": false,
+              "files": 75,
+              "bytes": 1234158,
+              "note": ""
+            },
+            {
+              "id": "edge-cache",
+              "label": "Edge 缓存",
+              "path": "C:\\Users\\26035\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Cache",
+              "kind": "dirContent",
+              "exists": true,
+              "blocked": false,
+              "needsAdmin": false,
+              "files": 589,
+              "bytes": 392021388,
+              "note": ""
+            }
+          ],
+          "meta": {
+            "action": "scan",
+            "totalBytes": 2077738341,
+            "totalFiles": 12740,
+            "freed": 0,
+            "deleted": 0,
+            "elevated": false
+          }
+        },
+        "/dsh-windows-toolbox/api/toolbox/result?id=netdiag": {
+          "ok": true,
+          "items": [
+            {
+              "id": "link",
+              "label": "网卡连接",
+              "status": "ok",
+              "detail": "已连接: WLAN",
+              "group": "",
+              "value": "",
+              "ms": 0
+            },
+            {
+              "id": "ip",
+              "label": "IP 地址",
+              "status": "ok",
+              "detail": "WLAN=192.168.0.105",
+              "group": "",
+              "value": "",
+              "ms": 0
+            },
+            {
+              "id": "gateway-config",
+              "label": "默认网关",
+              "status": "ok",
+              "detail": "192.168.0.1",
+              "group": "",
+              "value": "",
+              "ms": 0
+            },
+            {
+              "id": "gateway-ping",
+              "label": "网关连通",
+              "status": "ok",
+              "detail": "网关 192.168.0.1 可达",
+              "group": "",
+              "value": "",
+              "ms": 1039
+            },
+            {
+              "id": "dns",
+              "label": "域名解析",
+              "status": "ok",
+              "detail": "DNS 服务器: 119.6.6.6, 192.168.0.1",
+              "group": "",
+              "value": "",
+              "ms": 28
+            },
+            {
+              "id": "internet",
+              "label": "外网访问",
+              "status": "ok",
+              "detail": "连通: http://www.msftconnecttest.com/connecttest.txt -> HTTP 200",
+              "group": "",
+              "value": "",
+              "ms": 344
+            },
+            {
+              "id": "proxy",
+              "label": "代理设置",
+              "status": "ok",
+              "detail": "未启用系统代理（进程级环境变量不在检查范围）",
+              "group": "",
+              "value": "",
+              "ms": 0
+            },
+            {
+              "id": "hosts",
+              "label": "hosts 文件",
+              "status": "ok",
+              "detail": "共 0 条自定义映射",
+              "group": "",
+              "value": "",
+              "ms": 0
+            },
+            {
+              "id": "wifi:信号",
+              "label": "Wi-Fi 信号",
+              "status": "ok",
+              "detail": "WLAN: SSID=Chen 信号=87% 频段/信道=802.11ax/48 收=138Mbps 发=1815Mbps —— 收 138Mbps / 发 1815Mbps 相差约 13.2 倍（发送远高于接收），可能是驱动或协商异常（省电模式、干扰、或驱动把速率协商错了）",
+              "group": "WiFi 体检",
+              "value": "SSID=Chen 信号=87% 频段/信道=802.11ax/48 收=138Mbps 发=1815Mbps",
+              "ms": 102
+            },
+            {
+              "id": "dns:优选",
+              "label": "DNS 优选",
+              "status": "ok",
+              "detail": "当前设置的 DNS 排第 2 名（共 7 个测出结果），118ms vs 最快 106ms，差距不足以建议切换。223.5.5.5（阿里 DNS）=106ms  192.168.0.1（当前设置）=118ms  119.6.6.6（当前设置）=125ms  114.114.114.114（114 DNS）=139ms  119.29.29.29（腾讯 DNS）=144ms  1.1.1.1（Cloudflare）=269ms  8.8.8.8（Google DNS）=342ms；测试域名 www.baidu.com（各服务器各一次，-Server 查询不走系统缓存）",
+              "group": "DNS 优选",
+              "value": "最快=106 ms（223.5.5.5） 当前=118 ms",
+              "ms": 1299
+            }
+          ],
+          "meta": {
+            "action": "scan",
+            "verdict": "网络链路各环节正常",
+            "firstFail": "",
+            "online": true,
+            "elapsedMs": 5157,
+            "adapters": [
+              {
+                "name": "蓝牙网络连接",
+                "description": "Bluetooth Device (Personal Area Network)",
+                "status": "Disconnected",
+                "linkSpeed": "3 Mbps",
+                "mac": "5C-B4-7E-DD-04-6D",
+                "virtual": false
+              },
+              {
+                "name": "以太网",
+                "description": "Realtek Gaming 2.5GbE Family Controller",
+                "status": "Disconnected",
+                "linkSpeed": "0 bps",
+                "mac": "34-5A-60-4E-BA-73",
+                "virtual": false
+              },
+              {
+                "name": "WLAN",
+                "description": "Intel(R) Wi-Fi 6E AX211 160MHz",
+                "status": "Up",
+                "linkSpeed": "1.8 Gbps",
+                "mac": "5C-B4-7E-DD-04-69",
+                "virtual": false
+              }
+            ],
+            "ipConfig": [
+              {
+                "interface": "WLAN",
+                "up": true,
+                "addresses": [
+                  "192.168.0.105"
+                ],
+                "gateways": [
+                  "192.168.0.1"
+                ],
+                "dhcp": "Enabled",
+                "apipa": false
+              },
+              {
+                "interface": "蓝牙网络连接",
+                "up": false,
+                "addresses": [
+                  "169.254.127.184"
+                ],
+                "gateways": [],
+                "dhcp": "Enabled",
+                "apipa": false
+              },
+              {
+                "interface": "以太网",
+                "up": false,
+                "addresses": [
+                  "169.254.168.255"
+                ],
+                "gateways": [],
+                "dhcp": "Enabled",
+                "apipa": false
+              }
+            ],
+            "dnsServers": [
+              "119.6.6.6",
+              "192.168.0.1"
+            ],
+            "proxy": {
+              "enabled": false,
+              "server": "",
+              "bypass": "",
+              "autoConfig": ""
+            },
+            "winhttp": "Current WinHTTP proxy settings:\r\n\r\n    Direct access (no proxy server).",
+            "hostsPath": "C:\\Windows\\System32\\drivers\\etc\\hosts",
+            "hostsBlocked": 0,
+            "hostsEntries": []
+          }
+        },
+        "/dsh-windows-toolbox/api/toolbox/result?id=perm": {
+          "ok": true,
+          "cached": false,
+          "items": [
+            {
+              "id": "perm:consentstore",
+              "group": "meta",
+              "label": "权限记录规模",
+              "status": "info",
+              "value": "29 类 · 46 条应用级记录",
+              "detail": "数据源 HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore；每条记录 = 某个应用在某一类权限上的 Allow/Deny 与最近使用时间",
+              "fix": "",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:webcam-global",
+              "group": "summary",
+              "label": "摄像头/麦克风访问",
+              "status": "warn",
+              "value": "摄像头 1 个应用 · 麦克风 2 个应用",
+              "detail": "摄像头 Allow：Microsoft.WindowsCamera_8wekyb3d8bbwe；麦克风 Allow：Microsoft.WindowsCamera_8wekyb3d8bbwe、Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe。这个数是「被明确授权」的应用数，不含已卸载但残留的记录。",
+              "fix": "设置 > 隐私和安全性 > 摄像头/麦克风：把不用的应用逐个关掉（照相机类应用日常其实用不到常驻授权）",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:broadfs",
+              "group": "summary",
+              "label": "全盘文件访问权限",
+              "status": "warn",
+              "value": "0 个应用 · 全局 Allow",
+              "detail": "全局开关是 Allow，但当前没有任何应用持有这条权限（HKCU 下 0 个应用子键）。也就是说门是开着的，只是还没人走进来——将来任何请求这项权限的应用只要被点过一次「允许」就直接生效。HKLM 侧：Allow。",
+              "fix": "把全局开关改成拒绝（设置 > 隐私和安全性 > 文件系统），或至少确认没有陌生应用能自行申请",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:sensitive-top",
+              "group": "summary",
+              "label": "敏感权限 Top",
+              "status": "warn",
+              "value": "Top 3（共 3 条已授权敏感项）",
+              "detail": "1) Microsoft.WindowsCamera_8wekyb3d8bbwe / webcam（摄像头）/ 最近 从未；2) Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe / microphone（麦克风）/ 最近 2026-06-14 13:47；3) Microsoft.WindowsCamera_8wekyb3d8bbwe / microphone（麦克风）/ 最近 从未",
+              "fix": "按顺序看：排在前面的每一条都值得问一句「这个应用真的需要吗」。摄像头/麦克风/位置/全盘文件是四类最该收紧的权限。",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:top-1",
+              "group": "sensitive",
+              "label": "敏感授权 #1",
+              "status": "bad",
+              "value": "Microsoft.WindowsCamera_8wekyb3d8bbwe → 摄像头",
+              "detail": "capability=webcam · 授权=Allow · 最近使用=从未 · 首次=从未 · Store/打包应用",
+              "fix": "不需要就在设置里关掉",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:top-2",
+              "group": "sensitive",
+              "label": "敏感授权 #2",
+              "status": "bad",
+              "value": "Microsoft.WindowsSoundRecorder_8wekyb3d8bbwe → 麦克风",
+              "detail": "capability=microphone · 授权=Allow · 最近使用=2026-06-14 13:47 · 首次=2026-06-14 13:47 · Store/打包应用",
+              "fix": "不需要就在设置里关掉",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:top-3",
+              "group": "sensitive",
+              "label": "敏感授权 #3",
+              "status": "bad",
+              "value": "Microsoft.WindowsCamera_8wekyb3d8bbwe → 麦克风",
+              "detail": "capability=microphone · 授权=Allow · 最近使用=从未 · 首次=从未 · Store/打包应用",
+              "fix": "不需要就在设置里关掉",
+              "needsAdmin": false
+            },
+            {
+              "id": "perm:app-c-program-files-x86-microsoft-edge-appli",
+              "group": "apps",
+              "label": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+              "status": "info",
+              "value": "残留记录（无 Value）",
+              "detail": "麦克风[无值]；最近使用=2026-06-16 15:26；桌面程序",
+              "fix": "",
+              "needsAdmin": false
+            }
+          ],
+          "meta": {
+            "summary": {
+              "total": 33,
+              "ok": 0,
+              "warn": 7,
+              "bad": 3,
+              "info": 23,
+              "skip": 0
+            }
+          }
+        },
+        "/dsh-windows-toolbox/api/toolbox/result?id=slim": {
+          "ok": true,
+          "cached": false,
+          "items": [
+            {
+              "id": "slim:disk",
+              "group": "磁盘",
+              "label": "C 盘容量 / 可用",
+              "status": "info",
+              "value": "可用 165.21 GB / 总 302.03 GB",
+              "detail": "已用 136.82 GB，可用率 54.7%。以下各项的回收价值以该可用量为参照。",
+              "fix": "",
+              "needsAdmin": false
+            },
+            {
+              "id": "slim:hiberfil",
+              "group": "休眠",
+              "label": "hiberfil.sys（休眠镜像）",
+              "status": "info",
+              "value": "不存在（0 B）",
+              "detail": "C:\\hiberfil.sys 不存在；HibernateEnabled=0 → 休眠已关闭，该项无可回收空间。",
+              "fix": "无需处理。若要恢复休眠需管理员执行 powercfg /h on，会重新占用数 GB。",
+              "needsAdmin": false
+            },
+            {
+              "id": "slim:pagefile",
+              "group": "虚拟内存",
+              "label": "pagefile.sys（分页文件）",
+              "status": "bad",
+              "value": "48.83 GB",
+              "detail": "实测 52428800000 bytes（48.83 GB）。AutomaticManagedPagefile=False（False=用户自定义大小，系统不会自己缩）；Win32_PageFileSetting: c:\\pagefile.sys 50000/50000 MB；注册表 PagingFiles: c:\\pagefile.sys 50000 50000；已分配 50000 MB / 当前用 689 MB / 峰值 6457 MB。该文件占用大但属于系统必需：不能直接删除，只能「缩小」或「迁到其它盘」。",
+              "fix": "迁到其它盘（推荐 D 盘）：系统属性→高级→性能设置→高级→更改虚拟内存→取消「自动管理」→选中 C: 设为「无分页文件」→ 选中 D: 设为「自定义大小」（如初始/最大各 8192-16384 MB，按物理内存 1-1.5 倍）→ 设置→确定→重启生效。或命令行：wmic pagefileset where name=\"C:\\\\pagefile.sys\" set InitialSize=8192,MaximumSize=8192（需管理员，改完重启）。注意：完全关掉分页文件会让内存不足时程序直接崩溃，不建议；C 盘保留 1-2 GB 小块更稳。",
+              "needsAdmin": true
+            },
+            {
+              "id": "slim:restore",
+              "group": "系统还原",
+              "label": "系统还原占用",
+              "status": "skip",
+              "value": "未测量（需管理员）",
+              "detail": "本机 Win32_ShadowStorage 与 Win32_ShadowCopy 均无法初始化，读不到 UsedSpace/MaxSpace：初始化失败 （ShadowCopy: 初始化失败 ）；还原点数量=不可枚举；DiskPercent=15。vssadmin list shadowstorage 同样提示需要提升的管理员权限。按用户核对的实际状态为「0 个还原点」，若确实为零则该项可回收 0 GB。",
+              "fix": "以管理员身份运行 vssadmin list shadowstorage 查看实际占用；回收用 vssadmin delete shadows /for=C: /all /quiet（会删掉所有还原点，不可恢复）。",
+              "needsAdmin": true
+            },
+            {
+              "id": "slim:windowsold",
+              "group": "升级残留",
+              "label": "Windows.old",
+              "status": "info",
+              "value": "不存在（0 B）",
+              "detail": "C:\\Windows.old 不存在，无升级残留可回收（目录不存在）；C:\\$Windows.~BT 存在 5 文件 14.9 KB；C:\\$Windows.~WS 存在 7 文件 216.3 KB。",
+              "fix": "无需处理。",
+              "needsAdmin": false
+            },
+            {
+              "id": "slim:winsxs",
+              "group": "组件存储",
+              "label": "WinSxS（组件存储）",
+              "status": "skip",
+              "value": "未测量（需管理员）",
+              "detail": "按要求不递归统计 C:\\Windows\\WinSxS：本机实测 Get-ChildItem -Recurse 在该目录取前 50 个文件就要 15.5s，全量 88982 文件 / 11.5 GB 耗时 15.2s，会让整个探针超时；且表观大小本身不可信（大量硬链接会重复计入）。真实可回收量必须用 DISM /Online /Cleanup-Image /AnalyzeComponentStore，该命令需要管理员权限。",
+              "fix": "管理员执行：DISM /Online /Cleanup-Image /AnalyzeComponentStore 查看「可回收的组件存储」；确认后执行 DISM /Online /Cleanup-Image /StartComponentCleanup /ResetBase（ResetBase 后不能再卸载已安装更新）。",
+              "needsAdmin": true
+            }
+          ],
+          "meta": {
+            "summary": {
+              "total": 13,
+              "ok": 1,
+              "warn": 1,
+              "bad": 1,
+              "info": 8,
+              "skip": 2
+            }
+          }
+        }
+      },
+      "mustShow": {
+        "zh": [
+          "360 工具箱",
+          "清理与空间",
+          "垃圾清理",
+          "大文件查找",
+          "用户临时文件"
+        ],
+        "en": [
+          "360 Toolbox",
+          "Cleanup & space",
+          "Junk cleanup",
+          "Large files"
+        ]
+      },
+      "labels": {
+        "zh": {
+          "networkGroup": "网络",
+          "dnsCap": "断网诊断",
+          "dnsFormTitle": "切换到这个 DNS"
+        },
+        "en": {
+          "networkGroup": "Network",
+          "dnsCap": "Adapter",
+          "dnsFormTitle": "Switch to this DNS"
+        }
+      },
+      "explainOnFace": null,
+      "explainOnExpand": null,
+      "openName": null,
+      "noExplainName": null
+    },
+    "manage": {
+      "ns": "/dsh-windows-toolbox/api/manage/",
+      "payloads": {
+        "/dsh-windows-toolbox/api/manage/status": {
+          "ok": true,
+          "name": "dsh-windows-toolbox",
+          "version": "0.1.0",
+          "host": {
+            "interpreter": "pwsh (PS 7)",
+            "elevated": false,
+            "user": "26035",
+            "os": "Microsoft Windows 10 专业版 (build 19045)"
+          },
+          "total": 2462,
+          "elapsedMs": 5200,
+          "sources": [
+            {
+              "id": "svc",
+              "label": "服务",
+              "labelEn": "Services",
+              "risk": "reversible",
+              "actions": [
+                "enable",
+                "disable"
+              ],
+              "description": "Windows 服务：开机就在后台运行的程序，不显示窗口。",
+              "total": 272,
+              "enabled": 108,
+              "disabled": 164,
+              "unknown": 0,
+              "ms": 963,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "task",
+              "label": "计划任务",
+              "labelEn": "Tasks",
+              "risk": "reversible",
+              "actions": [
+                "enable",
+                "disable"
+              ],
+              "description": "计划任务：按时间或事件自动运行的程序。",
+              "total": 165,
+              "enabled": 131,
+              "disabled": 34,
+              "unknown": 0,
+              "ms": 1317,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "autorun",
+              "label": "开机自启",
+              "labelEn": "Autostart",
+              "risk": "reversible",
+              "actions": [
+                "enable",
+                "disable"
+              ],
+              "description": "开机会自动运行的东西：Run/RunOnce 十处注册表项、启动文件夹、UWP StartupTask、登录/开机触发的计划任务、自动启动的服务、Active Setup",
+              "total": 136,
+              "enabled": 91,
+              "disabled": 45,
+              "unknown": 0,
+              "ms": 2284,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "com",
+              "label": "右键扩展",
+              "labelEn": "Shell extensions",
+              "risk": "reversible",
+              "actions": [
+                "enable",
+                "disable"
+              ],
+              "description": "外壳扩展：给资源管理器加菜单项或属性页。",
+              "total": 75,
+              "enabled": 75,
+              "disabled": 0,
+              "unknown": 0,
+              "ms": 2342,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "program",
+              "label": "已安装程序",
+              "labelEn": "Programs",
+              "risk": "destructive",
+              "actions": [
+                "uninstall"
+              ],
+              "description": "已安装程序：可卸载（先预演再执行）。",
+              "total": 114,
+              "enabled": 114,
+              "disabled": 0,
+              "unknown": 0,
+              "ms": 599,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "appx",
+              "label": "AppX 应用",
+              "labelEn": "AppX",
+              "risk": "destructive",
+              "actions": [
+                "uninstall"
+              ],
+              "description": "AppX/MSIX 商店应用，可卸载（非系统包）。",
+              "total": 100,
+              "enabled": 100,
+              "disabled": 0,
+              "unknown": 0,
+              "ms": 3983,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "drv",
+              "label": "驱动",
+              "labelEn": "Drivers",
+              "risk": "destructive",
+              "actions": [
+                "uninstall"
+              ],
+              "description": "驱动程序包，仅第三方且未被占用的可删。",
+              "total": 418,
+              "enabled": 45,
+              "disabled": 205,
+              "unknown": 168,
+              "ms": 1699,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "firewall",
+              "label": "防火墙规则",
+              "labelEn": "Firewall rules",
+              "risk": "reversible",
+              "actions": [
+                "enable",
+                "disable"
+              ],
+              "description": "防火墙规则：每条入站/出站放行或阻断。",
+              "total": 546,
+              "enabled": 347,
+              "disabled": 199,
+              "unknown": 0,
+              "ms": 1107,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "ifeo",
+              "label": "IFEO 劫持",
+              "labelEn": "IFEO hijack",
+              "risk": "readonly",
+              "actions": [],
+              "description": "映像劫持：启动某个 exe 时实际运行另一个程序。",
+              "total": 86,
+              "enabled": 86,
+              "disabled": 0,
+              "unknown": 0,
+              "ms": 562,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "fileexts",
+              "label": "文件关联",
+              "labelEn": "File associations",
+              "risk": "readonly",
+              "actions": [],
+              "description": "文件关联：哪种扩展名交给哪个程序打开。",
+              "total": 520,
+              "enabled": 163,
+              "disabled": 357,
+              "unknown": 0,
+              "ms": 605,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "credprov",
+              "label": "凭据提供程序",
+              "labelEn": "Credential providers",
+              "risk": "readonly",
+              "actions": [],
+              "description": "凭据提供程序：登录界面上多出来的登录方式。",
+              "total": 22,
+              "enabled": 22,
+              "disabled": 0,
+              "unknown": 0,
+              "ms": 485,
+              "stale": false,
+              "error": ""
+            },
+            {
+              "id": "repair",
+              "label": "系统修复",
+              "labelEn": "System repair",
+              "risk": "readonly",
+              "actions": [],
+              "description": "八项配置漂移检查（hosts / IE 主页 / DNS / 连接数 / UAC / 冗余注册表项 / 字体缓存 / 图标缓存）",
+              "total": 8,
+              "enabled": 0,
+              "disabled": 0,
+              "unknown": 8,
+              "ms": 882,
+              "stale": false,
+              "error": "",
+              "meta": {
+                "ok": true,
+                "count": 8,
+                "summary": {
+                  "total": 8,
+                  "ok": 6,
+                  "warn": 0,
+                  "bad": 0,
+                  "info": 1,
+                  "skip": 1
+                }
+              }
+            }
+          ]
+        },
+        "/dsh-windows-toolbox/api/manage/entries": {
+          "ok": true,
+          "total": 2462,
+          "shown": 6,
+          "rows": [
+            {
+              "id": "svc:machine:Spooler",
+              "source": "svc",
+              "kind": "service",
+              "name": "Spooler",
+              "state": "Running",
+              "enabled": true,
+              "path": "C:\\WINDOWS\\System32\\spoolsv.exe",
+              "version": "",
+              "publisher": "Microsoft Corporation",
+              "scope": "machine",
+              "view": "64",
+              "risk": "reversible",
+              "detail": {
+                "name": "Spooler"
+              },
+              "explain": {
+                "kindLabel": "Windows 服务",
+                "what": "一个后台服务。它不显示窗口，开机就在后台运行。",
+                "where": "任务管理器的「服务」选项卡，或服务管理器里",
+                "purpose": "由 Microsoft Corporation 提供，是打印后台处理服务，负责把要打印的文件排队送进打印机。",
+                "ifOff": "关掉之后打印队列会停止工作，所有打印任务都会失败。",
+                "origin": "microsoft",
+                "originName": "Microsoft Corporation",
+                "facts": [
+                  [
+                    "由哪个文件提供",
+                    "C:\\WINDOWS\\System32\\spoolsv.exe"
+                  ],
+                  [
+                    "启动类型",
+                    "Automatic"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "task:machine:\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+              "source": "task",
+              "kind": "task",
+              "name": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+              "state": "Ready",
+              "enabled": false,
+              "path": "",
+              "version": "",
+              "publisher": "Microsoft Corporation",
+              "scope": "machine",
+              "view": "64",
+              "risk": "reversible",
+              "detail": {
+                "taskPath": "\\Microsoft\\Windows\\Application Experience\\",
+                "taskName": "Microsoft Compatibility Appraiser"
+              },
+              "explain": {
+                "kindLabel": "计划任务",
+                "what": "一条计划任务。它按触发条件（时间、开机、登录）自动运行一次。",
+                "where": "任务计划程序库的 Application Experience 文件夹里",
+                "purpose": "由 Microsoft Corporation 提供，注册名是「Microsoft Compatibility Appraiser」。",
+                "ifOff": "关掉之后 Windows 不会自动上报兼容性数据。",
+                "origin": "microsoft",
+                "originName": "Microsoft Corporation",
+                "facts": [
+                  [
+                    "任务路径",
+                    "\\Microsoft\\Windows\\Application Experience\\"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "svc:machine:ZhuDongFangYu",
+              "source": "svc",
+              "kind": "service",
+              "name": "ZhuDongFangYu",
+              "state": "Running",
+              "enabled": true,
+              "path": "D:\\Program Files (x86)\\360\\360Safe\\deepscan\\ZhuDongFangYu.exe",
+              "version": "14.0.2.1004",
+              "publisher": "360",
+              "scope": "machine",
+              "view": "64",
+              "risk": "blocked",
+              "detail": {
+                "name": "ZhuDongFangYu"
+              },
+              "explain": {
+                "kindLabel": "Windows 服务",
+                "what": "一个后台服务。它不显示窗口，开机就在后台运行。",
+                "where": "任务管理器的「服务」选项卡，或服务管理器里",
+                "purpose": "由「360安全卫士」提供，注册名是「ZhuDongFangYu」。",
+                "ifOff": "关掉之后 360 的主动防御会失效，病毒拦截与自我保护会停止工作。",
+                "origin": "thirdparty",
+                "originName": "360.cn",
+                "facts": [
+                  [
+                    "由哪个文件提供",
+                    "D:\\Program Files (x86)\\360\\360Safe\\deepscan\\ZhuDongFangYu.exe"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "com:machine:{8F2C0D11-0000-4B2E-9A31-360ZIP000001}",
+              "source": "com",
+              "kind": "shellex",
+              "name": "360压缩 Shell Extension",
+              "state": "",
+              "enabled": null,
+              "path": "D:\\Program Files (x86)\\360\\360Zip\\360ZipExt64.dll",
+              "version": "",
+              "publisher": "360.cn",
+              "scope": "machine",
+              "view": "64",
+              "risk": "reversible",
+              "detail": {
+                "server": "D:\\Program Files (x86)\\360\\360Zip\\360ZipExt64.dll",
+                "clsid": "{8F2C0D11-0000-4B2E-9A31-360ZIP000001}"
+              },
+              "explain": {
+                "kindLabel": "右键菜单扩展",
+                "what": "一个外壳扩展。它不会自己运行，但会在资源管理器的菜单或属性对话框里增加一项。",
+                "where": "在任意文件上右键时出现的菜单项",
+                "purpose": "由「360压缩 Shell Extension」提供，注册名是「360压缩文件类型」。",
+                "ifOff": "关掉之后这一项菜单/选项卡会消失，压缩包的右键菜单恢复成系统默认。",
+                "origin": "thirdparty",
+                "originName": "360.cn",
+                "facts": [
+                  [
+                    "由哪个文件提供",
+                    "D:\\Program Files (x86)\\360\\360Zip\\360ZipExt64.dll"
+                  ],
+                  [
+                    "CLSID",
+                    "{8F2C0D11-0000-4B2E-9A31-360ZIP000001}"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "program:machine:HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1",
+              "source": "program",
+              "kind": "program",
+              "name": "Git",
+              "state": "installed",
+              "enabled": true,
+              "path": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+              "version": "2.55.0.5",
+              "publisher": "The Git Development Community",
+              "scope": "machine",
+              "view": "64",
+              "risk": "destructive",
+              "detail": {
+                "source": "uninst",
+                "kind": "program",
+                "name": "Git",
+                "state": "installed",
+                "path": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "version": "2.55.0.5",
+                "publisher": "The Git Development Community",
+                "installLocation": "C:\\Program Files\\Git\\",
+                "uninstall": "\"C:\\Program Files\\Git\\unins000.exe\"",
+                "quietUninstall": "\"C:\\Program Files\\Git\\unins000.exe\" /SILENT",
+                "modify": "",
+                "productCode": "Git_is1",
+                "scope": "machine",
+                "view": "64",
+                "keyPath": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Git_is1",
+                "installDate": "20260922",
+                "sizeKb": 344561,
+                "systemComponent": ""
+              },
+              "explain": {
+                "kindLabel": "已安装软件",
+                "what": "版本 2.55.0.5，发布者「The Git Development Community」，登记体积 336.5 MB，有自己的安装目录 C:\\Program Files\\Git\\。",
+                "where": "「设置 → 应用 → 已安装的应用」或「控制面板 → 程序和功能」里的「Git」。",
+                "purpose": "它在「程序和功能」里有一条正式登记：卸载入口是 unins000，安装日期 2026-09-22，登记体积 336.5 MB，装在 C:\\Program Files\\Git\\，产品代码 Git_is1。绿色软件不会留下这条登记，所以这一条是真被安装程序写进系统的。它另有一条静默卸载命令 unins000，可无人值守地卸载。",
+                "ifOff": "这一版只读：它告诉你去哪儿卸载，但不代你执行。要卸载请走系统自带的卸载入口（就是上面这条命令），或者先扫描掌握情况。",
+                "origin": "thirdparty",
+                "originName": "The Git Development Community",
+                "facts": [
+                  [
+                    "版本",
+                    "2.55.0.5"
+                  ],
+                  [
+                    "发布者",
+                    "The Git Development Community"
+                  ],
+                  [
+                    "安装位置",
+                    "C:\\Program Files\\Git\\"
+                  ],
+                  [
+                    "安装时间",
+                    "2026-09-22"
+                  ],
+                  [
+                    "占用大小",
+                    "336.5 MB"
+                  ],
+                  [
+                    "卸载命令",
+                    "\"C:\\Program Files\\Git\\unins000.exe\""
+                  ],
+                  [
+                    "静默卸载",
+                    "\"C:\\Program Files\\Git\\unins000.exe\" /SILENT"
+                  ],
+                  [
+                    "产品代码",
+                    "Git_is1"
+                  ]
+                ]
+              }
+            },
+            {
+              "id": "drv:machine:0000:oem19.inf",
+              "source": "drv",
+              "kind": "driver",
+              "name": "oem19.inf",
+              "state": "OK",
+              "enabled": true,
+              "path": "C:\\Windows\\System32\\DriverStore\\FileRepository\\oem19.inf",
+              "version": "",
+              "publisher": "",
+              "scope": "machine",
+              "view": "64",
+              "risk": "readonly",
+              "detail": {
+                "inf": "oem19.inf"
+              },
+              "explain": null
+            }
+          ]
+        }
+      },
+      "mustShow": {
+        "zh": [
+          "Windows 插件化管理器",
+          "服务",
+          "Spooler",
+          "ZhuDongFangYu",
+          "2462",
+          "系统修复",
+          "Git"
+        ],
+        "en": [
+          "Windows Plugin Manager",
+          "Spooler"
+        ]
+      },
+      "labels": {
+        "zh": null,
+        "en": null
+      },
+      "explainOnFace": [
+        "一个外壳扩展。它不会自己运行，但会在资源管理器的菜单或属性对话框里增加一项。",
+        "在任意文件上右键时出现的菜单项",
+        "一个后台服务。它不显示窗口，开机就在后台运行。"
+      ],
+      "explainOnExpand": [
+        "由「360压缩 Shell Extension」提供，注册名是「360压缩文件类型」。",
+        "关掉之后这一项菜单/选项卡会消失，压缩包的右键菜单恢复成系统默认。",
+        "D:\\Program Files (x86)\\360\\360Zip\\360ZipExt64.dll",
+        "{8F2C0D11-0000-4B2E-9A31-360ZIP000001}"
+      ],
+      "openName": "360压缩 Shell Extension",
+      "noExplainName": "oem19.inf"
+    }
+  }
+}

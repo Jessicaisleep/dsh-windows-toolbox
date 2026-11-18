@@ -1,0 +1,76 @@
+{
+  "name": "dsh-windows-toolbox",
+  "version": "0.2.0",
+  "type": "module",
+  "description": "One Windows toolbox with two halves. The registration-point half indexes eleven places Windows lets software hook itself in — services, scheduled tasks, autostart (six sources), shell extensions, installed programs, AppX/MSIX, drivers, firewall rules, IFEO, file associations, credential providers — and can enable, disable or roll back five of them, with a plain-language explanation for every row. The maintenance half is 25 read-mostly capabilities: cleanup across nine groups, large and duplicate files, network diagnosis and repair, DNS switching, security and privacy posture, speed test, tweaks, shredder, driver and software catalogs. Everything runs locally; every write is a dry run first. · WINDOWS工具箱：一半是 Windows 插件化管理（十一类注册点索引 + 八项系统修复），一半是系统维护（25 项能力：清理、体检、修复、软件与驱动）。全部本地执行，写操作先预演。",
+  "main": "./index.js",
+  "icon": "./icon.svg",
+  "license": "MIT",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "lib/*.js",
+    "lib/probes/*.ps1",
+    "lib/probes/CONTRACT.md",
+    "lib/presets/*.json",
+    "locale/*.json",
+    "docs",
+    "tests",
+    "tools",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "windows",
+    "toolbox",
+    "plugin-manager",
+    "services",
+    "tasks",
+    "autorun",
+    "shell-extension",
+    "appx",
+    "msix",
+    "drivers",
+    "firewall",
+    "cleanup",
+    "debloat",
+    "diagnostics"
+  ],
+  "engines": {
+    "node": ">=22",
+    "dsh": "^0.2.1-rc.1 || ^0.2.2-rc.1 || ^0.2.3-rc.1"
+  },
+  "scripts": {
+    "test": "node tests/run-all.mjs",
+    "test:unit": "node tests/run-all.mjs --unit-only",
+    "test:render": "node tests/render.mjs",
+    "audit:probes": "node tools/audit-probes.mjs",
+    "build:client": "node tools/merge-client.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-theme"
+      ]
+    }
+  }
+}

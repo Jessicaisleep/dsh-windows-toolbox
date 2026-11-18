@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-windows-toolbox
+      name: 'dsh-windows-toolbox'
+      config: {}

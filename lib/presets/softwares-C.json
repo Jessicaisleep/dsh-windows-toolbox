@@ -1,0 +1,538 @@
+{
+  "version": 1,
+  "captured": "2026-11-17",
+  "policy": "official-only",
+  "part": "C",
+  "shard": "C",
+  "policyNote": "分片 C：utility / system / security / network。每条 homepage 与 downloadPage 均在 2026-11-17 用真实 HTTP 请求（GET，跟随跳转，桌面 UA）确认返回 200，且域名属于厂商自己。不收集下载站/聚合站/短链，不凭记忆填 URL。无法实测 2xx 的候选一律剔除（见交付说明）。与 softwares.json 及分片 A 无重复 id。",
+  "categories": {
+    "utility": {
+      "zh": "实用工具",
+      "en": "Utilities"
+    },
+    "system": {
+      "zh": "系统工具",
+      "en": "System tools"
+    },
+    "security": {
+      "zh": "安全防护",
+      "en": "Security"
+    },
+    "network": {
+      "zh": "网络工具",
+      "en": "Network"
+    }
+  },
+  "softwares": [
+    {
+      "id": "peazip",
+      "name": "PeaZip",
+      "nameEn": "PeaZip",
+      "publisher": "Giorgio Tani",
+      "category": "utility",
+      "homepage": "https://peazip.github.io/",
+      "downloadPage": "https://peazip.github.io/download-installer-p-windows.html",
+      "winget": "Giorgiotani.Peazip",
+      "uninstallMatch": ["peazip", "pea zip"]
+    },
+    {
+      "id": "listary",
+      "name": "Listary",
+      "nameEn": "Listary",
+      "publisher": "Bopsoft",
+      "category": "utility",
+      "homepage": "https://www.listary.com/",
+      "downloadPage": "https://www.listary.com/download",
+      "uninstallMatch": ["listary", "listary pro"]
+    },
+    {
+      "id": "flow-launcher",
+      "name": "Flow Launcher",
+      "nameEn": "Flow Launcher",
+      "publisher": "Flow Launcher",
+      "category": "utility",
+      "homepage": "https://www.flowlauncher.com/",
+      "downloadPage": "https://github.com/Flow-Launcher/Flow.Launcher/releases",
+      "winget": "Flow-Launcher.Flow-Launcher",
+      "uninstallMatch": ["flow launcher", "flowlauncher"]
+    },
+    {
+      "id": "quicker",
+      "name": "Quicker",
+      "nameEn": "Quicker",
+      "publisher": "上海嘉虹信息科技发展有限公司",
+      "category": "utility",
+      "homepage": "https://www.getquicker.net/",
+      "downloadPage": "https://www.getquicker.net/Download",
+      "uninstallMatch": ["quicker", "getquicker"]
+    },
+    {
+      "id": "ditto",
+      "name": "Ditto",
+      "nameEn": "Ditto",
+      "publisher": "Scott Brogden",
+      "category": "utility",
+      "homepage": "https://github.com/sabrogden/Ditto",
+      "downloadPage": "https://github.com/sabrogden/Ditto/releases",
+      "winget": "Ditto.Ditto",
+      "uninstallMatch": ["ditto", "ditto portable"]
+    },
+    {
+      "id": "revo-uninstaller",
+      "name": "Revo Uninstaller",
+      "nameEn": "Revo Uninstaller",
+      "publisher": "VS Revo Group",
+      "category": "utility",
+      "homepage": "https://www.revouninstaller.com/",
+      "downloadPage": "https://www.revouninstaller.com/revo-uninstaller-free-download/",
+      "winget": "RevoUninstaller.RevoUninstaller",
+      "uninstallMatch": ["revo uninstaller", "revouninstaller"]
+    },
+    {
+      "id": "bulk-crap-uninstaller",
+      "name": "Bulk Crap Uninstaller",
+      "nameEn": "Bulk Crap Uninstaller",
+      "publisher": "Klocman",
+      "category": "utility",
+      "homepage": "https://www.bcuninstaller.com/",
+      "downloadPage": "https://www.bcuninstaller.com/",
+      "winget": "Klocman.BulkCrapUninstaller",
+      "uninstallMatch": ["bulk crap uninstaller", "bcuninstaller"]
+    },
+    {
+      "id": "ccleaner",
+      "name": "CCleaner",
+      "nameEn": "CCleaner",
+      "publisher": "Piriform",
+      "category": "utility",
+      "homepage": "https://www.ccleaner.com/",
+      "downloadPage": "https://www.ccleaner.com/ccleaner/download/",
+      "winget": "Piriform.CCleaner",
+      "uninstallMatch": ["ccleaner", "piriform ccleaner"]
+    },
+    {
+      "id": "bleachbit",
+      "name": "BleachBit",
+      "nameEn": "BleachBit",
+      "publisher": "BleachBit",
+      "category": "utility",
+      "homepage": "https://www.bleachbit.org/",
+      "downloadPage": "https://www.bleachbit.org/download",
+      "winget": "BleachBit.BleachBit",
+      "uninstallMatch": ["bleachbit", "bleachbit console"]
+    },
+    {
+      "id": "ultraiso",
+      "name": "UltraISO 软碟通",
+      "nameEn": "UltraISO",
+      "publisher": "EZB Systems",
+      "category": "utility",
+      "homepage": "https://www.ezbsystems.com/ultraiso/",
+      "downloadPage": "https://www.ezbsystems.com/ultraiso/download.htm",
+      "winget": "EZBSystems.UltraISO",
+      "uninstallMatch": ["ultraiso", "软碟通"]
+    },
+    {
+      "id": "poweriso",
+      "name": "PowerISO",
+      "nameEn": "PowerISO",
+      "publisher": "Power Software",
+      "category": "utility",
+      "homepage": "https://www.poweriso.com/",
+      "downloadPage": "https://www.poweriso.com/download.htm",
+      "winget": "PowerSoftware.PowerISO",
+      "uninstallMatch": ["poweriso", "power iso"]
+    },
+    {
+      "id": "sharex",
+      "name": "ShareX",
+      "nameEn": "ShareX",
+      "publisher": "ShareX Team",
+      "category": "utility",
+      "homepage": "https://getsharex.com/",
+      "downloadPage": "https://getsharex.com/downloads",
+      "winget": "ShareX.ShareX",
+      "uninstallMatch": ["sharex", "share x"]
+    },
+    {
+      "id": "treesize-free",
+      "name": "TreeSize Free",
+      "nameEn": "TreeSize Free",
+      "publisher": "JAM Software",
+      "category": "utility",
+      "homepage": "https://www.jam-software.com/treesize",
+      "downloadPage": "https://www.jam-software.com/treesize",
+      "winget": "JAMSoftware.TreeSize.Free",
+      "uninstallMatch": ["treesize", "treesize free"]
+    },
+    {
+      "id": "wox",
+      "name": "Wox",
+      "nameEn": "Wox",
+      "publisher": "Wox Launcher",
+      "category": "utility",
+      "homepage": "https://github.com/Wox-launcher/Wox",
+      "downloadPage": "https://github.com/Wox-launcher/Wox/releases",
+      "winget": "Wox.Wox",
+      "uninstallMatch": ["wox", "wox launcher"]
+    },
+    {
+      "id": "gpu-z",
+      "name": "GPU-Z",
+      "nameEn": "GPU-Z",
+      "publisher": "TechPowerUp",
+      "category": "system",
+      "homepage": "https://www.techpowerup.com/gpuz/",
+      "downloadPage": "https://www.techpowerup.com/download/techpowerup-gpu-z/",
+      "winget": "TechPowerUp.GPU-Z",
+      "uninstallMatch": ["gpu-z", "gpuz"]
+    },
+    {
+      "id": "crystaldiskmark",
+      "name": "CrystalDiskMark",
+      "nameEn": "CrystalDiskMark",
+      "publisher": "Crystal Dew World",
+      "category": "system",
+      "homepage": "https://crystalmark.info/en/software/crystaldiskmark/",
+      "downloadPage": "https://crystalmark.info/en/download/",
+      "winget": "CrystalDewWorld.CrystalDiskMark",
+      "uninstallMatch": ["crystaldiskmark", "crystal disk mark"]
+    },
+    {
+      "id": "aida64",
+      "name": "AIDA64",
+      "nameEn": "AIDA64",
+      "publisher": "FinalWire",
+      "category": "system",
+      "homepage": "https://www.aida64.com/",
+      "downloadPage": "https://www.aida64.com/downloads",
+      "winget": "FinalWire.AIDA64.Extreme",
+      "uninstallMatch": ["aida64", "finalwire"]
+    },
+    {
+      "id": "driver-genius",
+      "name": "驱动精灵",
+      "nameEn": "DriverGenius",
+      "publisher": "DriverGenius",
+      "category": "system",
+      "homepage": "https://www.drivergenius.com/",
+      "downloadPage": "https://www.drivergenius.com/dgq.shtml",
+      "uninstallMatch": ["驱动精灵", "drivergenius"]
+    },
+    {
+      "id": "drivethe-life",
+      "name": "驱动人生",
+      "nameEn": "Driver The Life",
+      "publisher": "深圳市驱动人生科技股份有限公司",
+      "category": "system",
+      "homepage": "https://www.160.com/",
+      "downloadPage": "https://www.160.com/",
+      "uninstallMatch": ["驱动人生", "drivethe"]
+    },
+    {
+      "id": "mofang",
+      "name": "软媒魔方",
+      "nameEn": "Ruanmei Mofang",
+      "publisher": "软媒",
+      "category": "system",
+      "homepage": "https://mofang.ruanmei.com/",
+      "downloadPage": "https://mofang.ruanmei.com/",
+      "uninstallMatch": ["软媒魔方", "mofang"]
+    },
+    {
+      "id": "ntlite",
+      "name": "NTLite",
+      "nameEn": "NTLite",
+      "publisher": "Nlitesoft",
+      "category": "system",
+      "homepage": "https://www.ntlite.com/",
+      "downloadPage": "https://www.ntlite.com/download/",
+      "uninstallMatch": ["ntlite", "nt lite"]
+    },
+    {
+      "id": "autoruns",
+      "name": "Autoruns",
+      "nameEn": "Autoruns",
+      "publisher": "Microsoft",
+      "category": "system",
+      "homepage": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+      "downloadPage": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+      "winget": "Microsoft.Sysinternals.Autoruns",
+      "uninstallMatch": ["autoruns", "autorunsc"]
+    },
+    {
+      "id": "process-explorer",
+      "name": "Process Explorer",
+      "nameEn": "Process Explorer",
+      "publisher": "Microsoft",
+      "category": "system",
+      "homepage": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+      "downloadPage": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+      "winget": "Microsoft.Sysinternals.ProcessExplorer",
+      "uninstallMatch": ["process explorer", "procexp"]
+    },
+    {
+      "id": "system-informer",
+      "name": "System Informer",
+      "nameEn": "System Informer",
+      "publisher": "System Informer",
+      "category": "system",
+      "homepage": "https://systeminformer.com/",
+      "downloadPage": "https://systeminformer.com/",
+      "uninstallMatch": ["system informer", "systeminformer"]
+    },
+    {
+      "id": "tbtool",
+      "name": "图吧工具箱",
+      "nameEn": "TBTool",
+      "publisher": "图吧工具箱",
+      "category": "system",
+      "homepage": "https://www.tbtool.cn/",
+      "downloadPage": "https://www.tbtool.cn/download/",
+      "uninstallMatch": ["图吧工具箱", "tbtool"]
+    },
+    {
+      "id": "wepe",
+      "name": "微PE工具箱",
+      "nameEn": "WePE",
+      "publisher": "微PE工具箱",
+      "category": "system",
+      "homepage": "https://www.wepe.com.cn/",
+      "downloadPage": "https://www.wepe.com.cn/download.html",
+      "uninstallMatch": ["微pe", "wepe"]
+    },
+    {
+      "id": "process-lasso",
+      "name": "Process Lasso",
+      "nameEn": "Process Lasso",
+      "publisher": "Bitsum",
+      "category": "system",
+      "homepage": "https://bitsum.com/",
+      "downloadPage": "https://bitsum.com/downloads/",
+      "uninstallMatch": ["process lasso", "processlasso"]
+    },
+    {
+      "id": "tencent-pcmgr",
+      "name": "腾讯电脑管家",
+      "nameEn": "Tencent PC Manager",
+      "publisher": "腾讯",
+      "category": "security",
+      "homepage": "https://guanjia.qq.com/",
+      "downloadPage": "https://guanjia.qq.com/",
+      "uninstallMatch": ["电脑管家", "qqpcmgr"]
+    },
+    {
+      "id": "360-safe",
+      "name": "360安全卫士",
+      "nameEn": "360 Total Security",
+      "publisher": "360",
+      "category": "security",
+      "homepage": "https://weishi.360.cn/",
+      "downloadPage": "https://weishi.360.cn/",
+      "uninstallMatch": ["360安全卫士", "360safe"]
+    },
+    {
+      "id": "kaspersky",
+      "name": "卡巴斯基",
+      "nameEn": "Kaspersky",
+      "publisher": "卡巴斯基实验室",
+      "category": "security",
+      "homepage": "https://www.kaspersky.com.cn/",
+      "downloadPage": "https://www.kaspersky.com.cn/downloads",
+      "uninstallMatch": ["kaspersky", "卡巴斯基"]
+    },
+    {
+      "id": "eset",
+      "name": "ESET NOD32",
+      "nameEn": "ESET",
+      "publisher": "ESET",
+      "category": "security",
+      "homepage": "https://www.eset.com/cn/",
+      "downloadPage": "https://www.eset.com/cn/download-home/",
+      "winget": "ESET.Nod32",
+      "uninstallMatch": ["eset", "nod32"]
+    },
+    {
+      "id": "norton",
+      "name": "诺顿",
+      "nameEn": "Norton",
+      "publisher": "Gen Digital",
+      "category": "security",
+      "homepage": "https://cn.norton.com/",
+      "downloadPage": "https://cn.norton.com/downloads",
+      "uninstallMatch": ["norton", "诺顿"]
+    },
+    {
+      "id": "avast",
+      "name": "Avast",
+      "nameEn": "Avast",
+      "publisher": "Gen Digital",
+      "category": "security",
+      "homepage": "https://www.avast.com/",
+      "downloadPage": "https://www.avast.com/free-antivirus-download",
+      "uninstallMatch": ["avast", "avast free antivirus"]
+    },
+    {
+      "id": "1password",
+      "name": "1Password",
+      "nameEn": "1Password",
+      "publisher": "AgileBits",
+      "category": "security",
+      "homepage": "https://1password.com/",
+      "downloadPage": "https://1password.com/downloads/",
+      "winget": "AgileBits.1Password",
+      "uninstallMatch": ["1password", "agilebits"]
+    },
+    {
+      "id": "malwarebytes",
+      "name": "Malwarebytes",
+      "nameEn": "Malwarebytes",
+      "publisher": "Malwarebytes",
+      "category": "security",
+      "homepage": "https://www.malwarebytes.com/",
+      "downloadPage": "https://www.malwarebytes.com/mwb-download",
+      "winget": "Malwarebytes.Malwarebytes",
+      "uninstallMatch": ["malwarebytes", "mbam"]
+    },
+    {
+      "id": "veracrypt",
+      "name": "VeraCrypt",
+      "nameEn": "VeraCrypt",
+      "publisher": "IDRIX",
+      "category": "security",
+      "homepage": "https://www.veracrypt.io/",
+      "downloadPage": "https://www.veracrypt.io/en/Downloads.html",
+      "winget": "IDRIX.VeraCrypt",
+      "uninstallMatch": ["veracrypt", "vera crypt"]
+    },
+    {
+      "id": "cryptomator",
+      "name": "Cryptomator",
+      "nameEn": "Cryptomator",
+      "publisher": "Skymatic",
+      "category": "security",
+      "homepage": "https://cryptomator.org/",
+      "downloadPage": "https://cryptomator.org/downloads/",
+      "winget": "Cryptomator.Cryptomator",
+      "uninstallMatch": ["cryptomator", "skymatic"]
+    },
+    {
+      "id": "weiyun",
+      "name": "腾讯微云",
+      "nameEn": "Weiyun",
+      "publisher": "腾讯",
+      "category": "network",
+      "homepage": "https://www.weiyun.com/",
+      "downloadPage": "https://www.weiyun.com/download.html",
+      "winget": "Tencent.Weiyun",
+      "uninstallMatch": ["微云", "weiyun"]
+    },
+    {
+      "id": "115",
+      "name": "115生活",
+      "nameEn": "115",
+      "publisher": "广东一一五科技股份有限公司",
+      "category": "network",
+      "homepage": "https://115.com/",
+      "downloadPage": "https://115.com/download.html",
+      "uninstallMatch": ["115网盘", "115"]
+    },
+    {
+      "id": "tianyi-cloud",
+      "name": "天翼云盘",
+      "nameEn": "Tianyi Cloud",
+      "publisher": "中国电信",
+      "category": "network",
+      "homepage": "https://cloud.189.cn/",
+      "downloadPage": "https://cloud.189.cn/web/static/download-client/",
+      "uninstallMatch": ["天翼云盘", "189"]
+    },
+    {
+      "id": "jianguoyun",
+      "name": "坚果云",
+      "nameEn": "Nutstore",
+      "publisher": "上海亦存网络科技有限公司",
+      "category": "network",
+      "homepage": "https://www.jianguoyun.com/",
+      "downloadPage": "https://www.jianguoyun.com/s/downloads",
+      "winget": "Nutstore.Nutstore",
+      "uninstallMatch": ["坚果云", "nutstore"]
+    },
+    {
+      "id": "onedrive",
+      "name": "OneDrive",
+      "nameEn": "OneDrive",
+      "publisher": "Microsoft",
+      "category": "network",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-365/onedrive/",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-365/onedrive/download",
+      "winget": "Microsoft.OneDrive",
+      "uninstallMatch": ["onedrive", "microsoft onedrive"]
+    },
+    {
+      "id": "idm",
+      "name": "Internet Download Manager",
+      "nameEn": "Internet Download Manager",
+      "publisher": "Tonec",
+      "category": "network",
+      "homepage": "https://www.internetdownloadmanager.com/",
+      "downloadPage": "https://www.internetdownloadmanager.com/download.html",
+      "winget": "Tonec.InternetDownloadManager",
+      "uninstallMatch": ["internet download manager", "idm"]
+    },
+    {
+      "id": "fdm",
+      "name": "Free Download Manager",
+      "nameEn": "Free Download Manager",
+      "publisher": "SoftDeluxe",
+      "category": "network",
+      "homepage": "https://www.freedownloadmanager.org/",
+      "downloadPage": "https://www.freedownloadmanager.org/download.htm",
+      "winget": "SoftDeluxe.FreeDownloadManager",
+      "uninstallMatch": ["free download manager", "fdm"]
+    },
+    {
+      "id": "rustdesk",
+      "name": "RustDesk",
+      "nameEn": "RustDesk",
+      "publisher": "RustDesk",
+      "category": "network",
+      "homepage": "https://rustdesk.com/",
+      "downloadPage": "https://github.com/rustdesk/rustdesk/releases",
+      "uninstallMatch": ["rustdesk", "rust desk"]
+    },
+    {
+      "id": "parsec",
+      "name": "Parsec",
+      "nameEn": "Parsec",
+      "publisher": "Parsec Cloud",
+      "category": "network",
+      "homepage": "https://parsec.app/",
+      "downloadPage": "https://parsec.app/downloads",
+      "winget": "Parsec.Parsec",
+      "uninstallMatch": ["parsec", "parsec cloud"]
+    },
+    {
+      "id": "zoom",
+      "name": "Zoom",
+      "nameEn": "Zoom",
+      "publisher": "Zoom Communications",
+      "category": "network",
+      "homepage": "https://zoom.us/",
+      "downloadPage": "https://zoom.us/download",
+      "winget": "Zoom.Zoom",
+      "uninstallMatch": ["zoom", "zoom workplace"]
+    },
+    {
+      "id": "teams",
+      "name": "Microsoft Teams",
+      "nameEn": "Microsoft Teams",
+      "publisher": "Microsoft",
+      "category": "network",
+      "homepage": "https://www.microsoft.com/zh-cn/microsoft-teams/download-app",
+      "downloadPage": "https://www.microsoft.com/zh-cn/microsoft-teams/download-app",
+      "winget": "Microsoft.Teams",
+      "uninstallMatch": ["microsoft teams", "teams"]
+    }
+  ]
+}

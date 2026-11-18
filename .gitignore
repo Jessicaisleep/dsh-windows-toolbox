@@ -1,0 +1,11 @@
+node_modules/
+*.tgz
+*.log
+.DS_Store
+Thumbs.db
+
+# scratch scripts written while debugging (never part of the plugin)
+tools/_*.mjs
+
+# local runtime output
+*.reg

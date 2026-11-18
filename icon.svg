@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="WINDOWS工具箱 / Windows Toolbox">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6"/>
+      <stop offset="0.55" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#15803D"/>
+    </linearGradient>
+  </defs>
+  <!-- plate: blue (the plugin manager) fading into green (the maintenance toolbox) -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#plate)"/>
+
+  <!-- upper half = window grid: two filled panes (what is already plugged in)
+       and one dashed socket (a capability module that is not), plus the small
+       "unplug" tick so the grid reads as a window rather than a card. -->
+  <rect x="15" y="13" width="14.5" height="14.5" rx="3" fill="#ffffff" opacity="0.95"/>
+  <rect x="33.5" y="13" width="14.5" height="14.5" rx="3" fill="#ffffff" opacity="0.55"/>
+  <rect x="33.5" y="13" width="14.5" height="14.5" rx="3" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="3.4 2.6" opacity="0.85"/>
+  <path d="M19.4 19.1h6.2M19.4 22.1h9.4" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <path d="M40.75 17.6v5.2M38.15 20.2h5.2" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
+
+  <!-- lower half = toolbox body with its handle: the maintenance capabilities -->
+  <rect x="13" y="33" width="38" height="21" rx="4.5" fill="none" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M24.5 33v-4a3.2 3.2 0 0 1 3.2-3.2h8.6a3.2 3.2 0 0 1 3.2 3.2v4" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M27.5 39.5h9" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M13 43.5h38" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.5"/>
+</svg>

@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Windows Toolbox",
+    "description": "One plugin, two halves. The upper half is the registration-point manager: services, scheduled tasks, autoruns, shell extensions (context-menu items and property pages), installed programs, AppX/MSIX packages, driver packages, firewall rules, image-file hijacks, file associations and credential providers folded into one readable index — plus a separate eight-check system-repair board. Every card says in one sentence what the thing does; expanding it shows where it appears, what turning it off would change, and puts an action button right on the card face when the action is safe. The lower half is the maintenance toolbox: cleanup of junk and privacy traces across nine groups, large and duplicate files, network diagnosis and repair, DNS picking, security and privacy posture, speed test, startup tweaks, a file shredder, and driver plus software catalogs. Everything runs locally and every write is a dry run first.",
+    "detail": "docs/DETAIL.md"
+  }
+}
